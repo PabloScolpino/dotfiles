@@ -126,3 +126,6 @@ CONFIG=$HOME/.config
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source ~/.bash-git-prompt/gitprompt.sh
+GIT_PROMPT_ONLY_IN_REPO=1
