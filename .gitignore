@@ -1,0 +1,12 @@
+*
+
+!*.vimrc
+!*.vim
+!*.bashrc
+!*.config
+*.config/*
+!*.config/env.sh
+!*.config/path.sh
+!*.config/alias.sh
+!*.config/ld_library_path.sh
+!*.gitignore
