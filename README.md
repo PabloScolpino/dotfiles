@@ -9,4 +9,11 @@ git remote add origin PATH/TO/REPO
 git fetch
 git checkout -t origin/master
 ```
-(Source)[http://stackoverflow.com/questions/2411031/how-do-i-clone-into-a-non-empty-directory]
+[Source](http://stackoverflow.com/questions/2411031/how-do-i-clone-into-a-non-empty-directory)
+
+# How to install vim Plug
+```Bash
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+[VimPlug](https://github.com/junegunn/vim-plug)
