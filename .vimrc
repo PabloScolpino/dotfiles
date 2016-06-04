@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Gvim for windows 
+" Gvim for windows
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
 endif
@@ -102,8 +102,15 @@ nmap <C-i> <leader>ig
 set laststatus=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM SYNTASTIC 
+" VIM SYNTASTIC
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
+
+" npm install -g jsxhint
+" npm install standard
+let g:syntastic_javascript_checkers = ['jsxhint', 'standard']
+"let g:syntastic_javascript_checkers = ['jsxhint']
+"let g:syntastic_javascript_standard_exec = 'happiness'
+let g:syntastic_javascript_standard_generic = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS!
