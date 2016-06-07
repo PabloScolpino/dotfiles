@@ -86,6 +86,8 @@ Plug 'tpope/vim-bundler'
 
 Plug 'tpope/vim-endwise'
 
+Plug 'terryma/vim-multiple-cursors'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
