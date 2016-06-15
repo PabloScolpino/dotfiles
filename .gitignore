@@ -1,7 +1,6 @@
 *
 
 !*.vimrc
-!*.vim
 !*.bashrc
 !*.config
 *.config/*
