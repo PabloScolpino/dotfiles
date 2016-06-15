@@ -7,5 +7,6 @@
 !*.config/env.sh
 !*.config/path.sh
 !*.config/alias.sh
+!*.config/prompt.sh
 !*.config/ld_library_path.sh
 !*.gitignore

@@ -118,15 +118,13 @@ fi
 
 CONFIG=$HOME/.config
 
-#. $CONFIG/profile.sh
-#. $CONFIG/path.sh
+. $CONFIG/profile.sh
+. $CONFIG/path.sh
+. $CONFIG/ld_library_path.sh
 . $CONFIG/alias.sh
 . $CONFIG/env.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-source ~/.bash-git-prompt/gitprompt.sh
-GIT_PROMPT_ONLY_IN_REPO=1
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 source $HOME/.rvm/scripts/rvm
