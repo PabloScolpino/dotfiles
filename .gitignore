@@ -1,6 +1,7 @@
 *
 
 !*.vimrc
+!*.gitignore_global
 !*.bashrc
 !*.config
 *.config/*
