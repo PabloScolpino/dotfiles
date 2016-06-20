@@ -5,7 +5,7 @@ This is my own terminal profile configuration, here to make it easier to reinsta
 
 ```Bash
 git init
-git remote add origin PATH/TO/REPO
+git remote add origin https://github.com/PabloScolpino/terminalrc.git
 git fetch
 git checkout -t origin/master
 ```
