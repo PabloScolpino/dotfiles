@@ -118,7 +118,7 @@ fi
 
 CONFIG=$HOME/.config
 
-. $CONFIG/profile.sh
+. $CONFIG/prompt.sh
 . $CONFIG/path.sh
 . $CONFIG/ld_library_path.sh
 . $CONFIG/alias.sh
