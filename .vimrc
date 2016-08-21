@@ -26,7 +26,6 @@ set startofline
 set cursorline
 "set cursorcolumn
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax highlightning
 syntax enable
@@ -35,11 +34,13 @@ set t_Co=256
 set nu     " No line number
 set nocp   " No compatibility mode
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a
+
 filetype plugin on
 
 
 call plug#begin('~/.vim/plugged')
-" Make sure you use single quotes
 
 Plug 'junegunn/vim-easy-align'
 
@@ -63,13 +64,41 @@ Plug 'nanotech/jellybeans.vim'
 
 " Visualization
 Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+nmap <C-i> <leader>ig
+
 Plug 'ap/vim-css-color'
 
 " Interface
 Plug 'bling/vim-airline'
+"let g:airline_powerline_fonts = 1
+set laststatus=2
+
 Plug 'scrooloose/syntastic'
+let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
+" npm install -g jsxhint
+" npm install standard
+let g:syntastic_javascript_checkers = ['jsxhint', 'standard']
+"let g:syntastic_javascript_checkers = ['jsxhint']
+"let g:syntastic_javascript_standard_exec = 'happiness'
+let g:syntastic_javascript_standard_generic = 1
+
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+map <C-m> :NERDTreeToggle<CR>
+Plug 'jistr/vim-nerdtree-tabs'
+let g:nerdtree_tabs_open_on_console_startup = 1
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+Plug 'fholgado/minibufexpl.vim'
+let g:miniBufExplMapCTabSwitchBufs = 1
+
 Plug 'bronson/vim-trailing-whitespace'
+
+" Searching
+Plug 'gabesoft/vim-ags'
 
 " GIT
 Plug 'airblade/vim-gitgutter'
@@ -91,30 +120,6 @@ Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM INDENT GUIDES
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_start_level=2
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
-nmap <C-i> <leader>ig
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM AIRLINE
-"let g:airline_powerline_fonts = 1
-set laststatus=2
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VIM SYNTASTIC
-let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
-
-" npm install -g jsxhint
-" npm install standard
-let g:syntastic_javascript_checkers = ['jsxhint', 'standard']
-"let g:syntastic_javascript_checkers = ['jsxhint']
-"let g:syntastic_javascript_standard_exec = 'happiness'
-let g:syntastic_javascript_standard_generic = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLORS!
 "set background=dark
 "colorscheme solarized
@@ -123,5 +128,5 @@ let g:syntastic_javascript_standard_generic = 1
 colorscheme jellybeans
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Font (for winsows)
+" Font (for windows)
 "set gfn=Lucida_Console:h7:cANSI
