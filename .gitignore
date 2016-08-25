@@ -2,7 +2,6 @@
 
 !*.vimrc
 !*.gitignore_global
-!*.bashrc
 !*.config
 *.config/*
 !*.config/env.sh
@@ -10,4 +9,5 @@
 !*.config/alias.sh
 !*.config/prompt.sh
 !*.config/ld_library_path.sh
+!*.config/source_this.sh
 !*.gitignore
