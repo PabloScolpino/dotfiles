@@ -35,7 +35,7 @@ set nu     " No line number
 set nocp   " No compatibility mode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=a
+"set mouse=a
 
 filetype plugin on
 

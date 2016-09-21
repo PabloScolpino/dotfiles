@@ -4,10 +4,11 @@
 !*.gitignore_global
 !*.config
 *.config/*
-!*.config/env.sh
-!*.config/path.sh
 !*.config/alias.sh
-!*.config/prompt.sh
+!*.config/env.sh
 !*.config/ld_library_path.sh
+!*.config/path.sh
+!*.config/prompt.sh
+!*.config/ruby.sh
 !*.config/source_this.sh
 !*.gitignore
