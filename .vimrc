@@ -72,6 +72,8 @@ nmap <C-i> <leader>ig
 
 Plug 'ap/vim-css-color'
 
+Plug 'kchmck/vim-coffee-script'
+
 " Interface
 Plug 'bling/vim-airline'
 "let g:airline_powerline_fonts = 1
