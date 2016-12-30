@@ -6,5 +6,6 @@ CONFIG=$HOME/.config
 . $CONFIG/alias.sh
 . $CONFIG/env.sh
 . $CONFIG/git.sh
+[ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
