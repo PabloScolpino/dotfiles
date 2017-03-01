@@ -7,6 +7,8 @@
 !*.vimrc
 !*.gitignore_global
 !*.config
+!.editrc
+!.inputrc
 
 *.config/*
 !*.config/alias.sh
