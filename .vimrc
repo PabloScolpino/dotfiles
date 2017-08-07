@@ -131,4 +131,7 @@ colorscheme jellybeans
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Font (for windows)
-"set gfn=Lucida_Console:h7:cANSI
+
+set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
+"let g:airline_powerline_fonts = 1
+"set guifont=Bitstream\ Vera\ Sans\ Mono:h12
