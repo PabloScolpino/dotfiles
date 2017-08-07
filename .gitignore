@@ -3,6 +3,7 @@
 !*bin
 *bin/*
 !*bin/shell_init_script.sh
+!*bin/fix_spotlight_index.sh
 
 !*.vimrc
 !*.gitignore_global
