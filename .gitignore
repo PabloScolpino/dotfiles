@@ -4,6 +4,7 @@
 *bin/*
 !*bin/shell_init_script.sh
 !*bin/fix_spotlight_index.sh
+!*bin/onmacbookscreen
 
 !*.vimrc
 !*.gitignore_global
