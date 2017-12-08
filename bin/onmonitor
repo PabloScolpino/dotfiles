@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# send escape command to change the iterm profile to 'macbook screen'
+
+echo -e "\033]50;SetProfile=monitor\a"

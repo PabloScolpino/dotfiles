@@ -88,19 +88,28 @@ let g:syntastic_javascript_checkers = ['jsxhint', 'standard']
 "let g:syntastic_javascript_standard_exec = 'happiness'
 let g:syntastic_javascript_standard_generic = 1
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-map <C-m> :NERDTreeToggle<CR>
-Plug 'jistr/vim-nerdtree-tabs'
-let g:nerdtree_tabs_open_on_console_startup = 1
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+"map <C-m> :NERDTreeToggle<CR>
+"Plug 'jistr/vim-nerdtree-tabs'
+"let g:nerdtree_tabs_open_on_console_startup = 1
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'fholgado/minibufexpl.vim'
 let g:miniBufExplMapCTabSwitchBufs = 1
 
 Plug 'bronson/vim-trailing-whitespace'
 
+" Preview & visualization
+Plug 'kannokanno/previm'
+"let g:previm_open_cmd = 'open -a Safari'
+
+Plug 'tyru/open-browser.vim'
+
 " Searching
 Plug 'gabesoft/vim-ags'
+
+" Search & Replace
+Plug 'https://github.com/firegoby/html_entities_helper.vim.git'
 
 " GIT
 Plug 'airblade/vim-gitgutter'
