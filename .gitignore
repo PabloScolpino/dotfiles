@@ -7,11 +7,12 @@
 !*bin/onmacbookscreen
 !*bin/onmonitor
 
-!*.vimrc
-!*.gitignore_global
-!*.config
+!.vimrc
+!.gitignore_global
+!.config
 !.editrc
 !.inputrc
+!.gemrc
 
 *.config/*
 !*.config/alias.sh
