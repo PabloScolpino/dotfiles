@@ -1,3 +1,3 @@
 set -o vi
-export EDIT=vi
+export EDITOR=vi
 export VISUAL=vi
