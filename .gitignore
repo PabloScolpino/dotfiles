@@ -23,5 +23,6 @@
 !*.config/prompt.sh
 !*.config/ruby.sh
 !*.config/source_this.sh
+!*.config/tmuxinator.bash
 
 !*.gitignore
