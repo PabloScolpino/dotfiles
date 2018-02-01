@@ -110,6 +110,8 @@ Plug 'gabesoft/vim-ags'
 
 " Search & Replace
 Plug 'https://github.com/firegoby/html_entities_helper.vim.git'
+" use it with
+" <esc>\He
 
 " GIT
 Plug 'airblade/vim-gitgutter'
