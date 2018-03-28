@@ -42,12 +42,6 @@ filetype plugin on
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'junegunn/vim-easy-align'
-
-" Group dependencies, vim-snippets depends on ultisnips
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-
 " Using git URL
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
@@ -70,40 +64,41 @@ hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 nmap <C-i> <leader>ig
 
-Plug 'ap/vim-css-color'
-
-Plug 'kchmck/vim-coffee-script'
-
 " Interface
 Plug 'bling/vim-airline'
 "let g:airline_powerline_fonts = 1
 set laststatus=2
+
+Plug 'junegunn/vim-easy-align'
+
+" Group dependencies, vim-snippets depends on ultisnips
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+"Plug 'fholgado/minibufexpl.vim'
+"et g:miniBufExplMapCTabSwitchBufs = 1
+
+" Preview & visualization
+Plug 'kannokanno/previm'
+"let g:previm_open_cmd = 'open -a Safari'
+Plug 'tyru/open-browser.vim'
+
+Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'scrooloose/syntastic'
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
 " npm install -g jsxhint
 " npm install standard
 let g:syntastic_javascript_checkers = ['jsxhint', 'standard']
-"let g:syntastic_javascript_checkers = ['jsxhint']
 "let g:syntastic_javascript_standard_exec = 'happiness'
 let g:syntastic_javascript_standard_generic = 1
-
-"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"map <C-m> :NERDTreeToggle<CR>
-"Plug 'jistr/vim-nerdtree-tabs'
-"let g:nerdtree_tabs_open_on_console_startup = 1
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-
-Plug 'fholgado/minibufexpl.vim'
-let g:miniBufExplMapCTabSwitchBufs = 1
-
-Plug 'bronson/vim-trailing-whitespace'
-
-" Preview & visualization
-Plug 'kannokanno/previm'
-"let g:previm_open_cmd = 'open -a Safari'
-
-Plug 'tyru/open-browser.vim'
 
 " Searching
 Plug 'gabesoft/vim-ags'
@@ -130,6 +125,15 @@ Plug 'tpope/vim-endwise'
 
 Plug 'terryma/vim-multiple-cursors'
 
+" PHP
+Plug 'stanangeloff/php.vim'
+Plug 'lumiliet/vim-twig'
+
+" CSS
+Plug 'ap/vim-css-color'
+
+" COFFEE SCRIPT
+Plug 'kchmck/vim-coffee-script'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
