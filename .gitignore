@@ -29,5 +29,8 @@
 !*.config/ruby.sh
 !*.config/source_this.sh
 !*.config/tmuxinator.bash
+!*.config/nvim/
+*.config/nvim/*
+!*.config/nvim/init.vim
 
 !*.gitignore
