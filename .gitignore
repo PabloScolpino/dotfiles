@@ -15,6 +15,10 @@
 !.inputrc
 !.gemrc
 
+!*.oni/
+*.oni/*
+!*.oni/config.js
+
 *.config/*
 !*.config/alias.sh
 !*.config/env.sh
