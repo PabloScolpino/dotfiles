@@ -10,6 +10,8 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+au FileType php setl sw=4 sts=4 et
+
 set cindent
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -34,11 +36,12 @@ set t_Co=256
 set nu     " No line number
 set nocp   " No compatibility mode
 
+au BufNewFile,BufRead /tmp/sql* set filetype=sql
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set mouse=a
 
 filetype plugin on
-
 
 call plug#begin('~/.vim/plugged')
 
@@ -75,12 +78,12 @@ Plug 'junegunn/vim-easy-align'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsEditSplit="vertical"
 
 "Plug 'fholgado/minibufexpl.vim'
 "et g:miniBufExplMapCTabSwitchBufs = 1
@@ -146,7 +149,6 @@ colorscheme jellybeans
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Font (for windows)
-
 set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
 "let g:airline_powerline_fonts = 1
 "set guifont=Bitstream\ Vera\ Sans\ Mono:h12

@@ -15,7 +15,7 @@ module.exports = {
     // change configuration values here:
     "oni.useDefaultConfig": true,
     "oni.loadInitVim": true,
-    "editor.fontSize": "16px",
+    "editor.fontSize": "20px",
     "editor.fontFamily": "Monaco",
     "editor.completions.enabled": true,
 }
