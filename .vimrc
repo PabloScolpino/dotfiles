@@ -4,15 +4,11 @@ filetype plugin on
 " Plug config
 call plug#begin('~/.vim/plugged')
 
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-
-" Colors
+" Interface
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
 
-" Indent lines
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
@@ -20,13 +16,14 @@ hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 nmap <C-i> <leader>ig
 
-" Interface
 Plug 'bling/vim-airline'
 set laststatus=2
 
-" Snippets
-" Group dependencies, vim-snippets depends on ultisnips
+Plug 'bronson/vim-trailing-whitespace'
+
+" Editting
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'terryma/vim-multiple-cursors'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<tab>"
@@ -41,8 +38,6 @@ Plug 'kannokanno/previm'
 "let g:previm_open_cmd = 'open -a Safari'
 Plug 'tyru/open-browser.vim'
 
-Plug 'bronson/vim-trailing-whitespace'
-
 " Syntax hightlight and code hints
 Plug 'scrooloose/syntastic'
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
@@ -55,7 +50,7 @@ let g:syntastic_javascript_standard_generic = 1
 
 " Searching
 Plug 'gabesoft/vim-ags'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 " Search & Replace
 Plug 'firegoby/html_entities_helper.vim'
@@ -72,12 +67,10 @@ Plug 'tpope/vim-rails'
 
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-cucumber'
-
 Plug 'tpope/vim-bundler'
-
 Plug 'tpope/vim-endwise'
 
-Plug 'terryma/vim-multiple-cursors'
+Plug 'thoughtbot/vim-rspec'
 
 " PHP
 Plug 'stanangeloff/php.vim'
