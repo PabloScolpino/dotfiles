@@ -4,6 +4,9 @@ filetype plugin on
 " Plug config
 call plug#begin('~/.vim/plugged')
 
+" Productivity
+Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
+
 " Interface
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
@@ -21,9 +24,13 @@ set laststatus=2
 
 Plug 'bronson/vim-trailing-whitespace'
 
-" Editting
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Editing
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-surround'
+
+" Plug 'Valloric/YouCompleteMe'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'qbbr/vim-symfony'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<tab>"
@@ -82,6 +89,9 @@ Plug 'ap/vim-css-color'
 " COFFEE SCRIPT
 Plug 'kchmck/vim-coffee-script'
 call plug#end()
+
+nmap <Leader>pi :so %<CR>:PlugInstall<CR>:PlugClean!<CR>
+nmap <Leader>pu :so %<CR>:PlugUpdate<CR>
 
 " ================================================================================
 " Basic coding style
