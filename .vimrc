@@ -1,5 +1,8 @@
 filetype plugin on
 
+"====[ Define a more agreeable <Leader> ]======================================
+let mapleader = ","
+
 "====[ Set up smarter search behaviour ]======================================
 set incsearch       "Lookahead as search pattern is specified
 set ignorecase      "Ignore case in all searches...
@@ -117,6 +120,8 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 
 Plug 'thoughtbot/vim-rspec'
+
+Plug 'henrik/vim-ruby-runner'
 
 "========[ PHP ]================
 Plug 'stanangeloff/php.vim'
