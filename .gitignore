@@ -33,4 +33,7 @@
 *.config/nvim/*
 !*.config/nvim/init.vim
 
+!*.UltiSnips/
+!*.UltiSnips/*
+
 !*.gitignore
