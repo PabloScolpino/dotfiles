@@ -1,36 +1,87 @@
-filetype plugin on
-
 "====[ Define a more agreeable <Leader> ]======================================
 let mapleader = ","
 
 "====[ Set up smarter search behaviour ]======================================
-set incsearch       "Lookahead as search pattern is specified
-set ignorecase      "Ignore case in all searches...
-set smartcase       "...unless uppercase letters used
+set incsearch       " Lookahead as search pattern is specified
+set ignorecase      " Ignore case in all searches...
+set smartcase       " ...unless uppercase letters used
+set hlsearch        " Highlight all matches
 
-set hlsearch        "Highlight all matches
-highlight clear Search
-highlight       Search    ctermfg=White  ctermbg=Black  cterm=bold
-highlight    IncSearch    ctermfg=White  ctermbg=Red    cterm=bold
+" highlight the match in red (Damian Conway)
+nnoremap <silent> n   n:call HLNext(0.3)<cr>
+nnoremap <silent> N   N:call HLNext(0.3)<cr>
 
-" Absolute direction for n and N...
-nnoremap  <silent><expr> n  'Nn'[v:searchforward] . ":call HLNext()\<CR>"
-nnoremap  <silent><expr> N  'nN'[v:searchforward] . ":call HLNext()\<CR>"
-
-"Delete in normal mode to switch off highlighting till next search and clear messages...
-nmap <silent> <BS> [Cancel highlighting]  :call HLNextOff() <BAR> :nohlsearch <BAR> :call VG_Show_CursorColumn('off')<CR>::HierClear<CR>
-
-"Double-delete to remove trailing whitespace...
-nmap <silent> <BS><BS>  [Remove trailing whitespace] mz:call TrimTrailingWS()<CR>`z
-
-function! TrimTrailingWS ()
-  if search('\s\+$', 'cnw')
-    :%s/\s\+$//g
-  endif
+function! HLNext (blinktime)
+  highlight WhiteOnRed ctermfg=white ctermbg=red
+  let [bufnum, lnum, col, off] = getpos('.')
+  let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+  let target_pat = '\c\%#\%('.@/.'\)'
+  let ring = matchadd('WhiteOnRed', target_pat, 101)
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  call matchdelete(ring)
+  redraw
 endfunction
 
+"====[ Make tabs, trailing whitespace, and non-breaking spaces visible ]======
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
 
-"==============================================================================
+nnoremap <silent> <BS><BS> :FixWhitespace<CR>
+
+"====[ Swap : and ; to make colon commands easier to type ]======
+nnoremap  ;  :
+nnoremap  :  ;
+
+"====[ Swap v and CTRL-V, because Block mode is more useful that Visual mode "]======
+nnoremap    v   <C-V>
+nnoremap <C-V>     v
+
+vnoremap    v   <C-V>
+vnoremap <C-V>     v
+
+"====[ Custom Hotkeys ]======================================
+nnoremap <Leader>p :so %<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR>   " Reload vimrc and clean/update/install plugins lkjlkjlkjlkjlkj
+
+nnoremap <F9> :!%:p<Enter>
+
+"====[ Basic coding style ]================
+set tabstop=2
+set shiftwidth=2
+set expandtab " Never ever use tabs
+set cindent
+
+au FileType php setl sw=4 sts=4 et " Stick to symfony's 4 spaces format
+
+"====[ Cursor line ]==============================================================
+set startofline
+set cursorline
+
+"====[ Syntax highlightning ]=====================================================
+syntax enable
+set t_Co=256
+
+set nu     " With line number
+set nocp   " No compatibility mode
+
+au BufNewFile,BufRead /tmp/sql* set filetype=sql
+
+
+"====[ Windows config ]=====================================================
+"========[ Font ]===========================================================
+set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
+"let g:airline_powerline_fonts = 1
+"set guifont=Bitstream\ Vera\ Sans\ Mono:h12
+
+"========[ Gvim ]===========================================================
+" Gvim for windows
+if has('win32') || has('win64')
+  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
+endif
+
+"=============================================================================
+filetype plugin on
+
 "====[ Plugins configuration ]================================================
 call plug#begin('~/.vim/plugged')
 
@@ -57,17 +108,12 @@ set laststatus=2
 Plug 'vitorgalvao/autoswap_mac'
 set title titlestring=
 
-" Highlight trailing whitespaces
-Plug 'bronson/vim-trailing-whitespace'
+"========[ Text handling ]==================================
+Plug 'bronson/vim-trailing-whitespace'                      " Highlight trailing whitespaces
+Plug 'zirrostig/vim-schlepp'
 
-" Editing
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
-
-
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'shawncplus/phpcomplete.vim'
-Plug 'qbbr/vim-symfony'
 
 "========[ Code Snippets ]===================================
 Plug 'SirVer/ultisnips'
@@ -80,6 +126,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.UltiSnips', $HOME.'/.vim/UltiSnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'shawncplus/phpcomplete.vim'
 
 "========[ Preview & visualization ]=========================
 Plug 'kannokanno/previm'
@@ -127,6 +176,7 @@ Plug 'henrik/vim-ruby-runner'
 Plug 'stanangeloff/php.vim'
 Plug 'lumiliet/vim-twig'
 Plug 'adoy/vim-php-refactoring-toolbox'
+Plug 'qbbr/vim-symfony'
 
 "========[ CSS ]================
 Plug 'ap/vim-css-color'
@@ -139,52 +189,5 @@ Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
-
-"====[ Custom Hotkeys ]======================================
-nmap <Leader>pi :so %<CR>:PlugInstall<CR>:PlugClean!<CR>
-nmap <Leader>pu :so %<CR>:PlugUpdate<CR>
-nnoremap <F9> :!%:p<Enter>
-
-"====[ Basic coding style ]================
-set tabstop=2
-set shiftwidth=2
-set expandtab " Never ever use tabs
-
-au FileType php setl sw=4 sts=4 et " Stick to symfony's 4 spaces format
-
-set cindent
-
-"====[ Search settings ]================
-set smartcase
-set hlsearch
-set incsearch
-set ignorecase
-set showmatch
-
-"====[ Cursor line ]==============================================================
-set startofline
-set cursorline
-
-"====[ Syntax highlightning ]=====================================================
-syntax enable
-set t_Co=256
-
-set nu     " No line number
-set nocp   " No compatibility mode
-
-au BufNewFile,BufRead /tmp/sql* set filetype=sql
-
 "====[ Color schema ]=====================================================
 colorscheme jellybeans
-
-"====[ Windows config ]=====================================================
-"========[ Font ]===========================================================
-set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
-"let g:airline_powerline_fonts = 1
-"set guifont=Bitstream\ Vera\ Sans\ Mono:h12
-"
-"========[ Gvim ]===========================================================
-" Gvim for windows
-if has('win32') || has('win64')
-  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
-endif
