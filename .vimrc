@@ -8,8 +8,8 @@ set smartcase       " ...unless uppercase letters used
 set hlsearch        " Highlight all matches
 
 " highlight the match in red (Damian Conway)
-nnoremap <silent> n   n:call HLNext(0.3)<cr>
-nnoremap <silent> N   N:call HLNext(0.3)<cr>
+nnoremap <silent> n   n:call HLNext(0.2)<cr>
+nnoremap <silent> N   N:call HLNext(0.2)<cr>
 
 function! HLNext (blinktime)
   highlight WhiteOnRed ctermfg=white ctermbg=red
@@ -41,7 +41,8 @@ vnoremap    v   <C-V>
 vnoremap <C-V>     v
 
 "====[ Custom Hotkeys ]======================================
-nnoremap <Leader>p :so %<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR>   " Reload vimrc and clean/update/install plugins lkjlkjlkjlkjlkj
+nnoremap <Leader>p :so %<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><q>
+nnoremap <silent> <Leader>s :so %<CR>
 
 nnoremap <F9> :!%:p<Enter>
 
@@ -56,6 +57,9 @@ au FileType php setl sw=4 sts=4 et " Stick to symfony's 4 spaces format
 "====[ Cursor line ]==============================================================
 set startofline
 set cursorline
+hi cursorline   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+hi cursorcolumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 "====[ Syntax highlightning ]=====================================================
 syntax enable
@@ -101,6 +105,13 @@ hi IndentGuidesEven ctermbg=darkgrey
 nmap <C-i> <leader>ig
 
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'                               " airline - themes
+let g:airline_theme = 'jellybeans'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 
 "========[ VIM Buffer handling ]============================
@@ -138,6 +149,12 @@ Plug 'tyru/open-browser.vim'
 Plug 'FuDesign2008/mermaidViewer.vim'
 autocmd BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
 
+Plug 'junegunn/limelight.vim'
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+noremap <silent> <Leader>l :Limelight<CR>
+noremap <silent> <Leader>L :Limelight!<CR>
+
 "========[ Syntax hightlight and code hints ]================
 Plug 'scrooloose/syntastic'
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
@@ -150,10 +167,10 @@ let g:syntastic_javascript_standard_generic = 1
 
 "========[ Searching ]================
 Plug 'gabesoft/vim-ags'
-map ag Ags
-map age AgsEditSearchResults
+nnoremap <silent> <Leader>ag  :Ags<CR>
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+nnoremap <silent> <Leader>f :FZF<CR>
 
 "========[ GIT Integration ]================
 Plug 'airblade/vim-gitgutter'
