@@ -1,5 +1,19 @@
-"====[ Define a more agreeable <Leader> ]======================================
+"====[ Embrace the future ]===================================================
+set nocompatible
+
+"====[ Define a more agreeable <Leader> ]=====================================
 let mapleader = ","
+
+"====[ Swap : and ; to make colon commands easier to type ]===================
+nnoremap  ;  :
+nnoremap  :  ;
+
+"====[ Swap v and CTRL-V, because Block mode is more useful that Visual mode "]======
+nnoremap    v   <C-V>
+nnoremap <C-V>     v
+
+vnoremap    v   <C-V>
+vnoremap <C-V>     v
 
 "====[ Set up smarter search behaviour ]======================================
 set incsearch       " Lookahead as search pattern is specified
@@ -29,24 +43,13 @@ set list
 
 nnoremap <silent> <BS><BS> :FixWhitespace<CR>
 
-"====[ Swap : and ; to make colon commands easier to type ]======
-nnoremap  ;  :
-nnoremap  :  ;
-
-"====[ Swap v and CTRL-V, because Block mode is more useful that Visual mode "]======
-nnoremap    v   <C-V>
-nnoremap <C-V>     v
-
-vnoremap    v   <C-V>
-vnoremap <C-V>     v
-
-"====[ Custom Hotkeys ]======================================
+"====[ Custom Hotkeys ]=======================================================
 nnoremap <Leader>p :so %<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><q>
 nnoremap <silent> <Leader>s :so %<CR>
 
 nnoremap <F9> :!%:p<Enter>
 
-"====[ Basic coding style ]================
+"====[ Basic coding style ]===================================================
 set tabstop=2
 set shiftwidth=2
 set expandtab " Never ever use tabs
@@ -54,14 +57,14 @@ set cindent
 
 au FileType php setl sw=4 sts=4 et " Stick to symfony's 4 spaces format
 
-"====[ Cursor line ]==============================================================
+"====[ Cursor line ]==========================================================
 set startofline
 set cursorline
 hi cursorline   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi cursorcolumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
-"====[ Syntax highlightning ]=====================================================
+"====[ Syntax highlightning ]=================================================
 syntax enable
 set t_Co=256
 
@@ -71,28 +74,30 @@ set nocp   " No compatibility mode
 au BufNewFile,BufRead /tmp/sql* set filetype=sql
 
 
-"====[ Windows config ]=====================================================
-"========[ Font ]===========================================================
+"====[ Windows config ]=======================================================
+"========[ Font ]=============================================================
 set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
 "let g:airline_powerline_fonts = 1
 "set guifont=Bitstream\ Vera\ Sans\ Mono:h12
 
-"========[ Gvim ]===========================================================
+"========[ Gvim "]============================================================
 " Gvim for windows
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
 endif
 
-"=============================================================================
-filetype plugin on
+"====[ File browser "]========================================================
+
+
 
 "====[ Plugins configuration ]================================================
+filetype plugin on
 call plug#begin('~/.vim/plugged')
 
-"========[ List handing ]======================================
+"========[ List handing ]=====================================================
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
-"========[ interface improvements ]============================
+"========[ interface improvements ]===========================================
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
@@ -194,6 +199,9 @@ Plug 'stanangeloff/php.vim'
 Plug 'lumiliet/vim-twig'
 Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'qbbr/vim-symfony'
+Plug 'stephpy/vim-php-cs-fixer'
+autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+
 
 "========[ CSS ]================
 Plug 'ap/vim-css-color'
