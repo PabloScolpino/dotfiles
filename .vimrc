@@ -143,8 +143,10 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.UltiSnips', $HOME.'/.vim/UltiSnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " Plug 'shawncplus/phpcomplete.vim'
+
+Plug 'majutsushi/tagbar'
 
 "========[ Preview & visualization ]=========================
 Plug 'kannokanno/previm'
@@ -201,7 +203,6 @@ Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'qbbr/vim-symfony'
 Plug 'stephpy/vim-php-cs-fixer'
 autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
-
 
 "========[ CSS ]================
 Plug 'ap/vim-css-color'
