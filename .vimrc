@@ -4,6 +4,12 @@ set nocompatible
 "====[ Define a more agreeable <Leader> ]=====================================
 let mapleader = ","
 
+"====[ Supress warning message in vim 7.4+ ]==================================
+set encoding=utf-8
+
+"====[ make vim yank put data into cropboard ]================================
+set clipboard=unnamed
+
 "====[ Swap : and ; to make colon commands easier to type ]===================
 nnoremap  ;  :
 nnoremap  :  ;
