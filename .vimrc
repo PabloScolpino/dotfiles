@@ -74,11 +74,17 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 syntax enable
 set t_Co=256
 
-set nu     " With line number
-set nocp   " No compatibility mode
+"set nu     " With line number
+
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 au BufNewFile,BufRead /tmp/sql* set filetype=sql
-
 
 "====[ Windows config ]=======================================================
 "========[ Font ]=============================================================
@@ -143,14 +149,18 @@ Plug 'honza/vim-snippets'
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.UltiSnips', $HOME.'/.vim/UltiSnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-Plug 'Valloric/YouCompleteMe'
+if v:version > 740
+  Plug 'Valloric/YouCompleteMe'
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " Plug 'shawncplus/phpcomplete.vim'
+endif
 
 Plug 'majutsushi/tagbar'
 
