@@ -2,6 +2,8 @@ alias l='ls -l -G'
 alias a='clear;ls -l -G'
 alias ap='ansible-playbook'
 
+alias vi='vim'
+
 alias mux='tmuxinator'
 
 alias tnew='tmate -S /tmp/tmate.sock new-session'
