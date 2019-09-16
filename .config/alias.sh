@@ -4,6 +4,8 @@ alias ap='ansible-playbook'
 
 alias vi='vim'
 
+alias mutt='cd ~/attachments && neomutt'
+
 alias mux='tmuxinator'
 
 alias tnew='tmate -S /tmp/tmate.sock new-session'

@@ -86,6 +86,13 @@ augroup END
 
 au BufNewFile,BufRead /tmp/sql* set filetype=sql
 
+"====[ Email Reading ]========================================================
+au BufRead /tmp/*mutt-* set tw=72
+augroup filetypedetect
+  " Mail
+  autocmd BufRead,BufNewFile *mutt-*              setfiletype mail
+augroup END
+
 "====[ Windows config ]=======================================================
 "========[ Font ]=============================================================
 set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
@@ -110,6 +117,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
 "========[ interface improvements ]===========================================
+Plug 'mhinz/vim-startify'
+
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
@@ -158,14 +167,16 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.UltiSnips', $HOME.'/.vim/UltiSnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-if v:version > 740 && (has('python') || has('python3'))
-  Plug 'Valloric/YouCompleteMe'
-  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"if v:version > 740 && (has('python') || has('python3'))
+  "Plug 'Valloric/YouCompleteMe'
+  "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " Plug 'shawncplus/phpcomplete.vim'
-endif
+"endif
 
 Plug 'majutsushi/tagbar'
+
+Plug 'zxqfl/tabnine-vim'
 
 "========[ Preview & visualization ]=========================
 Plug 'kannokanno/previm'
@@ -196,13 +207,14 @@ Plug 'gabesoft/vim-ags'
 nnoremap <silent> <Leader>ag  :Ags<CR>
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+let g:fzf_buffers_jump = 1
 nnoremap <silent> <Leader>f :FZF<CR>
 
-"========[ GIT Integration ]================
+"========[ GIT Integration ]==================================================
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
-"========[ Ruby ]================
+"========[ Ruby ]=============================================================
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 
@@ -215,7 +227,7 @@ Plug 'thoughtbot/vim-rspec'
 
 Plug 'henrik/vim-ruby-runner'
 
-"========[ PHP ]================
+"========[ PHP ]==============================================================
 Plug 'stanangeloff/php.vim'
 Plug 'lumiliet/vim-twig'
 Plug 'adoy/vim-php-refactoring-toolbox'
@@ -223,16 +235,20 @@ Plug 'qbbr/vim-symfony'
 Plug 'stephpy/vim-php-cs-fixer'
 autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
-"========[ CSS ]================
+"========[ CSS ]==============================================================
 Plug 'ap/vim-css-color'
 
-"========[ CoffeeScript ]================
+"========[ CoffeeScript ]=====================================================
 Plug 'kchmck/vim-coffee-script'
 
-"========[ TypeScript ]================
+"========[ TypeScript ]=======================================================
 Plug 'leafgarland/typescript-vim'
+
+"========[ Elixir ]===========================================================
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 
 call plug#end()
 
-"====[ Color schema ]=====================================================
+"====[ Color schema ]=========================================================
 colorscheme jellybeans
