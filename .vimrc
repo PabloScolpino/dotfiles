@@ -74,15 +74,9 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 syntax enable
 set t_Co=256
 
-"set nu     " With line number
-
 set number relativenumber
-
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+noremap <silent> <Leader>n :set number relativenumber<CR>
+noremap <silent> <Leader>N :set norelativenumber<CR>:set nonumber<CR>
 
 au BufNewFile,BufRead /tmp/sql* set filetype=sql
 
@@ -107,7 +101,7 @@ endif
 "====[ File browser "]========================================================
 
 
-
+"=============================================================================
 "====[ Plugins configuration ]================================================
 filetype plugin on
 call plug#begin('~/.vim/plugged')
@@ -218,6 +212,8 @@ Plug 'tpope/vim-dadbod'
 "========[ Ruby ]=============================================================
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-projectionist'
 
 Plug 'slim-template/vim-slim'
 Plug 'tpope/vim-cucumber'
@@ -250,6 +246,13 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 
 call plug#end()
+"====[ Plugins configuration End ]============================================
+"=============================================================================
 
 "====[ Color schema ]=========================================================
 colorscheme jellybeans
+
+"====[ Include extra configurations "]========================================
+for f in split(glob('~/.vim/extra/*.vim'), '\n')
+  exe 'source' f
+endfor
