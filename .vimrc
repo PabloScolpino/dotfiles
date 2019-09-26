@@ -14,7 +14,7 @@ set clipboard=unnamed
 nnoremap  ;  :
 nnoremap  :  ;
 
-"====[ Swap v and CTRL-V, because Block mode is more useful that Visual mode "]======
+"====[ Swap v and CTRL-V, because Block mode is more useful that Visual ]=====
 nnoremap    v   <C-V>
 nnoremap <C-V>     v
 
@@ -96,7 +96,6 @@ augroup END
 "====[ Windows config ]=======================================================
 "========[ Font ]=============================================================
 set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
-"let g:airline_powerline_fonts = 1
 "set guifont=Bitstream\ Vera\ Sans\ Mono:h12
 
 "========[ Gvim "]============================================================
@@ -118,6 +117,7 @@ Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
 "========[ interface improvements ]===========================================
 Plug 'mhinz/vim-startify'
+set viminfo='100,n$HOME/.vim/files/info/viminfo
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
@@ -140,32 +140,30 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 
-"========[ VIM Buffer handling ]============================
+"========[ VIM Buffer handling ]=============================================
 " Go to the vim instance that already has the file open + other stuff
 Plug 'vitorgalvao/autoswap_mac'
 set title titlestring=
 
-"========[ Text handling ]==================================
+"========[ Text handling ]===================================================
 Plug 'bronson/vim-trailing-whitespace'                      " Highlight trailing whitespaces
 Plug 'zirrostig/vim-schlepp'
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 
-"========[ Code Snippets ]===================================
+"========[ Code Snippets ]===================================================
 if has('python') || has('python3')
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
+  " Trigger configuration. Do not use <tab> if you use YouCompleteMe.
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+  let g:UltiSnipsSnippetDirectories=[$HOME.'/.UltiSnips', $HOME.'/.vim/UltiSnips']
+  " If you want :UltiSnipsEdit to split your window.
+  let g:UltiSnipsEditSplit="vertical"
 endif
-
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.UltiSnips', $HOME.'/.vim/UltiSnips']
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 "if v:version > 740 && (has('python') || has('python3'))
   "Plug 'Valloric/YouCompleteMe'
@@ -178,7 +176,7 @@ Plug 'majutsushi/tagbar'
 
 Plug 'zxqfl/tabnine-vim'
 
-"========[ Preview & visualization ]=========================
+"========[ Preview & visualization ]=========================================
 Plug 'kannokanno/previm'
 "let g:previm_open_cmd = 'open -a Safari'
 Plug 'tyru/open-browser.vim'
@@ -192,7 +190,7 @@ let g:limelight_conceal_ctermfg = 240
 noremap <silent> <Leader>l :Limelight<CR>
 noremap <silent> <Leader>L :Limelight!<CR>
 
-"========[ Syntax hightlight and code hints ]================
+"========[ Syntax hightlight and code hints ]=================================
 Plug 'scrooloose/syntastic'
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
 
@@ -202,7 +200,7 @@ let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
 let g:syntastic_javascript_checkers = ['jsxhint', 'standard']
 let g:syntastic_javascript_standard_generic = 1
 
-"========[ Searching ]================
+"========[ Searching ]========================================================
 Plug 'gabesoft/vim-ags'
 nnoremap <silent> <Leader>ag  :Ags<CR>
 
@@ -213,6 +211,9 @@ nnoremap <silent> <Leader>f :FZF<CR>
 "========[ GIT Integration ]==================================================
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+
+"========[ DB Integration ]===================================================
+Plug 'tpope/vim-dadbod'
 
 "========[ Ruby ]=============================================================
 Plug 'vim-ruby/vim-ruby'

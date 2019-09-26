@@ -32,6 +32,9 @@
 !*.config/nvim/
 *.config/nvim/*
 !*.config/nvim/init.vim
+!*.config/alacritty/
+*.config/alacritty/*
+!*.config/alacritty/alacritty.yml
 
 !*.UltiSnips/
 !*.UltiSnips/*
