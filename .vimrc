@@ -89,8 +89,7 @@ augroup END
 
 "====[ Windows config ]=======================================================
 "========[ Font ]=============================================================
-set guifont=Meslo\ LG\ S\ DZ\ Regular\ for\ Powerline:h14
-"set guifont=Bitstream\ Vera\ Sans\ Mono:h12
+set guifont=RobotoMono\ Nerd\ Font:14
 
 "========[ Gvim "]============================================================
 " Gvim for windows
@@ -125,7 +124,7 @@ hi IndentGuidesEven ctermbg=darkgrey
 nmap <C-i> <leader>ig
 
 Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'                               " airline - themes
+Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme = 'jellybeans'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -139,12 +138,21 @@ set laststatus=2
 Plug 'vitorgalvao/autoswap_mac'
 set title titlestring=
 
-"========[ Text handling ]===================================================
-Plug 'bronson/vim-trailing-whitespace'                      " Highlight trailing whitespaces
+"========[ System interaction ]==============================================
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
+
+"========[ Text manipulation ]===================================================
+Plug 'bronson/vim-trailing-whitespace'       " Highlight trailing whitespaces
 Plug 'zirrostig/vim-schlepp'
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary' " gcc
+Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
+                            " camelCase (crc), snake_case (crs), UPPER_CASE (cru),
+                            " dash-case (cr-), dot.case (cr.), space case (cr<space>)
+Plug 'tpope/vim-jdaddy'     " gqaj
 
 "========[ Code Snippets ]===================================================
 if has('python') || has('python3')
@@ -159,16 +167,15 @@ if has('python') || has('python3')
   let g:UltiSnipsEditSplit="vertical"
 endif
 
-"if v:version > 740 && (has('python') || has('python3'))
+Plug 'majutsushi/tagbar'
+
+if v:version > 740 && (has('python') || has('python3'))
   "Plug 'Valloric/YouCompleteMe'
   "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " Plug 'shawncplus/phpcomplete.vim'
-"endif
-
-Plug 'majutsushi/tagbar'
-
-Plug 'zxqfl/tabnine-vim'
+  Plug 'zxqfl/tabnine-vim'
+endif
 
 "========[ Preview & visualization ]=========================================
 Plug 'kannokanno/previm'
@@ -205,6 +212,8 @@ nnoremap <silent> <Leader>f :FZF<CR>
 "========[ GIT Integration ]==================================================
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+noremap <silent> <Leader>g :GV!<CR>
 
 "========[ DB Integration ]===================================================
 Plug 'tpope/vim-dadbod'
