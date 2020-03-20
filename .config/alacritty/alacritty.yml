@@ -75,16 +75,7 @@ scrolling:
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
-  multiplier: 3
-
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number of lines the terminal
-  # should scroll when the alternate screen buffer is active. This is used
-  # to allow mouse scrolling for applications like `man`.
-  #
-  # Specifying `0` will disable faux scrolling.
-  faux_multiplier: 3
+  multiplier: 0
 
   # Scroll to the bottom when new text is written to the terminal.
   auto_scroll: false
@@ -512,10 +503,10 @@ key_bindings:
   - { key: V,        mods: Control|Shift, action: Paste            }
   - { key: C,        mods: Control|Shift, action: Copy             }
   #- { key: Insert,   mods: Shift,         action: PasteSelection   }
-  #- { key: Key0,     mods: Control,       action: ResetFontSize    }
+  - { key: Key0,     mods: Control,       action: ResetFontSize    }
   #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
-  #- { key: Add,      mods: Control,       action: IncreaseFontSize }
-  #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  - { key: Add,      mods: Control,       action: IncreaseFontSize }
+  - { key: Subtract, mods: Control,       action: DecreaseFontSize }
   #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
   -  { key: Y,    mods: Command,           action: ToggleFullscreen }
 
@@ -544,11 +535,14 @@ key_bindings:
   - { key: End,                     chars: "\x1bOF",        mode: AppCursor  }
   - { key: End,                     chars: "\x1b[F",        mode: ~AppCursor }
   - { key: PageUp,   mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
+  - { key: PageUp,   mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
+  - { key: J,        mods: Control, action: ScrollLineDown, mode: Alt        }
   - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~",     mode: Alt        }
   - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                       }
   - { key: PageUp,   mods: Alt,     chars: "\x1b[5;3~"                       }
   - { key: PageUp,                  chars: "\x1b[5~"                         }
   - { key: PageDown, mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
+  - { key: K,        mods: Control, action: ScrollLineUp,                    }
   - { key: PageDown, mods: Shift,   chars: "\x1b[6;2~",     mode: Alt        }
   - { key: PageDown, mods: Control, chars: "\x1b[6;5~"                       }
   - { key: PageDown, mods: Alt,     chars: "\x1b[6;3~"                       }

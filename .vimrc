@@ -68,7 +68,7 @@ set startofline
 set cursorline
 hi cursorline   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi cursorcolumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+" nnoremap <Leader>c :set cursorline! cursorcolumn!<CR> " I don't use this
 
 "====[ Syntax highlightning ]=================================================
 syntax enable
@@ -105,10 +105,12 @@ endif
 filetype plugin on
 call plug#begin('~/.vim/plugged')
 
-"========[ List handing ]=====================================================
+"========[ Project management ]===============================================
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
 "========[ interface improvements ]===========================================
+Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'mhinz/vim-startify'
 set viminfo='100,n$HOME/.vim/files/info/viminfo
 
@@ -133,6 +135,18 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 
+Plug 'scrooloose/nerdtree'
+noremap <silent> <Leader>t :NERDTreeToggle<CR>
+let NERDTreeMapActivateNode='v'
+let NERDTreeMapOpenInTab='<ENTER>' " gt to switch between tabs
+
+Plug 'jistr/vim-nerdtree-tabs'
+let g:nerdtree_tabs_open_on_new_tab = 1
+let g:nerdtree_tabs_open_on_console_startup = 2
+let g:nerdtree_tabs_focus_on_files = 0
+
+Plug 'xuyuanp/nerdtree-git-plugin'
+
 "========[ VIM Buffer handling ]=============================================
 " Go to the vim instance that already has the file open + other stuff
 Plug 'vitorgalvao/autoswap_mac'
@@ -153,6 +167,9 @@ Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
                             " camelCase (crc), snake_case (crs), UPPER_CASE (cru),
                             " dash-case (cr-), dot.case (cr.), space case (cr<space>)
 Plug 'tpope/vim-jdaddy'     " gqaj
+Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab/<regex>
+noremap <silent> <Leader>t=> :Tab /=><CR>
+noremap <silent> <Leader>tr :'a,'s Tab /=><CR>
 
 "========[ Code Snippets ]===================================================
 if has('python') || has('python3')
@@ -188,8 +205,8 @@ autocmd BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
 Plug 'junegunn/limelight.vim'
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
-noremap <silent> <Leader>l :Limelight<CR>
-noremap <silent> <Leader>L :Limelight!<CR>
+" noremap <silent> <Leader>l :Limelight<CR>
+" noremap <silent> <Leader>L :Limelight!<CR>
 
 "========[ Syntax hightlight and code hints ]=================================
 Plug 'scrooloose/syntastic'
@@ -200,6 +217,10 @@ let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
 " npm install standard
 let g:syntastic_javascript_checkers = ['jsxhint', 'standard']
 let g:syntastic_javascript_standard_generic = 1
+
+" Solargraph client
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
 
 "========[ Searching ]========================================================
 Plug 'gabesoft/vim-ags'
@@ -254,6 +275,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 
+"========[ TOML ]=============================================================
+Plug 'cespare/vim-toml'
+
 call plug#end()
 "====[ Plugins configuration End ]============================================
 "=============================================================================
@@ -261,7 +285,10 @@ call plug#end()
 "====[ Color schema ]=========================================================
 colorscheme jellybeans
 
-"====[ Include extra configurations "]========================================
+"====[ Include extra configurations ]=========================================
 for f in split(glob('~/.vim/extra/*.vim'), '\n')
   exe 'source' f
 endfor
+
+"====[ Mouse interaction in Alacritty ]=======================================
+set ttymouse=sgr
