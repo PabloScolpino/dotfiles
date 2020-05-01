@@ -21,6 +21,7 @@
 
 *.config/*
 !*.config/alias.sh
+!*.config/autocomplete.sh
 !*.config/env.sh
 !*.config/git.sh
 !*.config/ld_library_path.sh

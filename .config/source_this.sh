@@ -6,7 +6,7 @@ CONFIG=$HOME/.config
 . $CONFIG/alias.sh
 . $CONFIG/env.sh
 . $CONFIG/git.sh
+. $CONFIG/autocomplete.sh
 . $CONFIG/tmuxinator.bash
 [ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -17,3 +17,5 @@ alias dc='docker-compose'
 alias dcb='docker-compose build'
 alias dce='docker-compose exec'
 alias dcu='docker-compose up --build'
+
+alias k='kubectl'

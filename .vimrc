@@ -91,13 +91,12 @@ augroup END
 "========[ Font ]=============================================================
 set guifont=RobotoMono\ Nerd\ Font:14
 
-"========[ Gvim "]============================================================
+"========[ Gvim ]=============================================================
 " Gvim for windows
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
 endif
 
-"====[ File browser "]========================================================
 
 
 "=============================================================================
@@ -135,28 +134,32 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 
-Plug 'scrooloose/nerdtree'
-noremap <silent> <Leader>t :NERDTreeToggle<CR>
-let NERDTreeMapActivateNode='v'
-let NERDTreeMapOpenInTab='<ENTER>' " gt to switch between tabs
+"========[ File browser ]=====================================================
+"============[ NerdTree ]=====================================================
+" Plug 'scrooloose/nerdtree'
+" noremap <silent> <Leader>t :NERDTreeToggle<CR>
+" let NERDTreeMapActivateNode='v'
+" let NERDTreeMapOpenInTab='<ENTER>' " gt to switch between tabs
 
-Plug 'jistr/vim-nerdtree-tabs'
-let g:nerdtree_tabs_open_on_new_tab = 1
-let g:nerdtree_tabs_open_on_console_startup = 2
-let g:nerdtree_tabs_focus_on_files = 0
+" Plug 'jistr/vim-nerdtree-tabs'
+" let g:nerdtree_tabs_open_on_new_tab = 1
+" let g:nerdtree_tabs_open_on_console_startup = 2
+" let g:nerdtree_tabs_focus_on_files = 0
 
-Plug 'xuyuanp/nerdtree-git-plugin'
+" Plug 'xuyuanp/nerdtree-git-plugin'
+"============[ VIFM ]=========================================================
+Plug 'vifm/vifm.vim'
 
-"========[ VIM Buffer handling ]=============================================
+"========[ VIM Buffer handling ]==============================================
 " Go to the vim instance that already has the file open + other stuff
 Plug 'vitorgalvao/autoswap_mac'
 set title titlestring=
 
-"========[ System interaction ]==============================================
+"========[ System interaction ]===============================================
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 
-"========[ Text manipulation ]===================================================
+"========[ Text manipulation ]================================================
 Plug 'bronson/vim-trailing-whitespace'       " Highlight trailing whitespaces
 Plug 'zirrostig/vim-schlepp'
 
@@ -171,7 +174,7 @@ Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab
 noremap <silent> <Leader>t=> :Tab /=><CR>
 noremap <silent> <Leader>tr :'a,'s Tab /=><CR>
 
-"========[ Code Snippets ]===================================================
+"========[ Code Snippets ]====================================================
 if has('python') || has('python3')
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
@@ -191,7 +194,8 @@ if v:version > 740 && (has('python') || has('python3'))
   "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
   "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " Plug 'shawncplus/phpcomplete.vim'
-  Plug 'zxqfl/tabnine-vim'
+  " Plug 'zxqfl/tabnine-vim'
+  Plug 'codota/tabnine-vim'
 endif
 
 "========[ Preview & visualization ]=========================================
@@ -283,6 +287,10 @@ call plug#end()
 "=============================================================================
 
 "====[ Color schema ]=========================================================
+let g:jellybeans_overrides = {'background': { 'ctermbg': 'none', '256ctermbg': 'none' }}
+if has('termguicolors') && &termguicolors
+    let g:jellybeans_overrides['background']['guibg'] = 'none'
+endif
 colorscheme jellybeans
 
 "====[ Include extra configurations ]=========================================
