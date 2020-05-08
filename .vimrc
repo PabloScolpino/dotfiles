@@ -50,7 +50,7 @@ set list
 nnoremap <silent> <BS><BS> :FixWhitespace<CR>
 
 "====[ Custom Hotkeys ]=======================================================
-nnoremap <Leader>p :so %<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><q>
+nnoremap <Leader>r :so %<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><q>
 nnoremap <silent> <Leader>s :so %<CR>
 
 nnoremap <F9> :!%:p<Enter>
@@ -150,10 +150,22 @@ set laststatus=2
 "============[ VIFM ]=========================================================
 Plug 'vifm/vifm.vim'
 
+"========[ Searching ]========================================================
+Plug 'gabesoft/vim-ags'
+nnoremap <silent> <Leader>ag  :Ags<CR>
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+let g:fzf_buffers_jump = 1
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+
 "========[ VIM Buffer handling ]==============================================
 " Go to the vim instance that already has the file open + other stuff
 Plug 'vitorgalvao/autoswap_mac'
 set title titlestring=
+nnoremap <Leader>p :bprevious<CR>
+nnoremap <Leader>n :bnext<CR>
 
 "========[ System interaction ]===============================================
 Plug 'tpope/vim-dispatch'
@@ -226,14 +238,6 @@ let g:syntastic_javascript_standard_generic = 1
 "Plug 'prabirshrestha/async.vim'
 "Plug 'prabirshrestha/vim-lsp'
 
-"========[ Searching ]========================================================
-Plug 'gabesoft/vim-ags'
-nnoremap <silent> <Leader>ag  :Ags<CR>
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-let g:fzf_buffers_jump = 1
-nnoremap <silent> <Leader>f :FZF<CR>
-
 "========[ GIT Integration ]==================================================
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -261,10 +265,14 @@ Plug 'henrik/vim-ruby-runner'
 "========[ PHP ]==============================================================
 Plug 'stanangeloff/php.vim'
 Plug 'lumiliet/vim-twig'
-Plug 'adoy/vim-php-refactoring-toolbox'
+" NOTE: Commented out because its default mappings collide with my :bnext map
+" Plug 'adoy/vim-php-refactoring-toolbox'
 Plug 'qbbr/vim-symfony'
-Plug 'stephpy/vim-php-cs-fixer'
-autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+" NOTE: Commented out because its default mappings collide with my :bprev map
+" Plug 'stephpy/vim-php-cs-fixer'
+" autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+" nunmap <silent><Leader>pcd
+" nunmap <silent><Leader>pcf
 
 "========[ CSS ]==============================================================
 Plug 'ap/vim-css-color'
