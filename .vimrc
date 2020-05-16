@@ -50,8 +50,8 @@ set list
 nnoremap <silent> <BS><BS> :FixWhitespace<CR>
 
 "====[ Custom Hotkeys ]=======================================================
+" TODO: define user command Refreshplug and
 nnoremap <Leader>r :so %<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><q>
-nnoremap <silent> <Leader>s :so %<CR>
 
 nnoremap <F9> :!%:p<Enter>
 
@@ -68,15 +68,14 @@ set startofline
 set cursorline
 hi cursorline   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi cursorcolumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-" nnoremap <Leader>c :set cursorline! cursorcolumn!<CR> " I don't use this
 
 "====[ Syntax highlightning ]=================================================
 syntax enable
 set t_Co=256
 
 set number relativenumber
-noremap <silent> <Leader>n :set number relativenumber<CR>
-noremap <silent> <Leader>N :set norelativenumber<CR>:set nonumber<CR>
+noremap <silent> <Leader>c :set number relativenumber<CR>:GitGutterSignsEnable<CR>
+noremap <silent> <Leader>C :set norelativenumber<CR>:set nonumber<CR>:GitGutterSignsDisable<CR>
 
 au BufNewFile,BufRead /tmp/sql* set filetype=sql
 
@@ -97,8 +96,6 @@ if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
 endif
 
-
-
 "=============================================================================
 "====[ Plugins configuration ]================================================
 filetype plugin on
@@ -109,9 +106,6 @@ Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
 "========[ interface improvements ]===========================================
 Plug 'christoomey/vim-tmux-navigator'
-
-Plug 'mhinz/vim-startify'
-set viminfo='100,n$HOME/.vim/files/info/viminfo
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'junegunn/seoul256.vim'
@@ -134,22 +128,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 
-"========[ File browser ]=====================================================
-"============[ NerdTree ]=====================================================
-" Plug 'scrooloose/nerdtree'
-" noremap <silent> <Leader>t :NERDTreeToggle<CR>
-" let NERDTreeMapActivateNode='v'
-" let NERDTreeMapOpenInTab='<ENTER>' " gt to switch between tabs
-
-" Plug 'jistr/vim-nerdtree-tabs'
-" let g:nerdtree_tabs_open_on_new_tab = 1
-" let g:nerdtree_tabs_open_on_console_startup = 2
-" let g:nerdtree_tabs_focus_on_files = 0
-
-" Plug 'xuyuanp/nerdtree-git-plugin'
-"============[ VIFM ]=========================================================
-Plug 'vifm/vifm.vim'
-
 "========[ Searching ]========================================================
 Plug 'gabesoft/vim-ags'
 nnoremap <silent> <Leader>ag  :Ags<CR>
@@ -164,12 +142,13 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 " Go to the vim instance that already has the file open + other stuff
 Plug 'vitorgalvao/autoswap_mac'
 set title titlestring=
-nnoremap <Leader>p :bprevious<CR>
-nnoremap <Leader>n :bnext<CR>
+nnoremap <silent> <Leader>p :bprevious<CR>
+nnoremap <silent> <Leader>n :bnext<CR>
 
 "========[ System interaction ]===============================================
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
+Plug 'roxma/vim-paste-easy'
 
 "========[ Text manipulation ]================================================
 Plug 'bronson/vim-trailing-whitespace'       " Highlight trailing whitespaces
@@ -183,66 +162,115 @@ Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
                             " dash-case (cr-), dot.case (cr.), space case (cr<space>)
 Plug 'tpope/vim-jdaddy'     " gqaj
 Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab/<regex>
-noremap <silent> <Leader>t=> :Tab /=><CR>
+noremap <silent> <Leader>te :'a,'s Tab /=<CR>
 noremap <silent> <Leader>tr :'a,'s Tab /=><CR>
 
-"========[ Code Snippets ]====================================================
+"========[ Code manipulation ]================================================
+"============[ Autocompletion ]===============================================
+if v:version > 740 && (has('python') || has('python3'))
+  Plug 'ervandew/supertab'
+  Plug 'codota/tabnine-vim'
+
+  " make YCM/tabnine compatible with UltiSnips (using supertab)
+  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+  let g:SuperTabDefaultCompletionType = '<C-n>'
+endif
+
+"============[ Snippets ]=====================================================
 if has('python') || has('python3')
   Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
-  " Trigger configuration. Do not use <tab> if you use YouCompleteMe.
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger = "<tab>"
-  let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+  let g:UltiSnipsExpandTrigger       = '<tab>'
+  let g:UltiSnipsJumpForwardTrigger  = '<tab>'
+  let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
   let g:UltiSnipsSnippetDirectories=[$HOME.'/.UltiSnips', $HOME.'/.vim/UltiSnips']
   " If you want :UltiSnipsEdit to split your window.
   let g:UltiSnipsEditSplit="vertical"
 endif
 
-Plug 'majutsushi/tagbar'
-
-if v:version > 740 && (has('python') || has('python3'))
-  "Plug 'Valloric/YouCompleteMe'
-  "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" Plug 'shawncplus/phpcomplete.vim'
-  " Plug 'zxqfl/tabnine-vim'
-  Plug 'codota/tabnine-vim'
-endif
-
-"========[ Preview & visualization ]=========================================
-Plug 'kannokanno/previm'
-"let g:previm_open_cmd = 'open -a Safari'
-Plug 'tyru/open-browser.vim'
-
-Plug 'FuDesign2008/mermaidViewer.vim'
-autocmd BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
-
-Plug 'junegunn/limelight.vim'
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-" noremap <silent> <Leader>l :Limelight<CR>
-" noremap <silent> <Leader>L :Limelight!<CR>
-
-"========[ Syntax hightlight and code hints ]=================================
+"============[ Validation & lining ]==========================================
+"================[ Syntastic ]================================================
 Plug 'scrooloose/syntastic'
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
-
 " prerequisites for syntastic jsx
 " npm install -g jsxhint
 " npm install standard
 let g:syntastic_javascript_checkers = ['jsxhint', 'standard']
 let g:syntastic_javascript_standard_generic = 1
 
+"================[ CoC ]======================================================
+" https://github.com/neoclide/coc.nvim
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" TextEdit might fail if hidden is not set.
+" set hidden
+
+" Some servers have issues with backup files, see #649.
+" set nobackup
+" set nowritebackup
+
+" Give more space for displaying messages.
+" set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+" set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+" set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+" set signcolumn=yes
+" inoremap <silent><expr> <TAB>
+      " \ pumvisible() ? "\<C-n>" :
+      " \ <SID>check_back_space() ? "\<TAB>" :
+      " \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+"================[ LSP ]======================================================
 " Solargraph client
 "Plug 'prabirshrestha/async.vim'
-"Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'mattn/vim-lsp-settings'
+" if executable('solargraph')
+    " gem install solargraph
+    " au User lsp_setup call lsp#register_server({
+        " \ 'name': 'solargraph',
+        " \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+        " \ 'initialization_options': {"diagnostics": "true"},
+        " \ 'whitelist': ['ruby'],
+        " \ })
+" endif
+"
+" Plug 'autozimu/LanguageClient-neovim', {
+    " \ 'branch': 'next',
+    " \ 'do': 'bash install.sh',
+    " \ }
+" Required for operations modifying multiple buffers like rename.
+" set hidden
+
+" let g:LanguageClient_serverCommands = { 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'] }
+
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+"========[ Preview & visualization ]==========================================
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
+
+Plug 'FuDesign2008/mermaidViewer.vim'
+autocmd BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
 
 "========[ GIT Integration ]==================================================
 Plug 'airblade/vim-gitgutter'
+nnoremap ggh :GitGutterLineHighlightsEnable<CR>
+nnoremap ggH :GitGutterLineHighlightsDisable<CR>
+nnoremap ggf :GitGutterFold<CR>
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/gv.vim'
-noremap <silent> <Leader>g :GV!<CR>
+nnoremap <leader>gd :Gvdiffsplit!<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
 
 "========[ DB Integration ]===================================================
 Plug 'tpope/vim-dadbod'
@@ -259,8 +287,15 @@ Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
 
 Plug 'thoughtbot/vim-rspec'
+Plug 'chochkov/vim-rspec-focus'
+nnoremap <Leader>rf :AddFocusTag<CR>
+nnoremap <Leader>ru :RemoveAllFocusTags<CR>
 
 Plug 'henrik/vim-ruby-runner'
+
+Plug 'airblade/vim-localorie'
+nnoremap <silent> <leader>lt :call localorie#translate()<CR>
+nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
 
 "========[ PHP ]==============================================================
 Plug 'stanangeloff/php.vim'
@@ -305,6 +340,3 @@ colorscheme jellybeans
 for f in split(glob('~/.vim/extra/*.vim'), '\n')
   exe 'source' f
 endfor
-
-"====[ Mouse interaction in Alacritty ]=======================================
-set ttymouse=sgr
