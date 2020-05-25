@@ -69,14 +69,15 @@ set cursorline
 hi cursorline   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi cursorcolumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 
+"====[ Line Numbers ]=========================================================
+set number
+noremap <silent> <Leader>N :set relativenumber!<CR>
+noremap <silent> <Leader>c :set number<CR>:GitGutterSignsEnable<CR>
+noremap <silent> <Leader>C :set norelativenumber<CR>:set nonumber<CR>:GitGutterSignsDisable<CR>
+
 "====[ Syntax highlightning ]=================================================
 syntax enable
 set t_Co=256
-
-set number relativenumber
-noremap <silent> <Leader>c :set number relativenumber<CR>:GitGutterSignsEnable<CR>
-noremap <silent> <Leader>C :set norelativenumber<CR>:set nonumber<CR>:GitGutterSignsDisable<CR>
-
 au BufNewFile,BufRead /tmp/sql* set filetype=sql
 
 "====[ Email Reading ]========================================================
@@ -155,17 +156,18 @@ Plug 'bronson/vim-trailing-whitespace'       " Highlight trailing whitespaces
 Plug 'zirrostig/vim-schlepp'
 
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary' " gcc
-Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
-                            " camelCase (crc), snake_case (crs), UPPER_CASE (cru),
-                            " dash-case (cr-), dot.case (cr.), space case (cr<space>)
 Plug 'tpope/vim-jdaddy'     " gqaj
 Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab/<regex>
 noremap <silent> <Leader>te :'a,'s Tab /=<CR>
 noremap <silent> <Leader>tr :'a,'s Tab /=><CR>
 
 "========[ Code manipulation ]================================================
+"============[ General ]======================================================
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary' " gcc
+Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
+                            " camelCase (crc), snake_case (crs), UPPER_CASE (cru),
+                            " dash-case (cr-), dot.case (cr.), space case (cr<space>)
 "============[ Autocompletion ]===============================================
 if v:version > 740 && (has('python') || has('python3'))
   Plug 'ervandew/supertab'
@@ -321,6 +323,9 @@ Plug 'leafgarland/typescript-vim'
 "========[ Elixir ]===========================================================
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
+
+"========[ Markdown ]=========================================================
+Plug 'plasticboy/vim-markdown'
 
 "========[ TOML ]=============================================================
 Plug 'cespare/vim-toml'
