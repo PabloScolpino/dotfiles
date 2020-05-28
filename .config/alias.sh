@@ -1,5 +1,13 @@
-alias l='ls -l -G'
-alias a='clear;ls -l -G'
+if [ -n `which exa` ]
+  alias l="ls -l -G"
+  alias a="clear;ls -l -G"
+then
+  alias ls="exa -l"
+  alias l="exa -l"
+  alias lt="exa -l -T --level=3"
+  alias a="clear;exa -l"
+fi
+
 alias ap='ansible-playbook'
 
 alias vi='vim'
