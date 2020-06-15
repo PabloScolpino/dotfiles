@@ -1,7 +1,8 @@
-if [ -n `which exa` ]
+if [ -z `which exa` ]
+then
   alias l="ls -l -G"
   alias a="clear;ls -l -G"
-then
+else
   alias ls="exa -l"
   alias l="exa -l"
   alias lt="exa -l -T --level=3"
@@ -10,7 +11,10 @@ fi
 
 alias ap='ansible-playbook'
 
-alias vi='vim'
+if [ -n "$(which vim)" ]
+then
+  alias vi='vim'
+fi
 
 alias mutt='cd ~/attachments && neomutt'
 
