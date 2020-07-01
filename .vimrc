@@ -73,7 +73,7 @@ hi cursorcolumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=whi
 set number
 noremap <silent> <Leader>N :set relativenumber!<CR>
 noremap <silent> <Leader>c :set number<CR>:GitGutterSignsEnable<CR>
-noremap <silent> <Leader>C :set norelativenumber<CR>:set nonumber<CR>:GitGutterSignsDisable<CR>
+noremap <silent> <Leader>C :set norelativenumber<CR>:set nonumber<CR>:GitGutterSignsDisable<CR>:SyntasticToggleMode<CR>
 
 "====[ Syntax highlightning ]=================================================
 syntax enable

@@ -16,6 +16,8 @@ then
   alias vi='vim'
 fi
 
+alias screen='screen -D -RR'
+
 alias mutt='cd ~/attachments && neomutt'
 
 alias mux='tmuxinator'
@@ -29,5 +31,7 @@ alias dc='docker-compose'
 alias dcb='docker-compose build'
 alias dce='docker-compose exec'
 alias dcu='docker-compose up --build'
+
+alias docker_clean_logs='sudo find /var/lib/docker/containers -name "*.log"  -exec truncate -s 0 {} \;'
 
 alias k='kubectl'

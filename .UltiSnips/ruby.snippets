@@ -2,3 +2,22 @@ snippet debug "Poor man's debug for ruby" b
 puts '-' * 80
 puts "#{__FILE__}:#{__LINE__}\t#{__method__}"
 endsnippet
+
+snippet dr "Poor man's debug for ruby" b
+puts ('-' * 80).red
+puts "#{__FILE__}:#{__LINE__}\t#{__method__}"
+endsnippet
+
+snippet dg "Poor man's debug for ruby" b
+puts ('-' * 80).green
+puts "#{__FILE__}:#{__LINE__}\t#{__method__}"
+endsnippet
+
+snippet db "Poor man's debug for ruby" b
+puts ('-' * 80).blue
+puts "#{__FILE__}:#{__LINE__}\t#{__method__}"
+endsnippet
+
+snippet pry ""  b
+require 'pry';binding.pry
+endsnippet
