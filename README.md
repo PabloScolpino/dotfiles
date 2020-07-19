@@ -45,3 +45,4 @@ This is my own terminal profile configuration, here to make it easier to have a 
 # References
 * [how to clone a repo into an existing directory](http://stackoverflow.com/questions/2411031/how-do-i-clone-into-a-non-empty-directory)
 * [VimPlug](https://github.com/junegunn/vim-plug)
+* [How to install several kubernetes-cli versions with brew] (https://gist.github.com/rdump/b79a63084b47f99a41514432132bd408)
