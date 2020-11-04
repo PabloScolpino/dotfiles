@@ -119,6 +119,7 @@ hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 nmap <C-i> <leader>ig
 
+"============[ Airline ]======================================================
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme = 'jellybeans'
@@ -128,6 +129,13 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
+"============[ Airline ]======================================================
+
+"============[ GUNDO ]========================================================
+Plug 'sjl/gundo.vim'
+let g:gundo_prefer_python3 = 1
+nnoremap <F5> :GundoToggle<CR>
+"============[ GUNDO ]========================================================
 
 "========[ Searching ]========================================================
 Plug 'gabesoft/vim-ags'
@@ -190,14 +198,19 @@ if has('python') || has('python3')
   let g:UltiSnipsEditSplit="vertical"
 endif
 
+"============[ Documentation ]================================================
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+
 "============[ Validation & lining ]==========================================
 "================[ Syntastic ]================================================
 Plug 'scrooloose/syntastic'
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
+
 " prerequisites for syntastic jsx
-" npm install -g jsxhint
-" npm install standard
-let g:syntastic_javascript_checkers = ['jsxhint', 'standard']
+" sudo npm install -g jsxhint
+" sudo npm install -g jshint
+" sudo npm install standard
+let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_standard_generic = 1
 
 "================[ CoC ]======================================================
@@ -273,6 +286,7 @@ Plug 'tpope/vim-fugitive'
 nnoremap <leader>gd :Gvdiffsplit!<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
+Plug 'christoomey/vim-conflicted'
 
 "========[ DB Integration ]===================================================
 Plug 'tpope/vim-dadbod'
