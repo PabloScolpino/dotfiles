@@ -282,6 +282,8 @@ Plug 'airblade/vim-gitgutter'
 nnoremap ggh :GitGutterLineHighlightsEnable<CR>
 nnoremap ggH :GitGutterLineHighlightsDisable<CR>
 nnoremap ggf :GitGutterFold<CR>
+set updatetime=100
+
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gd :Gvdiffsplit!<CR>
 nnoremap gdh :diffget //2<CR>
