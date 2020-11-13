@@ -203,15 +203,28 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 "============[ Validation & lining ]==========================================
 "================[ Syntastic ]================================================
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
 
-" prerequisites for syntastic jsx
-" sudo npm install -g jsxhint
-" sudo npm install -g jshint
-" sudo npm install standard
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_javascript_standard_generic = 1
+" let g:syntastic_debug=3
+" sudo npm install -g n
+" sudo n install
+" sudo npm install -g yarn
+" yarn install
+
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+let g:syntastic_javascript_checkers = ['eslint']
+"================[ Syntastic ]================================================
 
 "================[ CoC ]======================================================
 " https://github.com/neoclide/coc.nvim
@@ -283,6 +296,9 @@ nnoremap ggh :GitGutterLineHighlightsEnable<CR>
 nnoremap ggH :GitGutterLineHighlightsDisable<CR>
 nnoremap ggf :GitGutterFold<CR>
 set updatetime=100
+
+" To enable line hightlight by default
+" let g:gitgutter_highlight_lines = 1
 
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gd :Gvdiffsplit!<CR>
