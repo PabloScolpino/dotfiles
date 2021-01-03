@@ -5,13 +5,13 @@ This is my own terminal profile configuration, here to make it easier to have a 
 
     sudo apt install --no-install-recommends git curl vim-nox
 
-    brew install git curl vim-nox
+    brew install git curl macvim
 
 ### Optional
 
     sudo apt install --no-install-recommends exa
 
-    brew install exa
+    brew install exa the_silver_searcher fzf
 
 # Setup
 

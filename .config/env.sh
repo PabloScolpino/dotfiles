@@ -1,5 +1,6 @@
 set -o vi
 set editing-mode vi
+bindkey -M vicmd v edit-command-line
 export EDITOR=vim
 export VISUAL=vim
 export LC_ALL=en_US.UTF-8

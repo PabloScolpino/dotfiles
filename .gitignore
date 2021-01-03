@@ -2,11 +2,15 @@
 
 !*bin
 *bin/*
-!*bin/shell_init_script.sh
-!*bin/fix_spotlight_index.sh
 !*bin/onmacbookscreen
 !*bin/onsharing
 !*bin/onmonitor
+!*bin/set_external_monitor_horizontal.sh
+!*bin/set_external_monitor_vertical.sh
+
+!*bin/bash_init_script.sh
+!*bin/shell_init_script.sh
+!*bin/zsh_init_script.sh
 
 !.vimrc
 !.gitignore_global
@@ -28,7 +32,9 @@
 !*.config/path.sh
 !*.config/prompt.sh
 !*.config/ruby.sh
-!*.config/source_this.sh
+!*.config/source_this.bash
+!*.config/source_this.zshrc
+!*.config/source_this.zshenv
 !*.config/tmuxinator.bash
 !*.config/nvim/
 *.config/nvim/*
