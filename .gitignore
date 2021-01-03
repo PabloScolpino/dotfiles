@@ -31,7 +31,9 @@
 !*.config/path.sh
 !*.config/prompt.sh
 !*.config/ruby.sh
-!*.config/source_this.sh
+!*.config/source_this.bash
+!*.config/source_this.zshrc
+!*.config/source_this.zshenv
 !*.config/tmuxinator.bash
 !*.config/nvim/
 *.config/nvim/*
