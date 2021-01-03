@@ -212,6 +212,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
 
 let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
 
@@ -358,6 +359,7 @@ Plug 'slashmili/alchemist.vim'
 
 "========[ Markdown ]=========================================================
 Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_level = 4
 
 "========[ TOML ]=============================================================
 Plug 'cespare/vim-toml'
