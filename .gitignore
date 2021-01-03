@@ -8,8 +8,9 @@
 !*bin/set_external_monitor_horizontal.sh
 !*bin/set_external_monitor_vertical.sh
 
-!*bin/shell_init_script.sh
 !*bin/bash_init_script.sh
+!*bin/shell_init_script.sh
+!*bin/zsh_init_script.sh
 
 !.vimrc
 !.gitignore_global
