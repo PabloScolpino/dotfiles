@@ -295,7 +295,7 @@ Plug 'airblade/vim-gitgutter'
 nnoremap ggh :GitGutterLineHighlightsEnable<CR>
 nnoremap ggH :GitGutterLineHighlightsDisable<CR>
 nnoremap ggf :GitGutterFold<CR>
-set updatetime=100
+set updatetime=300
 
 " To enable line hightlight by default
 " let g:gitgutter_highlight_lines = 1
