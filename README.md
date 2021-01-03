@@ -1,22 +1,25 @@
 # Pablo's Terminal configuration
 This is my own terminal profile configuration, here to make it easier to have a sane terminal wherever I go
 
-# Prerequisites
-
+# Requirements
+## Linux
+    sudp apt update && sudo apt upgrade
     sudo apt install --no-install-recommends git curl vim-nox
 
-    brew install git curl macvim
-
-### Optional
-
+    # Optional Packages
     sudo apt install --no-install-recommends exa
 
+## Macos
+    brew update && brew upgrade
+    brew install git curl macvim
+
+    # Optional Packages
     brew install exa the_silver_searcher fzf
+    brew tap jakehilborn/jakehilborn && brew install displayplacer
 
 # Setup
 
     curl https://raw.githubusercontent.com/PabloScolpino/terminalrc/master/bin/shell_init_script.sh | bash
-
 
 # Binding Cheatsheet
 
