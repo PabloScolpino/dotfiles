@@ -19,7 +19,7 @@ This is my own terminal profile configuration, here to make it easier to have a 
 
 # Setup
 
-    curl https://raw.githubusercontent.com/PabloScolpino/terminalrc/master/bin/shell_init_script.sh | bash
+    curl https://raw.githubusercontent.com/PabloScolpino/terminalrc/master/bin/setup_terminalrc.sh | bash
 
 # Binding Cheatsheet
 

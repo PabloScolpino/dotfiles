@@ -214,7 +214,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 5
 
-let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
+" let g:syntastic_ruby_checkers          = ['rubocop', 'mri']
+let g:syntastic_ruby_checkers          = ['mri']
 
 " let g:syntastic_debug=3
 " sudo npm install -g n
@@ -358,8 +359,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 
 "========[ Markdown ]=========================================================
-Plug 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_level = 4
+" Plug 'plasticboy/vim-markdown'
+" let g:vim_markdown_folding_level = 9
 
 "========[ TOML ]=============================================================
 Plug 'cespare/vim-toml'
