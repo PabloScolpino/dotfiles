@@ -1,4 +1,4 @@
-echo ". \$HOME/.dotfiles/.config/source_this.bash" >> $HOME/.bashrc
+echo ". \$HOME/.dotfiles/config/source_this.bash" >> $HOME/.bashrc
 
 cd
 

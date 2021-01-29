@@ -10,5 +10,5 @@ done
 
 chsh -s /bin/zsh
 
-echo ". \$HOME/.dotfiles/.config/source_this.zshenv" >> $HOME/.zshenv
-echo ". \$HOME/.dotfiles/.config/source_this.zshrc" >> $HOME/.zshrc
+echo ". \$HOME/.dotfiles/config/source_this.zshenv" >> $HOME/.zshenv
+echo ". \$HOME/.dotfiles/config/source_this.zshrc" >> $HOME/.zshrc
