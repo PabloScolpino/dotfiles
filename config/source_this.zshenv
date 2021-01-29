@@ -1,4 +1,4 @@
-CONFIG=$HOME/.dotfiles/.config
+CONFIG=$HOME/.dotfiles/config
 
 . $CONFIG/path.sh
 . $CONFIG/ld_library_path.sh

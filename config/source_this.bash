@@ -1,4 +1,4 @@
-CONFIG=$HOME/.dotfiles/.config
+CONFIG=$HOME/.dotfiles/config
 
 . $CONFIG/prompt.sh
 . $CONFIG/path.sh
@@ -6,6 +6,5 @@ CONFIG=$HOME/.dotfiles/.config
 . $CONFIG/alias.sh
 . $CONFIG/env.sh
 . $CONFIG/git.sh
-. $CONFIG/autocomplete.sh
-. $CONFIG/tmuxinator.bash
+. $CONFIG/ruby.sh
 [ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
