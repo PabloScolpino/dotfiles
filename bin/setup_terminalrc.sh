@@ -1,8 +1,4 @@
-cd
-git init
-git remote add origin https://github.com/PabloScolpino/terminalrc.git
-git fetch
-git checkout -t origin/master
+git clone https://github.com/PabloScolpino/terminalrc.git .dotfiles
 
 platform=$(uname)
 if [ "$platform" == 'Linux' ]; then

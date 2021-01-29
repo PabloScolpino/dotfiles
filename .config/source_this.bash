@@ -1,4 +1,4 @@
-CONFIG=$HOME/.config
+CONFIG=$HOME/.dotfiles/.config
 
 . $CONFIG/prompt.sh
 . $CONFIG/path.sh

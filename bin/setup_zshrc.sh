@@ -2,5 +2,5 @@
 #       * Presto init goes here
 echo "you need to do the zsh presto init manually!"
 
-echo ". \$HOME/.config/source_this.zshenv" >> $HOME/.zshenv
-echo ". \$HOME/.config/source_this.zshrc" >> $HOME/.zshrc
+echo ". \$HOME/.dotfiles/.config/source_this.zshenv" >> $HOME/.zshenv
+echo ". \$HOME/.dotfiles/.config/source_this.zshrc" >> $HOME/.zshrc

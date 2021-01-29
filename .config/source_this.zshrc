@@ -1,4 +1,4 @@
-CONFIG=$HOME/.config
+CONFIG=$HOME/.dotfiles/.config
 
 . $CONFIG/alias.sh
 . $CONFIG/git.sh
