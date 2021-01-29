@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # https://github.com/sorin-ionescu/prezto
 
 # TODO: check if running zsh
