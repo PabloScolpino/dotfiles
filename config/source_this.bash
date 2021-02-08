@@ -8,3 +8,5 @@ CONFIG=$HOME/.dotfiles/config
 . $CONFIG/git.sh
 . $CONFIG/ruby.sh
 [ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
+
+$HOME/.dotfiles/bin/set_ssh_agent.sh

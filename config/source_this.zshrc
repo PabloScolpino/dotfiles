@@ -6,3 +6,5 @@ CONFIG=$HOME/.dotfiles/config
 [ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
 
 . $CONFIG/ruby.sh
+
+$HOME/.dotfiles/bin/set_ssh_agent.sh
