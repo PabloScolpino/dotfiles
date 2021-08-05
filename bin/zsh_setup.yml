@@ -5,11 +5,10 @@
     recursive: true
     dest: "${HOME}/.zprezto"
 
-
 - name: Link prezto runcoms
   ansible.builtin.file:
-    src: "$HOME/.zprezto/runcoms/{{ item }}"
-    dest: "$HOME/.{{ item }}"
+    src: "${HOME}/.zprezto/runcoms/{{ item }}"
+    dest: "${HOME}/.{{ item }}"
     state: link
   loop:
     - zlogin
@@ -21,14 +20,14 @@
 
 - name: Create a symbolic link
   ansible.builtin.file:
-    src: "$HOME/.dotfiles/config/source_this.zshenv"
-    dest: "$HOME/.zshenv"
+    src: "${HOME}/.dotfiles/config/source_this.zshenv"
+    dest: "${HOME}/.zshenv"
     state: link
 
 - name: Create a symbolic link 2
   ansible.builtin.file:
-    src: "$HOME/.dotfiles/config/source_this.zshrc"
-    dest: "$HOME/.zshrc"
+    src: "${HOME}/.dotfiles/config/source_this.zshrc"
+    dest: "${HOME}/.zshrc"
     state: link
 
 - name: Creates VIM directory
