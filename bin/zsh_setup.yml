@@ -1,0 +1,42 @@
+---
+- name: Clone prezto repository
+  ansible.builtin.git:
+    repo: 'https://github.com/sorin-ionescu/prezto.git'
+    recursive: true
+    dest: "${HOME}/.zprezto"
+
+
+- name: Link prezto runcoms
+  ansible.builtin.file:
+    src: "$HOME/.zprezto/runcoms/{{ item }}"
+    dest: "$HOME/.{{ item }}"
+    state: link
+  loop:
+    - zlogin
+    - zlogout
+    - zpreztorc
+    - zprofile
+    - zshenv
+    - zshrc
+
+- name: Create a symbolic link
+  ansible.builtin.file:
+    src: "$HOME/.dotfiles/config/source_this.zshenv"
+    dest: "$HOME/.zshenv"
+    state: link
+
+- name: Create a symbolic link 2
+  ansible.builtin.file:
+    src: "$HOME/.dotfiles/config/source_this.zshrc"
+    dest: "$HOME/.zshrc"
+    state: link
+
+- name: Creates VIM directory
+  file:
+    path: "${HOME}/.vim/autoload"
+    state: directory
+
+- name: Install Plug for VIM
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: "${HOME}/.vim/autoload/plug.vim"
