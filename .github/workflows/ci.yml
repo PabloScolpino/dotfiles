@@ -28,7 +28,7 @@ jobs:
 
       - name: Run install script
         shell: bash
-        run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | sh
+        run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
 
   # Test Shell installation process when on zsh
   test_shell_zsh:
@@ -41,5 +41,5 @@ jobs:
         run: sudo apt-get install -y --no-install-recommends curl zsh
 
       - name: Run install script
-        run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | sh
+        run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
         shell: zsh {0}
