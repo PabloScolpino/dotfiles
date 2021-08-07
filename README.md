@@ -1,25 +1,34 @@
 # Pablo's Terminal configuration
 This is my own terminal profile configuration, here to make it easier to have a sane terminal wherever I go
 
-# Requirements
-## Linux
-    sudp apt update && sudo apt upgrade
-    sudo apt install --no-install-recommends git curl vim-nox
-
-    # Optional Packages
-    sudo apt install --no-install-recommends exa
-
-## Macos
-    brew update && brew upgrade
-    brew install git curl macvim
-
-    # Optional Packages
-    brew install exa the_silver_searcher fzf
-    brew tap jakehilborn/jakehilborn && brew install displayplacer
-
 # Setup
 
-    curl https://raw.githubusercontent.com/PabloScolpino/terminalrc/master/bin/setup_terminalrc.sh | bash
+## Using [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook)
+
+1. follow the instructions of **mac dev playbook** up to (and before) executing the install playbook
+1. copy the `setup/mac_dev_playbook_config.yml` into the clone repository above
+1. continue with **mac dev playbook**'s instructions
+
+## Using ansible
+
+    # Clone this repo
+    git clone https://github.com/PabloScolpino/dotfiles.git ~/temporary_dotfile_folder
+    cd ~/temporary_dotfile_folder/setup
+    ansible-galaxy install -r requirements.yml
+    ansible-playbook main.yml
+
+## Using shellscript
+
+    platform=$(uname)
+    if [ "$platform" == 'Linux' ]; then
+      sudo apt-get update
+      sudo apt-get install -y --no-install-recommends curl
+    elif [ "$platform" == 'Darwin' ]; then
+      brew update
+      brew install curl
+    fi
+
+    curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
 
 # Binding Cheatsheet
 

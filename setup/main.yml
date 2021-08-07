@@ -1,5 +1,5 @@
 ---
-- name: Dotfiles dependencies setup
+- name: Dotfiles setup
   hosts: all
   tasks:
     - import_tasks: zsh_setup.yml
