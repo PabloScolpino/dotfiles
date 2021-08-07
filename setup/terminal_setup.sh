@@ -16,12 +16,13 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 git clone https://github.com/PabloScolpino/dotfiles.git ${HOME}/.dotfiles
 
-if echo $SHELL | grep -q "bash"; then
+shell=`getent passwd | awk -F: -v user="\`whoami\`" '$1 == user {print $NF}'`
+if echo $shell | grep -q "bash"; then
   echo "Configuring bash"
   ${HOME}/.dotfiles/setup/bash_setup.sh
 else
-  if echo $SHELL | grep -q "zsh"; then
+  if echo $shell | grep -q "zsh"; then
     echo "Configuring zsh"
-    ${HOME}/.dotfiles/setup/bash_setup.sh
+    ${HOME}/.dotfiles/setup/zsh_setup.sh
   fi
 fi
