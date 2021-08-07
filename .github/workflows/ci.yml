@@ -45,4 +45,3 @@ jobs:
 
       - name: Run install script
         run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
-        shell: zsh {0}
