@@ -15,15 +15,35 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  test_shell:
-    # The type of runner that the job will run on
+
+  # Test Shell installation process when on bash
+  test_shell_bash:
     runs-on: ubuntu-18.04
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: apt-get update && apt-get install -y --no-install-recommends sudo
+        run: sudo apt-get install -y --no-install-recommends curl
+
+      - name: Set shell to bash
+        run: chsh -s /bin/bash
+
+      - name: Run install script
+        run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | sh
+
+  # Test Shell installation process when on zsh
+  test_shell_zsh:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: sudo apt-get install -y --no-install-recommends curl
+
+      - name: Set shell to zsh
+        run: chsh -s /bin/zsh
+
+      - name: Run install script
+        run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | sh

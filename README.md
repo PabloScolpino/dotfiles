@@ -28,7 +28,7 @@ This is my own terminal profile configuration, here to make it easier to have a 
       brew install curl
     fi
 
-    curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
+    curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | sh
 
 # Binding Cheatsheet
 
