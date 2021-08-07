@@ -41,7 +41,7 @@ jobs:
         run: sudo apt-get install -y --no-install-recommends curl zsh
 
       - name: Change default shell
-        run: chsh -s /bin/zsh
+        run: sudo chsh -s /bin/zsh `whoami`
 
       - name: Run install script
         run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
