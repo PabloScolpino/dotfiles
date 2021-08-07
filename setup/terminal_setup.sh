@@ -16,4 +16,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 git clone https://github.com/PabloScolpino/dotfiles.git ${HOME}/.dotfiles
 
-# TODO: decide if zsh or bash and continue accordingly
+if echo $SHELL | grep -q "bash"; then
+  ${HOME}/.dotfiles/setup/bash_setup.sh
+else
+  if echo $SHELL | grep -q "zsh"; then
+    ${HOME}/.dotfiles/setup/bash_setup.sh
+  fi
+fi
