@@ -23,6 +23,6 @@ if echo $shell | grep -q "bash"; then
 else
   if echo $shell | grep -q "zsh"; then
     echo "Configuring zsh"
-    ${HOME}/.dotfiles/setup/zsh_setup.sh
+    ${HOME}/.dotfiles/setup/zsh_setup.zsh
   fi
 fi
