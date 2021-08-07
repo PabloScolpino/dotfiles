@@ -26,10 +26,8 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y --no-install-recommends curl
 
-      - name: Set shell to bash
-        run: chsh -s /bin/bash
-
       - name: Run install script
+        shell: bash
         run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | sh
 
   # Test Shell installation process when on zsh
@@ -40,10 +38,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: sudo apt-get install -y --no-install-recommends curl
-
-      - name: Set shell to zsh
-        run: chsh -s /bin/zsh
+        run: sudo apt-get install -y --no-install-recommends curl zsh
 
       - name: Run install script
         run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | sh
+        shell: zsh {0}
