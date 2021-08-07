@@ -40,6 +40,9 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y --no-install-recommends curl zsh
 
+      - name: Change default shell
+        run: chsh -s /bin/zsh
+
       - name: Run install script
         run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
         shell: zsh {0}
