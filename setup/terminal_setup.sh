@@ -29,7 +29,9 @@ else
   fi
 fi
 
-ln -s ${dotfiles}/.editrc  $HOME/.editrc
-ln -s ${dotfiles}/.inputrc $HOME/.inputrc
-ln -s ${dotfiles}/.vimrc   $HOME/.vimrc
-ln -s ${dotfiles}/.gemrc   $HOME/.gemrc
+ln -s ${dotfiles}/.UltiSnips        $HOME/.UltiSnips
+ln -s ${dotfiles}/.editrc           $HOME/.editrc
+ln -s ${dotfiles}/.gemrc            $HOME/.gemrc
+ln -s ${dotfiles}/.gitignore_global $HOME/.gitignore_global
+ln -s ${dotfiles}/.inputrc          $HOME/.inputrc
+ln -s ${dotfiles}/.vimrc            $HOME/.vimrc

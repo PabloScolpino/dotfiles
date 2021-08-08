@@ -2,4 +2,14 @@
 - name: Dotfiles setup
   hosts: all
   tasks:
-    - import_tasks: zsh_setup.yml
+    - name: dotfiles present
+      import_tasks: dotfiles_present.yml
+
+    - name: Configure zsh
+      import_tasks: zsh_setup.yml
+
+    - name: Configure bash
+      import_tasks: bash_setup.yml
+
+    - name: Install Vim Plug
+      import_tasks: vim_setup.yml
