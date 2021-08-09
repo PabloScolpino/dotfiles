@@ -1,3 +1,5 @@
+[![CI](https://github.com/PabloScolpino/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/ci.yml)
+
 # Pablo's Terminal configuration
 This is my own terminal profile configuration, here to make it easier to have a sane terminal wherever I go
 
