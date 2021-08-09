@@ -10,5 +10,5 @@ CONFIG=$HOME/.dotfiles/config
 $HOME/.dotfiles/bin/set_ssh_agent.sh
 
 zstyle ':prezto:module:editor' key-bindings 'vi'
-zstyle ':prezto:module:prompt' theme 'agnoster'
+prompt paradox
 zstyle ':prezto:module:ssh:load' identities 'id_rsa'
