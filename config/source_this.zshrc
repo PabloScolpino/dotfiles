@@ -8,3 +8,7 @@ CONFIG=$HOME/.dotfiles/config
 . $CONFIG/ruby.sh
 
 $HOME/.dotfiles/bin/set_ssh_agent.sh
+
+zstyle ':prezto:module:editor' key-bindings 'vi'
+zstyle ':prezto:module:prompt' theme 'agnoster'
+zstyle ':prezto:module:ssh:load' identities 'id_rsa'
