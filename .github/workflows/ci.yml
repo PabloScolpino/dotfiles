@@ -56,7 +56,9 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Install test dependencies.
-        run: sudo pip3 install ansible
+        run: |
+          sudo apt-get install -y --no-install-recommends python3-setuptools python3-pip python3-wheel
+          sudo pip3 install ansible
 
       - name: Set up the test environment.
         run: ansible-galaxy install -r requirements.yml
