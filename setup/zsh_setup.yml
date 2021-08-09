@@ -2,8 +2,9 @@
 - name: Clone prezto repository
   ansible.builtin.git:
     repo: 'https://github.com/sorin-ionescu/prezto.git'
-    recursive: true
     dest: "${HOME}/.zprezto"
+    recursive: true
+    force: true
 
 - name: Link prezto runcoms
   ansible.builtin.file:

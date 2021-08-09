@@ -17,7 +17,7 @@ on:
 jobs:
 
   # Test Shell installation process when on bash
-  test_shell_bash:
+  integration_shell_bash:
     runs-on: ubuntu-18.04
 
     steps:
@@ -26,12 +26,14 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y --no-install-recommends curl
 
+      - name: Set default shell
+        run: sudo chsh -s /bin/bash `whoami`
+
       - name: Run install script
-        shell: bash
         run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
 
   # Test Shell installation process when on zsh
-  test_shell_zsh:
+  integration_shell_zsh:
     runs-on: ubuntu-18.04
 
     steps:
@@ -40,8 +42,31 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y --no-install-recommends curl zsh
 
-      - name: Change default shell
+      - name: Set default shell
         run: sudo chsh -s /bin/zsh `whoami`
 
       - name: Run install script
         run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
+
+  # Test ansible installation process
+  integration_ansible:
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install test dependencies.
+        run: sudo pip3 install ansible
+
+      - name: Set up the test environment.
+        run: ansible-galaxy install -r requirements.yml
+        working-directory: setup
+
+      - name: Test the playbook's syntax.
+        run: ansible-playbook main.yml --syntax-check
+        working-directory: setup
+
+      - name: Test the playbook.
+        run: ansible-playbook main.yml -i inventory
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
