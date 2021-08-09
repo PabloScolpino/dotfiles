@@ -72,3 +72,4 @@ jobs:
         run: ansible-playbook main.yml -i inventory
         env:
           ANSIBLE_FORCE_COLOR: '1'
+        working-directory: setup

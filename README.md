@@ -54,6 +54,9 @@ This is my own terminal profile configuration, here to make it easier to have a 
 |`<Leader>hs`||gitgutter stage chunk|
 |`<Leader>hu`||gitgutter undo chunk|
 
+# Inspiration & guide
+* [Jeff Geerling's awesome mac install automation](https://github.com/geerlingguy/mac-dev-playbook)
+
 # References
 * [how to clone a repo into an existing directory](http://stackoverflow.com/questions/2411031/how-do-i-clone-into-a-non-empty-directory)
 * [VimPlug](https://github.com/junegunn/vim-plug)
