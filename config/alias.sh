@@ -1,4 +1,4 @@
-if [ -z `which exa` ]
+if [ -n "$(which exa)" ]
 then
   alias l="ls -l -G"
   alias a="clear;ls -l -G"
