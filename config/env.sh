@@ -13,5 +13,9 @@ export LANGUAGE=en_US.UTF-8
 
 platform=$(uname)
 if [ "$platform" = 'Darwin' ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  if [ -f '/opt/local/bin/brew' ]; then
+    eval "$(/opt/local/bin/brew shellenv)"
+  elif [ -f '/opt/homebrew/bin/brew' ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
 fi

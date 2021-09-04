@@ -16,10 +16,9 @@ then
   alias vi='vim'
 fi
 
-alias screen='screen -D -RR'
-
 alias mutt='cd ~/attachments && neomutt'
 
+alias screen='screen -D -RR'
 alias mux='tmuxinator'
 
 alias tnew='tmate -S /tmp/tmate.sock new-session'
@@ -35,3 +34,8 @@ alias dcu='docker-compose up --build'
 alias docker_clean_logs='sudo find /var/lib/docker/containers -name "*.log"  -exec truncate -s 0 {} \;'
 
 alias k='kubectl'
+
+platform=$(uname)
+if [ "$platform" = 'Darwin' ]; then
+  alias lsports='sudo lsof -iTCP -sTCP:LISTEN -n -P'
+fi
