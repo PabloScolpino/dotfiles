@@ -2,8 +2,11 @@
 - name: Dotfiles setup
   hosts: all
   tasks:
-    - name: dotfiles present
+    - name: Dotfiles are present
       import_tasks: dotfiles_present.yml
+
+    - name: Packages are present
+      import_tasks: packages_present.yml
 
     - name: Terminal Setup
       import_tasks: terminal_setup.yml

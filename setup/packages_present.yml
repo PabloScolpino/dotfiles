@@ -1,0 +1,17 @@
+- name: packages present
+  become: yes
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - git
+    - vim-nox
+    - fonts-powerline
+    - the_silver_searcher
+    - fzf
+    - rbenv
+    - watch
+    - htop
+    - mosh
+    - httpie
+    - exa
