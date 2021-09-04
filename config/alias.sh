@@ -1,17 +1,17 @@
-if [ -n "$(which exa)" ]
+if [ -n "$(command -v exa)" ]
 then
-  alias l="ls -l -G"
-  alias a="clear;ls -l -G"
-else
   alias ls="exa -l"
   alias l="exa -l"
   alias lt="exa -l -T --level=3"
   alias a="clear;exa -l"
+else
+  alias l="ls -l -G"
+  alias a="clear;ls -l -G"
 fi
 
 alias ap='ansible-playbook'
 
-if [ -n "$(which vim)" ]
+if [ -n "$(command -v vim)" ]
 then
   alias vi='vim'
 fi

@@ -1,11 +1,13 @@
 CONFIG=$HOME/.dotfiles/config
 
-. $CONFIG/alias.sh
-. $CONFIG/git.sh
-. $CONFIG/env.sh
+source $CONFIG/env.sh
+source $CONFIG/path.sh # zprezto was overriding the order of path set up
+source $CONFIG/alias.sh
+source $CONFIG/git.sh
+
 [ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
 
-. $CONFIG/ruby.sh
+source $CONFIG/ruby.sh
 
 $HOME/.dotfiles/bin/set_ssh_agent.sh
 
