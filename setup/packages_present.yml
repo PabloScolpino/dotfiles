@@ -7,11 +7,11 @@
     - git
     - vim-nox
     - fonts-powerline
-    - the_silver_searcher
-    - fzf
+    - silversearcher-ag
     - rbenv
     - watch
     - htop
     - mosh
     - httpie
-    - exa
+    # - fzf
+    # - exa
