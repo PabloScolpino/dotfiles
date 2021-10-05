@@ -169,6 +169,12 @@ Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab
 noremap <silent> <Leader>te :'a,'s Tab /=<CR>
 noremap <silent> <Leader>tr :'a,'s Tab /=><CR>
 
+"========[ Note taking]=======================================================
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+let g:notes_directories = ['$HOME/workspace/notes']
+noremap <silent> <Leader>rn :RecentNotes<CR>
+
 "========[ Code manipulation ]================================================
 "============[ General ]======================================================
 Plug 'tpope/vim-surround'

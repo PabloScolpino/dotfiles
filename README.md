@@ -56,6 +56,12 @@ This is my own terminal profile configuration, here to make it easier to have a 
 |`<Leader>hs`||gitgutter stage chunk|
 |`<Leader>hu`||gitgutter undo chunk|
 
+## Notes
+|Key||Effect|
+|-|-|-|
+|`:Note <name>`||Start a note named `<name>`|
+|Inside a note - `gf`||Jump to linked note under cursor|
+
 # Inspiration & guide
 * [Jeff Geerling's awesome mac install automation](https://github.com/geerlingguy/mac-dev-playbook)
 
