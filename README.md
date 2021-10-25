@@ -34,7 +34,13 @@ This is my own terminal profile configuration, here to make it easier to have a 
 
 # Binding Cheatsheet
 
-## Interface
+## i3 + Alacritty
+
+|Key|Effect|
+|-|-|
+|`<$mod><Y>`|Toggle active pane full screen mode|
+
+## VIM
 
 |Key||Effect|
 |-|-|-|
