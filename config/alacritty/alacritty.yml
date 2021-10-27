@@ -29,6 +29,7 @@ import:
  - ~/.dotfiles/config/alacritty/font.yml
  - ~/.dotfiles/config/alacritty/colors.yml
  - ~/.dotfiles/config/alacritty/cursor.yml
+ - ~/.dotfiles/config/alacritty/bell.yml
  - ~/.dotfiles/config/alacritty/mouse.yml
  - ~/.dotfiles/config/alacritty/hints.yml
  - ~/.dotfiles/config/alacritty/key_bindings.yml
