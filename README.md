@@ -13,6 +13,11 @@ This is my own terminal profile configuration, here to make it easier to have a 
 
 ## Using ansible
 
+    # ansible is a prerequisite, duh
+    sudo apt install ansible
+    # or
+    sudo brew install ansible
+
     # Clone this repo
     git clone https://github.com/PabloScolpino/dotfiles.git ~/temporary_dotfile_folder
     cd ~/temporary_dotfile_folder/setup

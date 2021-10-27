@@ -32,6 +32,11 @@ jobs:
       - name: Run install script
         run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
 
+      - name: Check home
+        run: |
+          ls -la $HOME
+          ls -la $HOME/.config
+
   # Test Shell installation process when on zsh
   integration_shell_zsh:
     runs-on: ubuntu-18.04
@@ -47,6 +52,11 @@ jobs:
 
       - name: Run install script
         run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
+
+      - name: Check home
+        run: |
+          ls -la $HOME
+          ls -la $HOME/.config
 
   # Test ansible installation process
   integration_ansible:
@@ -73,3 +83,8 @@ jobs:
         env:
           ANSIBLE_FORCE_COLOR: '1'
         working-directory: setup
+
+      - name: Check home
+        run: |
+          ls -la $HOME
+          ls -la $HOME/.config
