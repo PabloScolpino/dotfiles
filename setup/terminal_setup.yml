@@ -9,3 +9,6 @@
 
 - name: Install Vim Plug
   import_tasks: vim_setup.yml
+
+- name: Configure programs
+  import_tasks: link_programs_configs.yml

@@ -1,0 +1,9 @@
+---
+- name: Link programs config
+  ansible.builtin.file:
+    src: "${HOME}/.dotfiles/config/{{ item }}"
+    dest: "${HOME}/.config/{{ item }}"
+    state: link
+  loop:
+    - alacritty
+    - i3
