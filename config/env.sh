@@ -3,6 +3,8 @@ set editing-mode vi
 
 if [ -n "$(command -v bindkey)" ]; then
   bindkey -M vicmd v edit-command-line
+  bindkey -v
+  bindkey '^R' history-incremental-search-backward
 fi
 
 export EDITOR=vim
