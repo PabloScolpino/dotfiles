@@ -166,14 +166,15 @@ Plug 'zirrostig/vim-schlepp'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-jdaddy'     " gqaj
 Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab/<regex>
-noremap <silent> <Leader>te :'a,'s Tab /=<CR>
-noremap <silent> <Leader>tr :'a,'s Tab /=><CR>
+noremap <silent> <Leader>te :'a,'s Tabularize /=<CR>
+noremap <silent> <Leader>tr :'a,'s Tabularize /=><CR>
+noremap <silent> <Leader>tb :'a,'s Tabularize /{<CR>
 
 "========[ Note taking]=======================================================
 Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
-let g:notes_directories = ['$HOME/workspace/notes']
-noremap <silent> <Leader>rn :RecentNotes<CR>
+" Plug 'xolox/vim-notes'
+" let g:notes_directories = ['$HOME/workspace/notes']
+" noremap <silent> <Leader>rn :RecentNotes<CR>
 
 "========[ Code manipulation ]================================================
 "============[ General ]======================================================
