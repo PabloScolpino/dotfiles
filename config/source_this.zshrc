@@ -4,6 +4,7 @@ source $CONFIG/env.sh
 source $CONFIG/path.sh # zprezto was overriding the order of path set up
 source $CONFIG/alias.sh
 source $CONFIG/git.sh
+source $CONFIG/cli.sh
 
 [ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
 
