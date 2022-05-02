@@ -210,7 +210,7 @@ Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
 "============[ Autocompletion ]===============================================
 if v:version > 740 && (has('python') || has('python3'))
   Plug 'ervandew/supertab'
-  Plug 'codota/tabnine-vim'
+  Plug 'tabnine/YouCompleteMe'
 
   " make YCM/tabnine compatible with UltiSnips (using supertab)
   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
