@@ -100,7 +100,14 @@ endif
 "=============================================================================
 "====[ Plugins configuration ]================================================
 filetype plugin on
-call plug#begin('~/.vim/plugged')
+
+if has('nvim')
+  let g:plug_dir = '~/.vim/plugged-nvim'
+else
+  let g:plug_dir = '~/.vim/plugged'
+endif
+
+call plug#begin(g:plug_dir)
 
 "========[ Project management ]===============================================
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
@@ -130,6 +137,23 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 "============[ Airline ]======================================================
+
+"========[ Browser integration ]==============================================
+if has('nvim')
+  " GhostInstall
+  " Plug 'roxma/vim-hug-neovim-rpc'
+  " Plug 'roxma/nvim-yarp'
+  " Plug 'raghur/vim-ghost', {'do': ':GhostInstall'}
+  " GhostInstall
+
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+  " if g:started_by_firenvim == v:true
+  if exists("g:started_by_firenvim")
+    set guifont=Monaco:h20
+  endif
+
+endif
+"========[ Browser integration ]==============================================
 
 "============[ GUNDO ]========================================================
 Plug 'sjl/gundo.vim'
