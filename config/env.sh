@@ -21,3 +21,6 @@ if [ "$platform" = 'Darwin' ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 fi
+
+export GPG_TTY=$(tty)
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
