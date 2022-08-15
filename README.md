@@ -5,18 +5,18 @@ This is my own terminal profile configuration, here to make it easier to have a 
 
 # Setup
 
-## Using [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook)
-
-1. follow the instructions of **mac dev playbook** up to (and before) executing the install playbook
-1. copy the `setup/mac_dev_playbook_config.yml` into the clone repository above
-1. continue with **mac dev playbook**'s instructions
 
 ## Using ansible
 
-    # ansible is a prerequisite, duh
-    sudo apt install ansible
-    # or
-    sudo brew install ansible
+    # Install ansible
+    platform=$(uname)
+    if [ "$platform" == 'Linux' ]; then
+      sudo apt install ansible
+    elif [ "$platform" == 'Darwin' ]; then
+      # Install brew
+      # [https://brew.sh](https://brew.sh)
+      brew install ansible
+    fi
 
     # Clone this repo
     git clone https://github.com/PabloScolpino/dotfiles.git ~/temporary_dotfile_folder
@@ -37,6 +37,12 @@ This is my own terminal profile configuration, here to make it easier to have a 
 
     curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
 
+## [broken] Using [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook)
+
+1. follow the instructions of **mac dev playbook** up to (and before) executing the install playbook
+1. copy the `setup/mac_dev_playbook_config.yml` into the clone repository above
+1. continue with **mac dev playbook**'s instructions
+
 # Binding Cheatsheet
 
 ## i3 + Alacritty
@@ -47,15 +53,16 @@ This is my own terminal profile configuration, here to make it easier to have a 
 
 ## VIM
 
+### General
 |Key||Effect|
 |-|-|-|
-|`<Backspace><Backspace>`||Delete trailing whitespaces across the file|
 |`<F9>`||Execute current file|
+|`<Backspace><Backspace>`||Delete trailing whitespaces across the file|
 |`<Leader>c`|`<Leader>C`|remove line number and git status column from current buffer|
 |`<Leader>f`||Fuzzy **file** search and open in buffer|
 |`<Leader>b`||Fuzzy **buffer** search and jump to buffer|
 
-## Git
+### Git
 
 |Key||Effect|
 |-|-|-|
@@ -67,11 +74,11 @@ This is my own terminal profile configuration, here to make it easier to have a 
 |`<Leader>hs`||gitgutter stage chunk|
 |`<Leader>hu`||gitgutter undo chunk|
 
-## Notes
+### Notes
 |Key||Effect|
 |-|-|-|
 |`:Note <name>`||Start a note named `<name>`|
-|Inside a note - `gf`||Jump to linked note under cursor|
+|`gf`||Inside a note, Jump to linked note under cursor|
 
 # Inspiration & guide
 * [Jeff Geerling's awesome mac install automation](https://github.com/geerlingguy/mac-dev-playbook)

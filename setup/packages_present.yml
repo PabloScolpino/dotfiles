@@ -1,17 +1,36 @@
-- name: packages present
+- name: packages present [Linux]
   become: yes
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
   loop:
-    - git
-    - vim-nox
     - fonts-powerline
-    - silversearcher-ag
-    - rbenv
-    - watch
+    - git
     - htop
-    - mosh
     - httpie
+    - mosh
+    - rbenv
+    - silversearcher-ag
+    - vim-nox
+    - watch
     # - fzf
     # - exa
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- name: packages present [macos]
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - docutils
+    - exa
+    - fzf
+    - git
+    - htop
+    - bpytop
+    - httpie
+    - macvim
+    - mosh
+    - rbenv
+    - the_silver_searcher
+    - watch
+  when: ansible_distribution == 'MacOSX'
