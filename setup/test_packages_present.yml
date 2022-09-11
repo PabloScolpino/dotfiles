@@ -1,0 +1,6 @@
+---
+- name: Test packages present playbook
+  hosts: all
+  tasks:
+    - name: Packages are present
+      import_tasks: packages_present.yml

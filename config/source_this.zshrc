@@ -1,7 +1,7 @@
 CONFIG=$HOME/.dotfiles/config
 
 source $CONFIG/env.sh
-source $CONFIG/path.sh # zprezto was overriding the order of path set up
+source $CONFIG/path.sh # zprezto overrides the order of path set up
 source $CONFIG/alias.sh
 source $CONFIG/git.sh
 
