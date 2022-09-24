@@ -1,0 +1,41 @@
+---
+name: Bash
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+  workflow_dispatch:
+
+jobs:
+  integration-ansible-macos:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install test dependencies.
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install ansible
+
+      - name: Set up the test environment.
+        run: ansible-galaxy install -r requirements.yml
+        working-directory: setup
+
+      - name: Test the playbook's syntax.
+        run: ansible-playbook main.yml --syntax-check
+        working-directory: setup
+
+      - name: Test the playbook.
+        run: ansible-playbook main.yml -i inventory
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+        working-directory: setup
+
+      - name: Check home
+        run: |
+          ls -la $HOME
+          ls -la $HOME/.config

@@ -1,0 +1,31 @@
+---
+name: Bash
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+  workflow_dispatch:
+
+jobs:
+  integration-shell-bash:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: sudo apt-get install -y --no-install-recommends curl
+
+      - name: Set default shell
+        run: sudo chsh -s /bin/bash `whoami`
+
+      - name: Run install script
+        run: curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
+
+      - name: Check home
+        run: |
+          ls -la $HOME
+          ls -la $HOME/.config
