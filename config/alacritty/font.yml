@@ -1,4 +1,4 @@
-# Font configuration
+---
 font:
   # Normal (roman) font face
   normal:
@@ -12,40 +12,40 @@ font:
     # family: RobotoMono Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    # style: Regular
 
   # Bold font face
-  #bold:
+  # bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    # family: monospace
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    # style: Bold
 
   # Italic font face
-  #italic:
+  # italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    # family: monospace
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    # style: Italic
 
   # Bold italic font face
-  #bold_italic:
+  # bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    #family: monospace
+    # family: monospace
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+    # style: Bold Italic
 
   # Point size
   size: 12.0
@@ -68,4 +68,4 @@ font:
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
-  #use_thin_strokes: true
+  # use_thin_strokes: true

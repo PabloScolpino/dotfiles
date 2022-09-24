@@ -1,7 +1,8 @@
+---
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
-#bell:
+# bell:
   # Visual Bell Animation
   #
   # Animation effect for flashing the screen when the visual bell is rung.
@@ -17,14 +18,14 @@
   #   - EaseOutExpo
   #   - EaseOutCirc
   #   - Linear
-  #animation: EaseOutExpo
+  # animation: EaseOutExpo
 
   # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
-  #duration: 0
+  # duration: 0
 
   # Visual bell animation color.
-  #color: '#ffffff'
+  # color: '#ffffff'
 
   # Bell Command
   #
@@ -37,12 +38,12 @@
   #     program: notify-send
   #     args: ["Hello, World!"]
   #
-  #command: None
+  # command: None
 
 selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  # semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true

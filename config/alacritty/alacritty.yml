@@ -1,3 +1,4 @@
+---
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
@@ -8,20 +9,20 @@
 #
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
-#import:
-#  - /path/to/alacritty.yml
+# import:
+#   - /path/to/alacritty.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+# env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  # TERM: alacritty
 
 import:
  - ~/.dotfiles/config/alacritty/window.yml
@@ -36,7 +37,7 @@ import:
  - ~/.dotfiles/config/alacritty/debug.yml
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+# draw_bold_text_with_bright_colors: false
 
 # Live config reload (changes require restart)
 live_config_reload: true
@@ -51,10 +52,10 @@ live_config_reload: true
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+# shell:
+#   program: /bin/bash
+#   args:
+#     - --login
 
 # Startup directory
 #
@@ -63,7 +64,7 @@ live_config_reload: true
 working_directory: None
 
 # Send ESC (\x1b) before characters when alt is pressed.
-#alt_send_esc: true
+# alt_send_esc: true
 
 # Offer IPC using `alacritty msg` (unix only)
-#ipc_socket: true
+# ipc_socket: true
