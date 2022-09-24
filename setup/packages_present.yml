@@ -1,6 +1,6 @@
 ---
 - name: packages present [Linux]
-  become: yes
+  become: true
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
@@ -14,8 +14,7 @@
     - silversearcher-ag
     - vim-nox
     - watch
-    # - fzf
-    # - exa
+    - yamllint
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: packages present [macos]
@@ -37,4 +36,5 @@
     - watch
     - kubectx
     - k9s
+    - yamllint
   when: ansible_distribution == 'MacOSX'
