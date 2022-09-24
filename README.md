@@ -1,10 +1,12 @@
-[![CI](https://github.com/PabloScolpino/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/ci.yml)
+[![Ansible Linux](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible-linux.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible-linux.yml)
+[![Ansible macos](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible-macos.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible-macos.yml)
+[![Bash](https://github.com/PabloScolpino/dotfiles/actions/workflows/bash.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/bash.yml)
+[![Zsh](https://github.com/PabloScolpino/dotfiles/actions/workflows/zsh.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/zsh.yml)
 
 # Pablo's Terminal configuration
 This is my own terminal profile configuration, here to make it easier to have a sane terminal wherever I go
 
 # Setup
-
 
 ## Using ansible
 
