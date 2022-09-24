@@ -1,5 +1,5 @@
 ---
-name: Bash
+name: Ansible macos
 
 on:
   push:
