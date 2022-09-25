@@ -8,7 +8,6 @@ source $CONFIG/git.sh
 [ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
 
 source $CONFIG/ruby.sh
-source $CONFIG/yaml.sh
 
 zstyle ':prezto:module:editor' key-bindings 'vi'
 prompt paradox

@@ -7,3 +7,4 @@
   loop:
     - alacritty
     - i3
+    - yamllint
