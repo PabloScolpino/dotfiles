@@ -1,4 +1,17 @@
 ---
+- name: Update Package Cache [Linux]
+  tags: always
+  apt:
+    update_cache: true
+  changed_when: false
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Update Package Cache [Linux]
+  tags: always
+  ansible.builtin.command: brew update
+  changed_when: false
+  when: ansible_distribution == 'MacOSX'
+
 - name: packages present [Linux]
   become: true
   ansible.builtin.package:
