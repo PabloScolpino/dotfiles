@@ -1,5 +1,6 @@
 ---
 - name: Update Package Cache [Linux]
+  become: true
   tags: always
   apt:
     update_cache: true
