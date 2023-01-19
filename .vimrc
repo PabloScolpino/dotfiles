@@ -401,6 +401,53 @@ Plug 'slashmili/alchemist.vim'
 " Plug 'plasticboy/vim-markdown'
 " let g:vim_markdown_folding_level = 9
 
+"========[ Asciidoc ]=========================================================
+Plug 'habamax/vim-asciidoctor'
+
+" What to use for HTML, default `asciidoctor`.
+" let g:asciidoctor_executable = 'asciidoctor'
+
+" What extensions to use for HTML, default `[]`.
+" let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge']
+
+" List of filetypes to highlight, default `[]`
+let g:asciidoctor_fenced_languages = ['ruby', 'python', 'c', 'javascript']
+
+" Function to create buffer local mappings and add default compiler
+fun! AsciidoctorMappings()
+  nnoremap <buffer> <leader>oo :AsciidoctorOpenRAW<CR>
+  nnoremap <buffer> <leader>op :AsciidoctorOpenPDF<CR>
+  nnoremap <buffer> <leader>oh :AsciidoctorOpenHTML<CR>
+  nnoremap <buffer> <leader>ox :AsciidoctorOpenDOCX<CR>
+  nnoremap <buffer> <leader>ch :Asciidoctor2HTML<CR>
+  nnoremap <buffer> <leader>cp :Asciidoctor2PDF<CR>
+  nnoremap <buffer> <leader>cx :Asciidoctor2DOCX<CR>
+  nnoremap <buffer> <leader>p :AsciidoctorPasteImage<CR>
+  " :make will build pdfs
+  compiler asciidoctor2pdf
+endfun
+
+" Call AsciidoctorMappings for all `*.adoc` and `*.asciidoc` files
+augroup asciidoctor
+  au!
+  au BufEnter *.adoc,*.asciidoc call AsciidoctorMappings()
+augroup END
+
+func! ConvertAsciidoctorToHTML()
+    " Text file with asciidoctor contents?
+    if &filetype == 'text' && getline(1) =~ '^= .*$'
+        " text files have no asciidoctor commands
+        set filetype=asciidoctor
+        Asciidoctor2HTML
+        set filetype=text
+    elseif &filetype == 'asciidoctor'
+        Asciidoctor2HTML
+    endif
+endfunc
+augroup ON_ASCIIDOCTOR_SAVE | au!
+    au BufWritePost *.adoc,*.txt call ConvertAsciidoctorToHTML()
+augroup end
+
 "========[ TOML ]=============================================================
 Plug 'cespare/vim-toml'
 
@@ -411,7 +458,7 @@ call plug#end()
 "====[ Color schema ]=========================================================
 let g:jellybeans_overrides = {'background': { 'ctermbg': 'none', '256ctermbg': 'none' }}
 if has('termguicolors') && &termguicolors
-    let g:jellybeans_overrides['background']['guibg'] = 'none'
+  let g:jellybeans_overrides['background']['guibg'] = 'none'
 endif
 colorscheme jellybeans
 
