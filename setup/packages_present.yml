@@ -29,6 +29,7 @@
     - vim-nox
     - watch
     - yamllint
+    - pgcli
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: packages present [macos]
@@ -51,4 +52,5 @@
     - kubectx
     - k9s
     - yamllint
+    - pgcli
   when: ansible_distribution == 'MacOSX'
