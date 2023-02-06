@@ -239,6 +239,7 @@ Plug 'vim-syntastic/syntastic'
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
+let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -258,67 +259,9 @@ let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 let g:syntastic_javascript_checkers = ['eslint']
 "================[ Syntastic ]================================================
-"
+
 "================[ Prettier ]=================================================
 Plug 'prettier/vim-prettier'
-"================[ Prettier ]=================================================
-
-"================[ CoC ]======================================================
-" https://github.com/neoclide/coc.nvim
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" TextEdit might fail if hidden is not set.
-" set hidden
-
-" Some servers have issues with backup files, see #649.
-" set nobackup
-" set nowritebackup
-
-" Give more space for displaying messages.
-" set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-" set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-" set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-" set signcolumn=yes
-" inoremap <silent><expr> <TAB>
-      " \ pumvisible() ? "\<C-n>" :
-      " \ <SID>check_back_space() ? "\<TAB>" :
-      " \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"================[ LSP ]======================================================
-" Solargraph client
-"Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'mattn/vim-lsp-settings'
-" if executable('solargraph')
-    " gem install solargraph
-    " au User lsp_setup call lsp#register_server({
-        " \ 'name': 'solargraph',
-        " \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-        " \ 'initialization_options': {"diagnostics": "true"},
-        " \ 'whitelist': ['ruby'],
-        " \ })
-" endif
-"
-" Plug 'autozimu/LanguageClient-neovim', {
-    " \ 'branch': 'next',
-    " \ 'do': 'bash install.sh',
-    " \ }
-" Required for operations modifying multiple buffers like rename.
-" set hidden
-
-" let g:LanguageClient_serverCommands = { 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'] }
-
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 "========[ Preview & visualization ]==========================================
 Plug 'kannokanno/previm'
@@ -339,9 +282,13 @@ set updatetime=300
 
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gd :Gvdiffsplit!<CR>
-nnoremap gdh :diffget //2<CR>
-nnoremap gdl :diffget //3<CR>
+nnoremap <leader>gc :G commit<CR>
+nnoremap <leader>gu :G push<CR>
+nnoremap <leader>guf :G push --force-with-lease<CR>
+
 Plug 'christoomey/vim-conflicted'
+let g:diffget_local_map = 'gdl'
+let g:diffget_upstream_map = 'gdh'
 
 "========[ DB Integration ]===================================================
 Plug 'tpope/vim-dadbod'
@@ -368,23 +315,8 @@ Plug 'airblade/vim-localorie'
 nnoremap <silent> <leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
 
-"========[ PHP ]==============================================================
-Plug 'stanangeloff/php.vim'
-Plug 'lumiliet/vim-twig'
-" NOTE: Commented out because its default mappings collide with my :bnext map
-" Plug 'adoy/vim-php-refactoring-toolbox'
-Plug 'qbbr/vim-symfony'
-" NOTE: Commented out because its default mappings collide with my :bprev map
-" Plug 'stephpy/vim-php-cs-fixer'
-" autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
-" nunmap <silent><Leader>pcd
-" nunmap <silent><Leader>pcf
-
 "========[ CSS ]==============================================================
 Plug 'ap/vim-css-color'
-
-"========[ CoffeeScript ]=====================================================
-Plug 'kchmck/vim-coffee-script'
 
 "========[ TypeScript ]=======================================================
 Plug 'pangloss/vim-javascript'
@@ -392,10 +324,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
-
-"========[ Elixir ]===========================================================
-Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
 
 "========[ Markdown ]=========================================================
 " Plug 'plasticboy/vim-markdown'
@@ -447,9 +375,6 @@ endfunc
 augroup ON_ASCIIDOCTOR_SAVE | au!
     au BufWritePost *.adoc,*.txt call ConvertAsciidoctorToHTML()
 augroup end
-
-"========[ TOML ]=============================================================
-Plug 'cespare/vim-toml'
 
 call plug#end()
 "====[ Plugins configuration End ]============================================
