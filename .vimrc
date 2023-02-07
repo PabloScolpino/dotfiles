@@ -170,6 +170,9 @@ Plug 'junegunn/fzf.vim'
 let g:fzf_buffers_jump = 1
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <Leader>gl :Commits<CR>
+nnoremap <Leader>glb :BCommits<CR>
+
 
 "========[ VIM Buffer handling ]==============================================
 " Go to the vim instance that already has the file open + other stuff
@@ -217,6 +220,7 @@ if v:version > 740 && (has('python') || has('python3'))
   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   let g:SuperTabDefaultCompletionType = '<C-n>'
 endif
+" Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
 
 "============[ Snippets ]=====================================================
 if has('python') || has('python3')
@@ -285,6 +289,7 @@ nnoremap <leader>gd :Gvdiffsplit!<CR>
 nnoremap <leader>gc :G commit<CR>
 nnoremap <leader>gu :G push<CR>
 nnoremap <leader>guf :G push --force-with-lease<CR>
+nnoremap <leader>grc :G rebase --continue<CR>
 
 Plug 'christoomey/vim-conflicted'
 let g:diffget_local_map = 'gdl'
