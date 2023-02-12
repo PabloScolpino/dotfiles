@@ -47,12 +47,9 @@ endfunction
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
-nnoremap <silent> <BS><BS> :FixWhitespace<CR>
-
 "====[ Custom Hotkeys ]=======================================================
 " TODO: define user command Refreshplug and
-nnoremap <Leader>r :so %<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><q>
-
+nnoremap <silent> <BS><BS> :FixWhitespace<CR>
 nnoremap <F9> :!%:p<Enter>
 
 "====[ Basic coding style ]===================================================
@@ -60,8 +57,6 @@ set tabstop=2
 set shiftwidth=2
 set expandtab " Never ever use tabs
 set cindent
-
-au FileType php setl sw=4 sts=4 et " Stick to symfony's 4 spaces format
 
 "====[ Cursor line ]==========================================================
 set startofline
@@ -87,6 +82,11 @@ augroup filetypedetect
   autocmd BufRead,BufNewFile *mutt-*              setfiletype mail
 augroup END
 
+"====[ vimrc handling ]=================================================
+nnoremap <Leader>vpr :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><q>
+nnoremap <Leader>ve :vsplit $MYVIMRC<cr>
+nnoremap <Leader>vr :source $MYVIMRC<cr>
+
 "====[ Windows config ]=======================================================
 "========[ Font ]=============================================================
 set guifont=RobotoMono\ Nerd\ Font:14
@@ -96,6 +96,7 @@ set guifont=RobotoMono\ Nerd\ Font:14
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
 endif
+"====[ Windows config ]=======================================================
 
 "=============================================================================
 "====[ Plugins configuration ]================================================
@@ -112,7 +113,7 @@ call plug#begin(g:plug_dir)
 "========[ Project management ]===============================================
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
-"========[ interface improvements ]===========================================
+"========[ Vim Interface ]====================================================
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'altercation/vim-colors-solarized'
@@ -124,7 +125,7 @@ let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
-nmap <C-i> <leader>ig
+" nmap <C-i> <Leader>ig
 
 "============[ Airline ]======================================================
 Plug 'bling/vim-airline'
@@ -138,7 +139,27 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 "============[ Airline ]======================================================
 
-"========[ Browser integration ]==============================================
+"============[ GUNDO ]========================================================
+Plug 'sjl/gundo.vim'
+let g:gundo_prefer_python3 = 1
+nnoremap <F5> :GundoToggle<CR>
+"============[ GUNDO ]========================================================
+"========[ Vim Interface ]====================================================
+
+"========[ VIM Buffer handling ]==============================================
+" Go to the vim instance that already has the file open + other stuff
+Plug 'vitorgalvao/autoswap_mac'
+set title titlestring=
+nnoremap <silent> <Leader>p :bprevious<CR>
+nnoremap <silent> <Leader>n :bnext<CR>
+"========[ VIM Buffer handling ]==============================================
+
+"========[ External integrations]=============================================
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
+Plug 'roxma/vim-paste-easy'
+
+"============[ Browser integration ]==========================================
 if has('nvim')
   " GhostInstall
   " Plug 'roxma/vim-hug-neovim-rpc'
@@ -153,13 +174,27 @@ if has('nvim')
   endif
 
 endif
-"========[ Browser integration ]==============================================
+"============[ Browser integration ]==========================================
 
-"============[ GUNDO ]========================================================
-Plug 'sjl/gundo.vim'
-let g:gundo_prefer_python3 = 1
-nnoremap <F5> :GundoToggle<CR>
-"============[ GUNDO ]========================================================
+"============[ Testing ]======================================================
+Plug 'vim-test/vim-test'
+let g:test#transformation = 'vagrant'
+function! DockerTransform(cmd) abort
+  " return test command wrapped in docker stuff
+  return "docker-compose run web bundle exec rspec"
+endfunction
+
+let g:test#custom_transformations = {'docker': function('DockerTransform')}
+let g:test#transformation = 'docker'
+
+function! DockerComposeRailsCreateTestDatabase()
+  :!docker-compose run web bundle exec rake db:drop db:create db:schema:load RAILS_ENV=test
+endfunction
+
+nnoremap <F10> :call DockerComposeRailsCreateTestDatabase()<CR>
+"============[ Testing ]======================================================
+
+"========[ External integrations]=============================================
 
 "========[ Searching ]========================================================
 Plug 'gabesoft/vim-ags'
@@ -172,19 +207,8 @@ nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <Leader>gl :Commits<CR>
 nnoremap <Leader>glb :BCommits<CR>
+"========[ Searching ]========================================================
 
-
-"========[ VIM Buffer handling ]==============================================
-" Go to the vim instance that already has the file open + other stuff
-Plug 'vitorgalvao/autoswap_mac'
-set title titlestring=
-nnoremap <silent> <Leader>p :bprevious<CR>
-nnoremap <silent> <Leader>n :bnext<CR>
-
-"========[ System interaction ]===============================================
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-eunuch'
-Plug 'roxma/vim-paste-easy'
 
 "========[ Text manipulation ]================================================
 Plug 'bronson/vim-trailing-whitespace'       " Highlight trailing whitespaces
@@ -196,12 +220,14 @@ Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab
 noremap <silent> <Leader>te :'a,'s Tabularize /=<CR>
 noremap <silent> <Leader>tr :'a,'s Tabularize /=><CR>
 noremap <silent> <Leader>tb :'a,'s Tabularize /{<CR>
+"========[ Text manipulation ]================================================
 
-"========[ Note taking]=======================================================
+"========[ Note taking ]======================================================
 Plug 'xolox/vim-misc'
 " Plug 'xolox/vim-notes'
 " let g:notes_directories = ['$HOME/workspace/notes']
 " noremap <silent> <Leader>rn :RecentNotes<CR>
+"========[ Note taking ]======================================================
 
 "========[ Code manipulation ]================================================
 "============[ General ]======================================================
@@ -221,6 +247,7 @@ if v:version > 740 && (has('python') || has('python3'))
   let g:SuperTabDefaultCompletionType = '<C-n>'
 endif
 " Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
+"============[ Autocompletion ]===============================================
 
 "============[ Snippets ]=====================================================
 if has('python') || has('python3')
@@ -232,11 +259,14 @@ if has('python') || has('python3')
   " If you want :UltiSnipsEdit to split your window.
   let g:UltiSnipsEditSplit="vertical"
 endif
+"============[ Snippets ]=====================================================
 
 "============[ Documentation ]================================================
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 "============[ Validation & lining ]==========================================
+Plug 'prettier/vim-prettier'
+
 "================[ Syntastic ]================================================
 Plug 'vim-syntastic/syntastic'
 " set statusline+=%#warningmsg#
@@ -263,9 +293,7 @@ let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 let g:syntastic_javascript_checkers = ['eslint']
 "================[ Syntastic ]================================================
-
-"================[ Prettier ]=================================================
-Plug 'prettier/vim-prettier'
+"========[ Code manipulation ]================================================
 
 "========[ Preview & visualization ]==========================================
 Plug 'kannokanno/previm'
@@ -273,6 +301,7 @@ Plug 'tyru/open-browser.vim'
 
 Plug 'FuDesign2008/mermaidViewer.vim'
 autocmd BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
+"========[ Preview & visualization ]==========================================
 
 "========[ GIT Integration ]==================================================
 Plug 'airblade/vim-gitgutter'
@@ -285,20 +314,22 @@ set updatetime=300
 " let g:gitgutter_highlight_lines = 1
 
 Plug 'tpope/vim-fugitive'
-nnoremap <leader>gd :Gvdiffsplit!<CR>
-nnoremap <leader>gc :G commit<CR>
-nnoremap <leader>gu :G push<CR>
-nnoremap <leader>guf :G push --force-with-lease<CR>
-nnoremap <leader>grc :G rebase --continue<CR>
+nnoremap <Leader>gd :Gvdiffsplit!<CR>
+nnoremap <Leader>gc :G commit<CR>
+nnoremap <Leader>gu :G push<CR>
+nnoremap <Leader>guf :G push --force-with-lease<CR>
+nnoremap <Leader>grc :G rebase --continue<CR>
 
 Plug 'christoomey/vim-conflicted'
 let g:diffget_local_map = 'gdl'
 let g:diffget_upstream_map = 'gdh'
+"========[ GIT Integration ]==================================================
 
 "========[ DB Integration ]===================================================
 Plug 'tpope/vim-dadbod'
 
-"========[ Ruby ]=============================================================
+"========[ Language Specific ]================================================
+"============[ Ruby ]=============================================================
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
@@ -317,24 +348,24 @@ nnoremap <Leader>ru :RemoveAllFocusTags<CR>
 Plug 'henrik/vim-ruby-runner'
 
 Plug 'airblade/vim-localorie'
-nnoremap <silent> <leader>lt :call localorie#translate()<CR>
-nnoremap <silent> <leader>le :call localorie#expand_key()<CR>
+nnoremap <silent> <Leader>lt :call localorie#translate()<CR>
+nnoremap <silent> <Leader>le :call localorie#expand_key()<CR>
 
-"========[ CSS ]==============================================================
+"============[ CSS ]==============================================================
 Plug 'ap/vim-css-color'
 
-"========[ TypeScript ]=======================================================
+"============[ TypeScript ]=======================================================
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 
-"========[ Markdown ]=========================================================
+"============[ Markdown ]=========================================================
 " Plug 'plasticboy/vim-markdown'
 " let g:vim_markdown_folding_level = 9
 
-"========[ Asciidoc ]=========================================================
+"============[ Asciidoc ]=========================================================
 Plug 'habamax/vim-asciidoctor'
 
 " What to use for HTML, default `asciidoctor`.
@@ -348,14 +379,14 @@ let g:asciidoctor_fenced_languages = ['ruby', 'python', 'c', 'javascript']
 
 " Function to create buffer local mappings and add default compiler
 fun! AsciidoctorMappings()
-  nnoremap <buffer> <leader>oo :AsciidoctorOpenRAW<CR>
-  nnoremap <buffer> <leader>op :AsciidoctorOpenPDF<CR>
-  nnoremap <buffer> <leader>oh :AsciidoctorOpenHTML<CR>
-  nnoremap <buffer> <leader>ox :AsciidoctorOpenDOCX<CR>
-  nnoremap <buffer> <leader>ch :Asciidoctor2HTML<CR>
-  nnoremap <buffer> <leader>cp :Asciidoctor2PDF<CR>
-  nnoremap <buffer> <leader>cx :Asciidoctor2DOCX<CR>
-  nnoremap <buffer> <leader>p :AsciidoctorPasteImage<CR>
+  nnoremap <buffer> <Leader>oo :AsciidoctorOpenRAW<CR>
+  nnoremap <buffer> <Leader>op :AsciidoctorOpenPDF<CR>
+  nnoremap <buffer> <Leader>oh :AsciidoctorOpenHTML<CR>
+  nnoremap <buffer> <Leader>ox :AsciidoctorOpenDOCX<CR>
+  nnoremap <buffer> <Leader>ch :Asciidoctor2HTML<CR>
+  nnoremap <buffer> <Leader>cp :Asciidoctor2PDF<CR>
+  nnoremap <buffer> <Leader>cx :Asciidoctor2DOCX<CR>
+  nnoremap <buffer> <Leader>p :AsciidoctorPasteImage<CR>
   " :make will build pdfs
   compiler asciidoctor2pdf
 endfun
@@ -382,7 +413,8 @@ augroup ON_ASCIIDOCTOR_SAVE | au!
 augroup end
 
 call plug#end()
-"====[ Plugins configuration End ]============================================
+"========[ Language Specific ]================================================
+"====[ Plugins configuration ]================================================
 "=============================================================================
 
 "====[ Color schema ]=========================================================
