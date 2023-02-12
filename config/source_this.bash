@@ -7,6 +7,7 @@ CONFIG=$HOME/.dotfiles/config
 . $CONFIG/env.sh
 . $CONFIG/git.sh
 . $CONFIG/ruby.sh
+. $CONFIG/node.sh
 [ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
 
 $HOME/.dotfiles/bin/set_ssh_agent.sh
