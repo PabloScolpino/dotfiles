@@ -29,6 +29,7 @@ alias rerun='rerun --no-notify'
 alias dc='docker-compose'
 alias dcb='docker-compose build'
 alias dce='docker-compose exec'
+alias dcr='docker-compose run --rm'
 alias dcu='docker-compose up --build'
 
 alias docker_clean_logs='sudo find /var/lib/docker/containers -name "*.log"  -exec truncate -s 0 {} \;'

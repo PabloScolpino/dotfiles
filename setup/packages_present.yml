@@ -30,6 +30,8 @@
     - watch
     - yamllint
     - pgcli
+    - git-delta
+    - dive
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: packages present [macos]
@@ -53,4 +55,6 @@
     - k9s
     - yamllint
     - pgcli
+    - git-delta
+    - dive
   when: ansible_distribution == 'MacOSX'

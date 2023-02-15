@@ -84,7 +84,7 @@ augroup END
 
 "====[ vimrc handling ]=================================================
 nnoremap <Leader>vpr :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><q>
-nnoremap <Leader>ve :vsplit $MYVIMRC<cr>
+nnoremap <Leader>ve :e $MYVIMRC<cr>
 nnoremap <Leader>vr :source $MYVIMRC<cr>
 
 "====[ Windows config ]=======================================================
@@ -114,6 +114,7 @@ call plug#begin(g:plug_dir)
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
 "========[ Vim Interface ]====================================================
+autocmd VimResized * :wincmd =
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'altercation/vim-colors-solarized'
@@ -178,20 +179,21 @@ endif
 
 "============[ Testing ]======================================================
 Plug 'vim-test/vim-test'
-let g:test#transformation = 'vagrant'
 function! DockerTransform(cmd) abort
-  " return test command wrapped in docker stuff
-  return "docker-compose run web bundle exec rspec"
+  return 'docker-compose exec web ' . a:cmd
 endfunction
-
 let g:test#custom_transformations = {'docker': function('DockerTransform')}
 let g:test#transformation = 'docker'
+
+let test#ruby#bundle_exec = 1
+let test#ruby#use_binstubs = 0
+noremap <silent> <Leader>t :TestFile<CR>
 
 function! DockerComposeRailsCreateTestDatabase()
   :!docker-compose run web bundle exec rake db:drop db:create db:schema:load RAILS_ENV=test
 endfunction
-
 nnoremap <F10> :call DockerComposeRailsCreateTestDatabase()<CR>
+
 "============[ Testing ]======================================================
 
 "========[ External integrations]=============================================
@@ -217,17 +219,10 @@ Plug 'zirrostig/vim-schlepp'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-jdaddy'     " gqaj
 Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab/<regex>
-noremap <silent> <Leader>te :'a,'s Tabularize /=<CR>
-noremap <silent> <Leader>tr :'a,'s Tabularize /=><CR>
-noremap <silent> <Leader>tb :'a,'s Tabularize /{<CR>
+" noremap <silent> <Leader>te :'a,'s Tabularize /=<CR>
+" noremap <silent> <Leader>tr :'a,'s Tabularize /=><CR>
+" noremap <silent> <Leader>tb :'a,'s Tabularize /{<CR>
 "========[ Text manipulation ]================================================
-
-"========[ Note taking ]======================================================
-Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-notes'
-" let g:notes_directories = ['$HOME/workspace/notes']
-" noremap <silent> <Leader>rn :RecentNotes<CR>
-"========[ Note taking ]======================================================
 
 "========[ Code manipulation ]================================================
 "============[ General ]======================================================
