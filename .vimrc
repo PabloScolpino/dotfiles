@@ -86,8 +86,11 @@ augroup END
 nnoremap <Leader>vpr :source $MYVIMRC<CR>:PlugClean!<CR>:PlugInstall<CR>:PlugUpdate<CR><q>
 nnoremap <Leader>ve :e $MYVIMRC<cr>
 nnoremap <Leader>vr :source $MYVIMRC<cr>
+nnoremap <Leader>vcs :s/[=><]/>/g<CR>
+nnoremap <Leader>vce :s/[=><]/</g<CR>
+nnoremap <Leader>vcu :s/[=><]/=/g<CR>
 
-"====[ Windows config ]=======================================================
+">>>>[ Windows config ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 "========[ Font ]=============================================================
 set guifont=RobotoMono\ Nerd\ Font:14
 
@@ -96,10 +99,9 @@ set guifont=RobotoMono\ Nerd\ Font:14
 if has('win32') || has('win64')
   set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
 endif
-"====[ Windows config ]=======================================================
+"<<<<[ Windows config ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"=============================================================================
-"====[ Plugins configuration ]================================================
+">>>>[ Plugins configuration ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 filetype plugin on
 
 if has('nvim')
@@ -128,7 +130,7 @@ hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 " nmap <C-i> <Leader>ig
 
-"============[ Airline ]======================================================
+">>>>>>>>>>>>[ Airline ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme = 'jellybeans'
@@ -138,29 +140,29 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
-"============[ Airline ]======================================================
+"<<<<<<<<<<<<[ Airline ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"============[ GUNDO ]========================================================
+">>>>>>>>>>>>[ GUNDO ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'sjl/gundo.vim'
 let g:gundo_prefer_python3 = 1
 nnoremap <F5> :GundoToggle<CR>
-"============[ GUNDO ]========================================================
-"========[ Vim Interface ]====================================================
+"<<<<<<<<<<<<[ GUNDO ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+"<<<<<<<<[ Vim Interface ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"========[ VIM Buffer handling ]==============================================
+">>>>>>>>[ VIM Buffer handling ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " Go to the vim instance that already has the file open + other stuff
 Plug 'vitorgalvao/autoswap_mac'
 set title titlestring=
 nnoremap <silent> <Leader>p :bprevious<CR>
 nnoremap <silent> <Leader>n :bnext<CR>
-"========[ VIM Buffer handling ]==============================================
+"<<<<<<<<[ VIM Buffer handling ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"========[ External integrations]=============================================
+"========[ External integrations ]============================================
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'roxma/vim-paste-easy'
 
-"============[ Browser integration ]==========================================
+">>>>>>>>>>>>[ Browser integration ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if has('nvim')
   " GhostInstall
   " Plug 'roxma/vim-hug-neovim-rpc'
@@ -175,9 +177,9 @@ if has('nvim')
   endif
 
 endif
-"============[ Browser integration ]==========================================
+"<<<<<<<<<<<<[ Browser integration ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"============[ Testing ]======================================================
+">>>>>>>>>>>>[ Testing ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'vim-test/vim-test'
 function! DockerTransform(cmd) abort
   return 'docker-compose exec web ' . a:cmd
@@ -193,26 +195,10 @@ function! DockerComposeRailsCreateTestDatabase()
   :!docker-compose run web bundle exec rake db:drop db:create db:schema:load RAILS_ENV=test
 endfunction
 nnoremap <F10> :call DockerComposeRailsCreateTestDatabase()<CR>
+"<<<<<<<<<<<<[ Testing ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+"<<<<<<<<[ External integrations ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"============[ Testing ]======================================================
-
-"========[ External integrations]=============================================
-
-"========[ Searching ]========================================================
-Plug 'gabesoft/vim-ags'
-nnoremap <silent> <Leader>ag  :Ags<CR>
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-let g:fzf_buffers_jump = 1
-nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <Leader>gl :Commits<CR>
-nnoremap <Leader>glb :BCommits<CR>
-"========[ Searching ]========================================================
-
-
-"========[ Text manipulation ]================================================
+">>>>>>>>[ Text manipulation ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'bronson/vim-trailing-whitespace'       " Highlight trailing whitespaces
 Plug 'zirrostig/vim-schlepp'
 
@@ -222,16 +208,16 @@ Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab
 " noremap <silent> <Leader>te :'a,'s Tabularize /=<CR>
 " noremap <silent> <Leader>tr :'a,'s Tabularize /=><CR>
 " noremap <silent> <Leader>tb :'a,'s Tabularize /{<CR>
-"========[ Text manipulation ]================================================
+"<<<<<<<<[ Text manipulation ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"========[ Code manipulation ]================================================
+">>>>>>>>[ Code manipulation ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 "============[ General ]======================================================
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary' " gcc
 Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
                             " camelCase (crc), snake_case (crs), UPPER_CASE (cru),
                             " dash-case (cr-), dot.case (cr.), space case (cr<space>)
-"============[ Autocompletion ]===============================================
+">>>>>>>>>>>>[ Autocompletion ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if v:version > 740 && (has('python') || has('python3'))
   Plug 'ervandew/supertab'
   Plug 'tabnine/YouCompleteMe'
@@ -242,9 +228,9 @@ if v:version > 740 && (has('python') || has('python3'))
   let g:SuperTabDefaultCompletionType = '<C-n>'
 endif
 " Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
-"============[ Autocompletion ]===============================================
+"<<<<<<<<<<<<[ Autocompletion ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"============[ Snippets ]=====================================================
+">>>>>>>>>>>>[ Snippets ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if has('python') || has('python3')
   Plug 'SirVer/ultisnips'
   let g:UltiSnipsExpandTrigger       = '<tab>'
@@ -254,15 +240,15 @@ if has('python') || has('python3')
   " If you want :UltiSnipsEdit to split your window.
   let g:UltiSnipsEditSplit="vertical"
 endif
-"============[ Snippets ]=====================================================
+"<<<<<<<<<<<<[ Snippets ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 "============[ Documentation ]================================================
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
-"============[ Validation & lining ]==========================================
+">>>>>>>>>>>>[ Validation & lining ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'prettier/vim-prettier'
 
-"================[ Syntastic ]================================================
+">>>>>>>>>>>>>>>>[ Syntastic ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'vim-syntastic/syntastic'
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -287,44 +273,56 @@ let g:syntastic_yaml_checkers = ['yamllint']
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
 let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 let g:syntastic_javascript_checkers = ['eslint']
-"================[ Syntastic ]================================================
-"========[ Code manipulation ]================================================
+"<<<<<<<<<<<<<<<<[ Syntastic ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+"<<<<<<<<<<<<[ Validation & lining ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"========[ Preview & visualization ]==========================================
+">>>>>>>>[ Code manipulation ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+">>>>>>>>[ Preview & visualization ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'kannokanno/previm'
 Plug 'tyru/open-browser.vim'
 
 Plug 'FuDesign2008/mermaidViewer.vim'
 autocmd BufNewFile,BufReadPost *.mmd,*.mermaid set filetype=mermaid
-"========[ Preview & visualization ]==========================================
+"<<<<<<<<[ Preview & visualization ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"========[ GIT Integration ]==================================================
+">>>>>>>>[ Searching ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Plug 'gabesoft/vim-ags'
+nnoremap <silent> <Leader>ag  :Ags<CR>
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+let g:fzf_buffers_jump = 1
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <Leader>gla :Commits<CR>
+nnoremap <Leader>gl :BCommits<CR>
+"<<<<<<<<[ Searching ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+">>>>>>>>[ GIT Integration ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'airblade/vim-gitgutter'
-nnoremap ggh :GitGutterLineHighlightsEnable<CR>
-nnoremap ggH :GitGutterLineHighlightsDisable<CR>
-nnoremap ggf :GitGutterFold<CR>
+nnoremap <Leader>gh :GitGutterLineHighlightsToggle<CR>
+nnoremap <Leader>gj :GitGutterFold<CR>
 set updatetime=300
 
 " To enable line hightlight by default
 " let g:gitgutter_highlight_lines = 1
 
 Plug 'tpope/vim-fugitive'
+nnoremap <Leader>s :G<CR>
 nnoremap <Leader>gd :Gvdiffsplit!<CR>
 nnoremap <Leader>gc :G commit<CR>
-nnoremap <Leader>gu :G push<CR>
-nnoremap <Leader>guf :G push --force-with-lease<CR>
-nnoremap <Leader>grc :G rebase --continue<CR>
 
 Plug 'christoomey/vim-conflicted'
 let g:diffget_local_map = 'gdl'
 let g:diffget_upstream_map = 'gdh'
-"========[ GIT Integration ]==================================================
+"<<<<<<<<[ GIT Integration ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 "========[ DB Integration ]===================================================
 Plug 'tpope/vim-dadbod'
 
-"========[ Language Specific ]================================================
-"============[ Ruby ]=============================================================
+">>>>>>>>[ Language Specific ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+">>>>>>>>>>>>[ Ruby ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
@@ -345,6 +343,7 @@ Plug 'henrik/vim-ruby-runner'
 Plug 'airblade/vim-localorie'
 nnoremap <silent> <Leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <Leader>le :call localorie#expand_key()<CR>
+"<<<<<<<<<<<<[ Ruby ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 "============[ CSS ]==============================================================
 Plug 'ap/vim-css-color'
@@ -408,8 +407,8 @@ augroup ON_ASCIIDOCTOR_SAVE | au!
 augroup end
 
 call plug#end()
-"========[ Language Specific ]================================================
-"====[ Plugins configuration ]================================================
+"<<<<<<<<[ Language Specific ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+"<<<<[ Plugins configuration ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "=============================================================================
 
 "====[ Color schema ]=========================================================
