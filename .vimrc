@@ -248,32 +248,15 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 ">>>>>>>>>>>>[ Validation & lining ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'prettier/vim-prettier'
 
-">>>>>>>>>>>>>>>>[ Syntastic ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Plug 'vim-syntastic/syntastic'
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+">>>>>>>>>>>>>>>>[ Ale  ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Plug 'dense-analysis/ale'
+" let g:ale_change_sign_column_color=1
+" let g:ale_set_highlights=1
 
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
+highlight ALEWarning ctermbg=Red
 
-let g:syntastic_ruby_checkers = ['rubocop', 'reek', 'mri']
-let g:syntastic_yaml_checkers = ['yamllint']
-
-" let g:syntastic_debug=3
-" sudo npm install -g n
-" sudo n install
-" sudo npm install -g yarn
-" yarn install
-
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-let g:syntastic_javascript_checkers = ['eslint']
-"<<<<<<<<<<<<<<<<[ Syntastic ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+nnoremap <silent> <Leader>ur  :ALEFix rubocop<CR>
+"<<<<<<<<<<<<<<<<[ Ale  ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "<<<<<<<<<<<<[ Validation & lining ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ">>>>>>>>[ Code manipulation ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
