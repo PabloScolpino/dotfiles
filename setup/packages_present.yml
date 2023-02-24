@@ -30,8 +30,8 @@
     - watch
     - yamllint
     - pgcli
-    - git-delta
-    - dive
+    # - git-delta # only available as .deb file
+    # - dive # only available as .deb file
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: packages present [macos]
