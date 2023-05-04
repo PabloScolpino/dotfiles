@@ -204,7 +204,7 @@ Plug 'zirrostig/vim-schlepp'
 
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-jdaddy'     " gqaj
-Plug 'godlygeek/tabular'    " <range> :Tab/:  OR <range> :Tab/=> OR <range> :Tab/<regex>
+Plug 'godlygeek/tabular'    " <range> :Tabularize/:  OR <range> :Tabularize/=> OR <range> :Tabularize/<regex>
 " noremap <silent> <Leader>te :'a,'s Tabularize /=<CR>
 " noremap <silent> <Leader>tr :'a,'s Tabularize /=><CR>
 " noremap <silent> <Leader>tb :'a,'s Tabularize /{<CR>
@@ -218,16 +218,21 @@ Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
                             " camelCase (crc), snake_case (crs), UPPER_CASE (cru),
                             " dash-case (cr-), dot.case (cr.), space case (cr<space>)
 ">>>>>>>>>>>>[ Autocompletion ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-if v:version > 740 && (has('python') || has('python3'))
-  Plug 'ervandew/supertab'
-  Plug 'tabnine/YouCompleteMe'
+if !has('nvim') && v:version > 740 && (has('python') || has('python3'))
+  Plug 'github/copilot.vim'
+  " Plug 'ervandew/supertab'
+  " Plug 'tabnine/YouCompleteMe'
 
-  " make YCM/tabnine compatible with UltiSnips (using supertab)
-  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-  let g:SuperTabDefaultCompletionType = '<C-n>'
+  " " make YCM/tabnine compatible with UltiSnips (using supertab)
+  " let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  " let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+  " let g:SuperTabDefaultCompletionType = '<C-n>'
 endif
-" Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
+
+if has('nvim')
+  "Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
+  Plug 'github/copilot.vim'
+endif
 "<<<<<<<<<<<<[ Autocompletion ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ">>>>>>>>>>>>[ Snippets ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -248,7 +253,7 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 ">>>>>>>>>>>>[ Validation & lining ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'prettier/vim-prettier'
 
-">>>>>>>>>>>>>>>>[ Ale  ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+">>>>>>>>>>>>>>>>[ Ale ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'dense-analysis/ale'
 " let g:ale_change_sign_column_color=1
 " let g:ale_set_highlights=1
@@ -256,7 +261,7 @@ Plug 'dense-analysis/ale'
 highlight ALEWarning ctermbg=Red
 
 nnoremap <silent> <Leader>ur  :ALEFix rubocop<CR>
-"<<<<<<<<<<<<<<<<[ Ale  ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+"<<<<<<<<<<<<<<<<[ Ale ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "<<<<<<<<<<<<[ Validation & lining ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ">>>>>>>>[ Code manipulation ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -292,7 +297,7 @@ set updatetime=300
 " let g:gitgutter_highlight_lines = 1
 
 Plug 'tpope/vim-fugitive'
-nnoremap <Leader>s :G<CR>
+nnoremap <Leader>s :G<CR><C-w>10-
 nnoremap <Leader>gd :Gvdiffsplit!<CR>
 nnoremap <Leader>gc :G commit<CR>
 
@@ -339,55 +344,9 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 
 "============[ Markdown ]=========================================================
-" Plug 'plasticboy/vim-markdown'
-" let g:vim_markdown_folding_level = 9
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_level = 3
 
-"============[ Asciidoc ]=========================================================
-Plug 'habamax/vim-asciidoctor'
-
-" What to use for HTML, default `asciidoctor`.
-" let g:asciidoctor_executable = 'asciidoctor'
-
-" What extensions to use for HTML, default `[]`.
-" let g:asciidoctor_extensions = ['asciidoctor-diagram', 'asciidoctor-rouge']
-
-" List of filetypes to highlight, default `[]`
-let g:asciidoctor_fenced_languages = ['ruby', 'python', 'c', 'javascript']
-
-" Function to create buffer local mappings and add default compiler
-fun! AsciidoctorMappings()
-  nnoremap <buffer> <Leader>oo :AsciidoctorOpenRAW<CR>
-  nnoremap <buffer> <Leader>op :AsciidoctorOpenPDF<CR>
-  nnoremap <buffer> <Leader>oh :AsciidoctorOpenHTML<CR>
-  nnoremap <buffer> <Leader>ox :AsciidoctorOpenDOCX<CR>
-  nnoremap <buffer> <Leader>ch :Asciidoctor2HTML<CR>
-  nnoremap <buffer> <Leader>cp :Asciidoctor2PDF<CR>
-  nnoremap <buffer> <Leader>cx :Asciidoctor2DOCX<CR>
-  nnoremap <buffer> <Leader>p :AsciidoctorPasteImage<CR>
-  " :make will build pdfs
-  compiler asciidoctor2pdf
-endfun
-
-" Call AsciidoctorMappings for all `*.adoc` and `*.asciidoc` files
-augroup asciidoctor
-  au!
-  au BufEnter *.adoc,*.asciidoc call AsciidoctorMappings()
-augroup END
-
-func! ConvertAsciidoctorToHTML()
-    " Text file with asciidoctor contents?
-    if &filetype == 'text' && getline(1) =~ '^= .*$'
-        " text files have no asciidoctor commands
-        set filetype=asciidoctor
-        Asciidoctor2HTML
-        set filetype=text
-    elseif &filetype == 'asciidoctor'
-        Asciidoctor2HTML
-    endif
-endfunc
-augroup ON_ASCIIDOCTOR_SAVE | au!
-    au BufWritePost *.adoc,*.txt call ConvertAsciidoctorToHTML()
-augroup end
 
 call plug#end()
 "<<<<<<<<[ Language Specific ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
