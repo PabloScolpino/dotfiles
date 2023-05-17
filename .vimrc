@@ -310,6 +310,16 @@ let g:diffget_upstream_map = 'gdh'
 Plug 'tpope/vim-dadbod'
 
 ">>>>>>>>[ Language Specific ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"============[ CSS ]==============================================================
+Plug 'ap/vim-css-color'
+
+"============[ Dockerfile ]=======================================================
+Plug 'ekalinin/Dockerfile.vim'
+
+"============[ Markdown ]=========================================================
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_level = 3
+
 ">>>>>>>>>>>>[ Ruby ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -333,20 +343,12 @@ nnoremap <silent> <Leader>lt :call localorie#translate()<CR>
 nnoremap <silent> <Leader>le :call localorie#expand_key()<CR>
 "<<<<<<<<<<<<[ Ruby ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"============[ CSS ]==============================================================
-Plug 'ap/vim-css-color'
-
 "============[ TypeScript ]=======================================================
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
-
-"============[ Markdown ]=========================================================
-Plug 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_level = 3
-
 
 call plug#end()
 "<<<<<<<<[ Language Specific ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
