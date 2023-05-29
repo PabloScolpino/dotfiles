@@ -1,1 +1,4 @@
 config/extras.sh
+config/nvim/pack/
+!config/nvim/pack/.keep
+config/nvim/plugin/packer_compiled.lua

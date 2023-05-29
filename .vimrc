@@ -48,8 +48,7 @@ exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
 
 "====[ Custom Hotkeys ]=======================================================
-" TODO: define user command Refreshplug and
-nnoremap <silent> <BS><BS> :FixWhitespace<CR>
+" run current file 
 nnoremap <F9> :!%:p<Enter>
 
 "====[ Basic coding style ]===================================================
@@ -142,11 +141,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 set laststatus=2
 "<<<<<<<<<<<<[ Airline ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-">>>>>>>>>>>>[ GUNDO ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Plug 'sjl/gundo.vim'
-let g:gundo_prefer_python3 = 1
-nnoremap <F5> :GundoToggle<CR>
-"<<<<<<<<<<<<[ GUNDO ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "<<<<<<<<[ Vim Interface ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ">>>>>>>>[ VIM Buffer handling ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -200,6 +194,8 @@ nnoremap <F10> :call DockerComposeRailsCreateTestDatabase()<CR>
 
 ">>>>>>>>[ Text manipulation ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'bronson/vim-trailing-whitespace'       " Highlight trailing whitespaces
+nnoremap <silent> <BS><BS> :FixWhitespace<CR>
+
 Plug 'zirrostig/vim-schlepp'
 
 Plug 'terryma/vim-multiple-cursors'
@@ -218,22 +214,28 @@ Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
                             " camelCase (crc), snake_case (crs), UPPER_CASE (cru),
                             " dash-case (cr-), dot.case (cr.), space case (cr<space>)
 ">>>>>>>>>>>>[ Autocompletion ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-if !has('nvim') && v:version > 740 && (has('python') || has('python3'))
-  Plug 'github/copilot.vim'
-  " Plug 'ervandew/supertab'
-  " Plug 'tabnine/YouCompleteMe'
+Plug 'github/copilot.vim'
 
-  " " make YCM/tabnine compatible with UltiSnips (using supertab)
-  " let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  " let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-  " let g:SuperTabDefaultCompletionType = '<C-n>'
-endif
+">>>>>>>>>>>>>>>>[ Tabnine ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+" if !has('nvim') && v:version > 740 && (has('python') || has('python3'))
+"   Plug 'ervandew/supertab'
+"   Plug 'tabnine/YouCompleteMe'
 
-if has('nvim')
-  "Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
-  Plug 'github/copilot.vim'
-endif
+"   " make YCM/tabnine compatible with UltiSnips (using supertab)
+"   let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+"   let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+"   let g:SuperTabDefaultCompletionType = '<C-n>'
+" endif
+" if has('nvim')
+"   Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
+" endif
+"<<<<<<<<<<<<<<<<[ Tabnine ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 "<<<<<<<<<<<<[ Autocompletion ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+if has('python') || has('python3')
+  Plug 'CoderCookE/vim-chatgpt'
+  let g:chat_gpt_max_tokens=2000
+endif
 
 ">>>>>>>>>>>>[ Snippets ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if has('python') || has('python3')
@@ -253,15 +255,18 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 ">>>>>>>>>>>>[ Validation & lining ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'prettier/vim-prettier'
 
-">>>>>>>>>>>>>>>>[ Ale ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Plug 'dense-analysis/ale'
-" let g:ale_change_sign_column_color=1
-" let g:ale_set_highlights=1
+"">>>>>>>>>>>>>>>>[ Ale ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"Plug 'dense-analysis/ale'
+"" let g:ale_change_sign_column_color=1
+"" let g:ale_set_highlights=1
 
-highlight ALEWarning ctermbg=Red
+"highlight ALEWarning ctermbg=Red
 
-nnoremap <silent> <Leader>ur  :ALEFix rubocop<CR>
-"<<<<<<<<<<<<<<<<[ Ale ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+"nnoremap <silent> <Leader>ur  :ALEFix rubocop<CR>
+"" let g:ale_ruby_rubocop_executable = 'docker compose run --rm web bundle exec rubocop'
+"" let g:ale_ruby_rubocop_executable = 'docker-compose run --rm web bundle exec rubocop'
+"let g:ale_ruby_rubocop_executable = 'exit 1'
+""<<<<<<<<<<<<<<<<[ Ale ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 "<<<<<<<<<<<<[ Validation & lining ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ">>>>>>>>[ Code manipulation ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
