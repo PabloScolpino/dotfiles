@@ -1,1 +1,3 @@
 config/extras.sh
+config/nvim/pack/
+!config/nvim/pack/.keep

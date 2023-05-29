@@ -11,9 +11,9 @@ fi
 
 alias ap='ansible-playbook'
 
-if [ -n "$(command -v vim)" ]
+if [ -n "$(command -v nvim)" ]
 then
-  alias vi='vim'
+  alias vi='nvim'
 fi
 
 alias mutt='cd ~/attachments && neomutt'
