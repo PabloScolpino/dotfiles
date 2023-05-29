@@ -19,19 +19,21 @@
     name: "{{ item }}"
     state: present
   loop:
+    # - dive # only available as .deb file
+    # - git-delta # only available as .deb file
+    - asciidoctor
     - fonts-powerline
     - git
     - htop
     - httpie
     - mosh
+    - nvim
+    - pgcli
     - rbenv
     - silversearcher-ag
     - vim-nox
     - watch
     - yamllint
-    - pgcli
-    # - git-delta # only available as .deb file
-    # - dive # only available as .deb file
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: packages present [macos]
@@ -39,22 +41,24 @@
     name: "{{ item }}"
     state: present
   loop:
+    - asciidoctor
+    - bpytop
+    - dive
     - docutils
     - exa
     - fzf
     - git
+    - git-delta
     - htop
-    - bpytop
     - httpie
+    - k9s
+    - kubectx
     - macvim
     - mosh
+    - nvim
+    - pgcli
     - rbenv
     - the_silver_searcher
     - watch
-    - kubectx
-    - k9s
     - yamllint
-    - pgcli
-    - git-delta
-    - dive
   when: ansible_distribution == 'MacOSX'
