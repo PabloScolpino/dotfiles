@@ -14,7 +14,8 @@ return require('packer').startup(function(use)
   })
   -- use 'nvim-treesitter/playground'
 
-  use {
+  --[ LSP ]---------------------------------------------------------------------
+  use({
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     requires = {
@@ -31,12 +32,20 @@ return require('packer').startup(function(use)
       {'hrsh7th/cmp-nvim-lsp'}, -- Required
       {'L3MON4D3/LuaSnip'},     -- Required
     }
-  }
+  })
 
   --[ Code manipulation ]-------------------------------------------------------
   use('echasnovski/mini.comment')
   use('sbdchd/neoformat')
   use('tpope/vim-abolish')
+
+  --[ Markdown preview ]--------------------------------------------------------
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
+  -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   --[ Git ]---------------------------------------------------------------------
   use('tpope/vim-fugitive')
@@ -44,14 +53,19 @@ return require('packer').startup(function(use)
   use('f-person/git-blame.nvim')
 
   --[ GitHub ]------------------------------------------------------------------
-  use {
+  use({
     'pwntester/octo.nvim',
     requires = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
       'nvim-tree/nvim-web-devicons',
     },
-  }
+  })
+
+  --[ Project management ]------------------------------------------------------
+  use({
+    "ahmedkhalf/project.nvim",
+  })
 
   --[ Testing ]-----------------------------------------------------------------
   use({
@@ -74,18 +88,23 @@ return require('packer').startup(function(use)
   --[ Undo history ]------------------------------------------------------------
   use('mbbill/undotree')
 
-  --[ UI Improvements ]---------------------------------------------------------
+  --[ Blank lines ]-------------------------------------------------------------
   use('lukas-reineke/indent-blankline.nvim')
 
-  -- use({
-  --   'nvim-lualine/lualine.nvim',
-  --   requires = { { 'nvim-tree/nvim-web-devicons', opt = true } }
-  -- })
-  use('bling/vim-airline')
-  use('vim-airline/vim-airline-themes')
+  --[ Airline ]-----------------------------------------------------------------
+  use({
+    'bling/vim-airline',
+    requires = { 'vim-airline/vim-airline-themes' }
+  })
 
-  use('ryanoasis/vim-devicons')
-  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+  --[ Code folding ]------------------------------------------------------------
+  use({
+    'kevinhwang91/nvim-ufo',
+    requires = {
+      'kevinhwang91/promise-async',
+      'ryanoasis/vim-devicons'
+    }
+  })
 
   --[ Colors ]------------------------------------------------------------------
   use({
