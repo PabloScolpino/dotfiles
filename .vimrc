@@ -103,13 +103,8 @@ endif
 ">>>>[ Plugins configuration ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 filetype plugin on
 
-if has('nvim')
-  let g:plug_dir = '~/.vim/plugged-nvim'
-else
-  let g:plug_dir = '~/.vim/plugged'
-endif
 
-call plug#begin(g:plug_dir)
+call plug#begin('~/.vim/plugged')
 
 "========[ Project management ]===============================================
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'

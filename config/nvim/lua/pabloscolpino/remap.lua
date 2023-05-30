@@ -7,8 +7,14 @@ vim.keymap.set("n", ":", ";")
 
 -----[ Swap v and CTRL-V, because Block mode is more useful that Visual ]-----
 vim.keymap.set("n", "v", "<C-V>")
+vim.keymap.set("n", "v", "<C-V>")
+vim.keymap.set("n", "<C-V>", "v")
 vim.keymap.set("n", "<C-V>", "v")
 
 vim.keymap.set("v", "v", "<C-V>")
 vim.keymap.set("v", "<C-V>", "v")
 
+-----[ Line Numbers ]---------------------------------------------------------
+--noremap <silent> <Leader>N :set relativenumber!<CR>
+--noremap <silent> <Leader>c :set number<CR>:GitGutterSignsEnable<CR>
+--noremap <silent> <Leader>C :set norelativenumber<CR>:set nonumber<CR>:GitGutterSignsDisable<CR>:SyntasticToggleMode<CR>
