@@ -26,7 +26,6 @@ return require('packer').startup(function(use)
         run = function() pcall(vim.cmd, 'MasonUpdate') end,
       },
       {'williamboman/mason-lspconfig.nvim'}, -- Optional
-
       -- Autocompletion
       {'hrsh7th/nvim-cmp'},     -- Required
       {'hrsh7th/cmp-nvim-lsp'}, -- Required
@@ -35,6 +34,7 @@ return require('packer').startup(function(use)
   })
 
   --[ Code manipulation ]-------------------------------------------------------
+  use('dense-analysis/ale')
   use('echasnovski/mini.comment')
   use('sbdchd/neoformat')
   use('tpope/vim-abolish')
@@ -44,8 +44,6 @@ return require('packer').startup(function(use)
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
-
-  -- use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   --[ Git ]---------------------------------------------------------------------
   use('tpope/vim-fugitive')

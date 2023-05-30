@@ -6,12 +6,12 @@ lsp.preset("recommended")
 ------------------------------------------------------------------
 lsp.ensure_installed({
   "clangd",
+  "dockerls",
   "eslint",
   "lua_ls",
+  "pyright",
   "solargraph",
   "tsserver",
-  "dockerls",
-  "pyright",
 })
 
 
@@ -47,8 +47,6 @@ cmp.setup({
   },
 })
 
-
-
 ------------------------------------------------------------------
 -- The following configuration enables any directory to be able
 -- to use LSP, otherwise it only works in .git projects
@@ -59,11 +57,3 @@ local function determine_root_dir()
 end
 
 local nvim_lsp = require('lspconfig')
-
-nvim_lsp.clangd.setup { root_dir = determine_root_dir }
-nvim_lsp.dockerls.setup { root_dir = determine_root_dir }
-nvim_lsp.eslint.setup { root_dir = determine_root_dir }
-nvim_lsp.lua_ls.setup { root_dir = determine_root_dir }
-nvim_lsp.pyright.setup { root_dir = determine_root_dir }
-nvim_lsp.solargraph.setup { root_dir = determine_root_dir }
-nvim_lsp.tsserver.setup { root_dir = determine_root_dir }
