@@ -1,6 +1,5 @@
-function ApplyColorScheme(color)
-  -- color = color or 'jellybeans-nvim'
-  color = color or 'codedark'
+function apply_color_scheme(color)
+  color = color or 'kanagawa'
 
   vim.cmd.colorscheme(color)
 
@@ -8,4 +7,4 @@ function ApplyColorScheme(color)
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "black" })
 end
 
-ApplyColorScheme()
+apply_color_scheme()
