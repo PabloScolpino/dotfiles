@@ -16,6 +16,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true       -- Never ever use tabs
 --vim.opt.cindent = true
 vim.opt.smartindent = true
+vim.opt.wrap = false
 
 -----[ Cursor line ]----------------------------------------------------------
 vim.opt.startofline = true
@@ -25,3 +26,7 @@ vim.opt.cursorline = true
 
 -----[ Line Numbers ]---------------------------------------------------------
 vim.opt.number = true
+
+-----[ Additional files]------------------------------------------------------
+vim.opt.swapfile = false
+vim.opt.backup = false

@@ -1,21 +1,11 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
+  --[ Packer can manage itself ]------------------------------------------------
   use('wbthomason/packer.nvim')
 
-  use({
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  })
-
-
-  ------------------------------------------------------------------------------
-  -- Code parsing and introspection
+  --[ Code parsing and introspection ]------------------------------------------
   use({
     'nvim-treesitter/nvim-treesitter',
     {
@@ -24,40 +14,46 @@ return require('packer').startup(function(use)
   })
   -- use 'nvim-treesitter/playground'
 
---   use({
---     'VonHeikemen/lsp-zero.nvim',
---     branch = 'v2.x',
---     requires = {
---       -- LSP Support
---       {'neovim/nvim-lspconfig'},             -- Required
---       {                                      -- Optional
---       'williamboman/mason.nvim',
---       run = function()
---         pcall(vim.cmd, 'MasonUpdate')
---       end,
---     },
---     {'williamboman/mason-lspconfig.nvim'}, -- Optional
--- 
---     -- Autocompletion
---     {'hrsh7th/nvim-cmp'},     -- Required
---     {'hrsh7th/cmp-nvim-lsp'}, -- Required
---     {'L3MON4D3/LuaSnip'},     -- Required
---   }
--- })
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    requires = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},             -- Required
+      {                                      -- Optional
+        'williamboman/mason.nvim',
+        run = function() pcall(vim.cmd, 'MasonUpdate') end,
+      },
+      {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-  ------------------------------------------------------------------------------
-  -- Code manipulation
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},     -- Required
+      {'hrsh7th/cmp-nvim-lsp'}, -- Required
+      {'L3MON4D3/LuaSnip'},     -- Required
+    }
+  }
+
+  --[ Code manipulation ]-------------------------------------------------------
   use('echasnovski/mini.comment')
   use('sbdchd/neoformat')
+  use('tpope/vim-abolish')
 
-  ------------------------------------------------------------------------------
-  -- GIT
+  --[ Git ]---------------------------------------------------------------------
   use('tpope/vim-fugitive')
   use('airblade/vim-gitgutter')
   use('f-person/git-blame.nvim')
 
-  ------------------------------------------------------------------------------
-  -- Testing
+  --[ GitHub ]------------------------------------------------------------------
+  use {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+  }
+
+  --[ Testing ]-----------------------------------------------------------------
   use({
     "nvim-neotest/neotest",
     requires = {
@@ -68,29 +64,30 @@ return require('packer').startup(function(use)
     },
   })
 
-  ------------------------------------------------------------------------------
-  -- File management
-
-  ------------------------------------------------------------------------------
-  -- Buffer management
+  --[ Buffer management ]-------------------------------------------------------
+  use({
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  })
   use('ThePrimeagen/harpoon')
 
-  ------------------------------------------------------------------------------
-  -- Undo history
+  --[ Undo history ]------------------------------------------------------------
   use('mbbill/undotree')
 
-  ------------------------------------------------------------------------------
-  -- UI Improvements
+  --[ UI Improvements ]---------------------------------------------------------
   use('lukas-reineke/indent-blankline.nvim')
-  use({
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  })
+
+  -- use({
+  --   'nvim-lualine/lualine.nvim',
+  --   requires = { { 'nvim-tree/nvim-web-devicons', opt = true } }
+  -- })
+  use('bling/vim-airline')
+  use('vim-airline/vim-airline-themes')
+
   use('ryanoasis/vim-devicons')
+  use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
 
-
-  ------------------------------------------------------------------------------
-  -- Colors
+  --[ Colors ]------------------------------------------------------------------
   use({
     'metalelf0/jellybeans-nvim',
     as = 'jellybeans-nvim',
