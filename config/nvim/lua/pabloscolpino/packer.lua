@@ -8,9 +8,7 @@ return require('packer').startup(function(use)
   --[ Code parsing and introspection ]------------------------------------------
   use({
     'nvim-treesitter/nvim-treesitter',
-    {
-      run = ':TSUpdate'
-    }
+    run = ':TSUpdate'
   })
   -- use 'nvim-treesitter/playground'
 
@@ -38,6 +36,7 @@ return require('packer').startup(function(use)
   use('echasnovski/mini.comment')
   use('sbdchd/neoformat')
   use('tpope/vim-abolish')
+  use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
 
   --[ Markdown preview ]--------------------------------------------------------
   use({
@@ -75,6 +74,12 @@ return require('packer').startup(function(use)
       "olimorris/neotest-rspec",
     },
   })
+
+  --[ Containers ]--------------------------------------------------------------
+  use {
+    'https://codeberg.org/esensar/nvim-dev-container',
+    requires = { 'nvim-treesitter/nvim-treesitter' }
+  }
 
   --[ Buffer management ]-------------------------------------------------------
   use({
