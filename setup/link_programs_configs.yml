@@ -7,4 +7,5 @@
   loop:
     - alacritty
     - i3
+    - nvim
     - yamllint
