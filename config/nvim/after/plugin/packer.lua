@@ -1,2 +1,1 @@
-vim.keymap.set("n", "<Leader>ps", vim.cmd.PackerSync)
-
+vim.keymap.set("n", "<Leader>vps", vim.cmd.PackerSync)

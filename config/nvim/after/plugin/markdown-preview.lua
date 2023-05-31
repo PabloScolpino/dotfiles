@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<Leader>pm", ":MarkdownPreview<CR>")
+vim.keymap.set("n", "<Leader>mp", ":MarkdownPreview<CR>")
