@@ -18,3 +18,7 @@ vim.keymap.set("v", "<C-V>", "v")
 --noremap <silent> <Leader>N :set relativenumber!<CR>
 --noremap <silent> <Leader>c :set number<CR>:GitGutterSignsEnable<CR>
 --noremap <silent> <Leader>C :set norelativenumber<CR>:set nonumber<CR>:GitGutterSignsDisable<CR>:SyntasticToggleMode<CR>
+
+-----[ Line Numbers ]---------------------------------------------------------
+vim.keymap.set("n", "<Leader>p", vim.cmd.bprevious)
+vim.keymap.set("n", "<Leader>n", vim.cmd.bnext)
