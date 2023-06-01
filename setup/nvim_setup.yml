@@ -1,13 +1,8 @@
 ---
-- name: Creates Packer start directory
-  file:
-    path: "${HOME}/.config/nvim/pack/packer/start"
-    state: directory
-
-- name: Clones packer into it
+- name: Clone packer
   ansible.builtin.git:
     repo: https://github.com/wbthomason/packer.nvim
-    dest: "${HOME}/.config/nvim/pack/packer/start/packer.nvim"
+    dest: "${HOME}/.local/share/nvim/site/pack/packer/start/packer.nvim"
     recursive: true
     force: true
     depth: 1
