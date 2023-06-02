@@ -32,11 +32,11 @@ return require('packer').startup(function(use)
   })
 
   --[ Code manipulation ]-------------------------------------------------------
+  use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
   use('dense-analysis/ale')
   use('echasnovski/mini.comment')
   use('sbdchd/neoformat')
   use('tpope/vim-abolish')
-  use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
 
   --[ Markdown preview ]--------------------------------------------------------
   use({
@@ -86,7 +86,8 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { {'nvim-lua/plenary.nvim'} }
   })
-  use('ThePrimeagen/harpoon')
+  use('toppair/reach.nvim')
+  -- use('ThePrimeagen/harpoon')
 
   --[ Undo history ]------------------------------------------------------------
   use('mbbill/undotree')
