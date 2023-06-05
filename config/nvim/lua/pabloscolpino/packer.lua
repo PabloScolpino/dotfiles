@@ -35,7 +35,6 @@ return require('packer').startup(function(use)
   use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
   use('dense-analysis/ale')
   use('echasnovski/mini.comment')
-  use('sbdchd/neoformat')
   use('tpope/vim-abolish')
 
   --[ Markdown preview ]--------------------------------------------------------
