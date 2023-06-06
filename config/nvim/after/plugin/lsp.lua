@@ -3,22 +3,18 @@ lsp.preset("recommended")
 
 ------------------------------------------------------------------
 -- Servers installed
-------------------------------------------------------------------
 lsp.ensure_installed({
   "clangd",
   "dockerls",
   "eslint",
   "lua_ls",
-  "pyright",
   "solargraph",
   "tsserver",
 })
 
-
 ------------------------------------------------------------------
 -- Key Bindings
-------------------------------------------------------------------
-lsp.on_attach(function(client, bufnr)
+lsp.on_attach(function(_, bufnr)
   local opts  = {buffer = bufnr, remap = false}
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.hover() end, opts)
@@ -28,11 +24,10 @@ end)
 local cmp = require('cmp')
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      -- Add any custom snippet support here
-    end,
-  },
+  -- snippet = {
+  --   expand = function(_)
+  --   end,
+  -- },
   mapping = {
     -- Configure the desired key mappings for completion navigation
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -41,19 +36,12 @@ cmp.setup({
     ['<Tab>'] = cmp.mapping.select_next_item(),
     ['<S-Tab>'] = cmp.mapping.select_prev_item(),
   },
-  sources = {
-    -- Add additional sources as needed
-    { name = 'nvim_lsp' },
-  },
+  -- sources = {
+  --   -- Add additional sources as needed
+  --   { name = 'nvim_lsp' },
+  -- },
 })
 
 ------------------------------------------------------------------
--- The following configuration enables any directory to be able
--- to use LSP, otherwise it only works in .git projects
-------------------------------------------------------------------
-local function determine_root_dir()
-    -- Use the current directory as the root directory
-    return vim.fn.getcwd()
-end
-
-local nvim_lsp = require('lspconfig')
+-- Finish plugin setup
+lsp.setup()
