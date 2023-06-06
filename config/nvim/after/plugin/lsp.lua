@@ -19,7 +19,10 @@ lsp.on_attach(function(_, bufnr)
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "<C-h>", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<C-/>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("n", "<C-f>", function() vim.lsp.buf.format() end, opts)
 end)
+
+lsp.setup()
 
 local cmp = require('cmp')
 
@@ -41,7 +44,3 @@ cmp.setup({
   --   { name = 'nvim_lsp' },
   -- },
 })
-
-------------------------------------------------------------------
--- Finish plugin setup
-lsp.setup()

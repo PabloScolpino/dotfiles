@@ -73,6 +73,9 @@ return require('packer').startup(function(use)
     },
   })
 
+  --[ Competitive programming ]-------------------------------------------------
+  use('xeluxee/competitest.nvim')
+
   --[ Containers ]--------------------------------------------------------------
   use {
     'https://codeberg.org/esensar/nvim-dev-container',
