@@ -19,15 +19,14 @@ return require('packer').startup(function(use)
       -- LSP Support
       { 'neovim/nvim-lspconfig' }, -- Required
       {
-                                 -- Optional
-        'williamboman/mason.nvim',
+        'williamboman/mason.nvim', -- Optional
         run = function() pcall(vim.cmd, 'MasonUpdate') end,
       },
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },                -- Required
-      { 'hrsh7th/cmp-nvim-lsp' },            -- Required
-      { 'L3MON4D3/LuaSnip' },                -- Required
+      { 'hrsh7th/nvim-cmp' },                  -- Required
+      { 'hrsh7th/cmp-nvim-lsp' },              -- Required
+      { 'L3MON4D3/LuaSnip' },                  -- Required
     }
   })
 
@@ -74,7 +73,10 @@ return require('packer').startup(function(use)
   })
 
   --[ Competitive programming ]-------------------------------------------------
-  use('xeluxee/competitest.nvim')
+  use({
+    'xeluxee/competitest.nvim',
+    requires = { 'MunifTanjim/nui.nvim' }
+  })
 
   --[ Containers ]--------------------------------------------------------------
   use {

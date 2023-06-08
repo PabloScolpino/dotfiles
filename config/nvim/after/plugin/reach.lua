@@ -1,6 +1,6 @@
 local reach = require('reach')
 reach.setup({
-  handle = 'bufnr',              -- 'bufnr' or 'dynamic' or 'auto'
+  handle = 'bufnr', -- 'bufnr' or 'dynamic' or 'auto'
   notifications = true,
 })
 
