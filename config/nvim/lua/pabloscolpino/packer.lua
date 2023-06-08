@@ -11,6 +11,7 @@ return require('packer').startup(function(use)
   })
   -- use 'nvim-treesitter/playground'
 
+  ------------------------------------------------------------------------------
   --[ LSP ]---------------------------------------------------------------------
   use({
     'VonHeikemen/lsp-zero.nvim',
@@ -31,20 +32,17 @@ return require('packer').startup(function(use)
   })
 
   --[ Code manipulation ]-------------------------------------------------------
-  use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
+  use('bronson/vim-trailing-whitespace')     -- Highlight trailing whitespaces
   use('echasnovski/mini.comment')
+  use('lukas-reineke/indent-blankline.nvim') -- Blank lines
   use('tpope/vim-abolish')
 
-  --[ Markdown preview ]--------------------------------------------------------
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
 
   --[ Git ]---------------------------------------------------------------------
   use('tpope/vim-fugitive')
   use('airblade/vim-gitgutter')
   -- use('f-person/git-blame.nvim')
+  use("ahmedkhalf/project.nvim") --Project management
 
   --[ GitHub ]------------------------------------------------------------------
   use({
@@ -56,12 +54,9 @@ return require('packer').startup(function(use)
     },
   })
 
-  --[ Project management ]------------------------------------------------------
-  use({
-    "ahmedkhalf/project.nvim",
-  })
-
-  --[ Testing ]-----------------------------------------------------------------
+  ------------------------------------------------------------------------------
+  --[ Code execution ]----------------------------------------------------------
+  ----[ Testing ]---------------------------------------------------------------
   use({
     "nvim-neotest/neotest",
     requires = {
@@ -72,40 +67,48 @@ return require('packer').startup(function(use)
     },
   })
 
-  --[ Competitive programming ]-------------------------------------------------
+  ----[ Competitive programming ]-----------------------------------------------
   use({
     'xeluxee/competitest.nvim',
     requires = { 'MunifTanjim/nui.nvim' }
   })
 
-  --[ Containers ]--------------------------------------------------------------
-  use {
+  ------------------------------------------------------------------------------
+  --[ Interface behavior ]------------------------------------------------------
+  use('mbbill/undotree') -- Undo history
+  use({
+    'nvim-orgmode/orgmode',
+    requires = { 'nvim-treesitter/nvim-treesitter' }
+  })
+  -- use({
+  --   'nvim-orgmode/orgmode',
+  --   config = function()
+  --     require('orgmode').setup({})
+  --   end
+  -- })
+  use('akinsho/org-bullets.nvim')
+  -- use({
+  --   'akinsho/org-bullets.nvim',
+  --   config = function()
+  --     require('org-bullets').setup()
+  --   end
+  -- })
+
+  ----[ Containers ]------------------------------------------------------------
+  use({
     'https://codeberg.org/esensar/nvim-dev-container',
     requires = { 'nvim-treesitter/nvim-treesitter' }
-  }
+  })
 
-  --[ Buffer management ]-------------------------------------------------------
+  ----[ Buffer management ]-----------------------------------------------------
   use({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.1',
     requires = { { 'nvim-lua/plenary.nvim' } }
   })
   use('toppair/reach.nvim')
-  -- use('ThePrimeagen/harpoon')
 
-  --[ Undo history ]------------------------------------------------------------
-  use('mbbill/undotree')
-
-  --[ Blank lines ]-------------------------------------------------------------
-  use('lukas-reineke/indent-blankline.nvim')
-
-  --[ Airline ]-----------------------------------------------------------------
-  use({
-    'bling/vim-airline',
-    requires = { 'vim-airline/vim-airline-themes' }
-  })
-
-  --[ Code folding ]------------------------------------------------------------
+  ----[ Code folding ]----------------------------------------------------------
   use({
     'kevinhwang91/nvim-ufo',
     requires = {
@@ -114,7 +117,21 @@ return require('packer').startup(function(use)
     }
   })
 
-  --[ Colors ]------------------------------------------------------------------
+  ----[ Markdown preview ]------------------------------------------------------
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
+
+  ------------------------------------------------------------------------------
+  --[ Interface appearence ]----------------------------------------------------
+  ----[ Airline ]---------------------------------------------------------------
+  use({
+    'bling/vim-airline',
+    requires = { 'vim-airline/vim-airline-themes' }
+  })
+
+  ----[ Colors ]----------------------------------------------------------------
   use({
     'metalelf0/jellybeans-nvim',
     as = 'jellybeans-nvim',
