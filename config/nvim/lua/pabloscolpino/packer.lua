@@ -25,9 +25,12 @@ return require('packer').startup(function(use)
       },
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },                  -- Required
-      { 'hrsh7th/cmp-nvim-lsp' },              -- Required
       { 'L3MON4D3/LuaSnip' },                  -- Required
+      { 'SirVer/ultisnips' },
+      { 'quangnguyen30192/cmp-nvim-ultisnips' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-nvim-lsp' },              -- Required
+      { 'hrsh7th/nvim-cmp' },                  -- Required
     }
   })
 
@@ -36,7 +39,6 @@ return require('packer').startup(function(use)
   use('echasnovski/mini.comment')
   use('lukas-reineke/indent-blankline.nvim') -- Blank lines
   use('tpope/vim-abolish')
-
 
   --[ Git ]---------------------------------------------------------------------
   use('tpope/vim-fugitive')
