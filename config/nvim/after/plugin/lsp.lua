@@ -43,6 +43,7 @@ cmp.setup({
   },
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'cmp_tabnine' },
     { name = 'ultisnips' },
     { name = 'buffer' },
   },

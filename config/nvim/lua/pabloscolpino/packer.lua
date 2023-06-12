@@ -29,8 +29,13 @@ return require('packer').startup(function(use)
       { 'SirVer/ultisnips' },
       { 'quangnguyen30192/cmp-nvim-ultisnips' },
       { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-nvim-lsp' },              -- Required
-      { 'hrsh7th/nvim-cmp' },                  -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'hrsh7th/nvim-cmp' },     -- Required
+      {
+        'tzachar/cmp-tabnine',
+        run = './install.sh',
+        requires = 'hrsh7th/nvim-cmp'
+      },
     }
   })
 
