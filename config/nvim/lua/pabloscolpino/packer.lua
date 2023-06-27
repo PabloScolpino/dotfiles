@@ -44,6 +44,11 @@ return require('packer').startup(function(use)
   use('echasnovski/mini.comment')
   use('lukas-reineke/indent-blankline.nvim') -- Blank lines
   use('tpope/vim-abolish')
+  -- use({
+  --   "danymat/neogen",
+  --   requires = { "nvim-treesitter/nvim-treesitter" },
+  -- })
+
 
   --[ Git ]---------------------------------------------------------------------
   use('tpope/vim-fugitive')
@@ -132,11 +137,11 @@ return require('packer').startup(function(use)
 
   ------------------------------------------------------------------------------
   --[ Interface appearence ]----------------------------------------------------
+  ----[ Bufferline ]---------------------------------------------------------------
+  use({ 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' })
+
   ----[ Airline ]---------------------------------------------------------------
-  use({
-    'bling/vim-airline',
-    requires = { 'vim-airline/vim-airline-themes' }
-  })
+  use({ 'bling/vim-airline', requires = { 'vim-airline/vim-airline-themes' } })
 
   ----[ Colors ]----------------------------------------------------------------
   use({
