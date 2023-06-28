@@ -38,6 +38,11 @@ end
 lspconfig.solargraph.setup({
   cmd = solargraph_command()
 })
+------------------------------------------------------------------
+-- fix lsp-lua for neovim config files
+lspconfig.lua_ls.setup({
+  diagnostics = { globals = { "vim" } }
+})
 
 ------------------------------------------------------------------
 -- Completion sources
