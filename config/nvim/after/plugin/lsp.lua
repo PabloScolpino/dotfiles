@@ -1,20 +1,20 @@
-local lsp = require('lsp-zero')
-lsp.preset('recommended')
+local lsp_zero = require('lsp-zero')
+lsp_zero.preset('recommended')
 
 ------------------------------------------------------------------
 -- Servers installed
-lsp.ensure_installed({
+lsp_zero.ensure_installed({
   'clangd',
   'dockerls',
   'eslint',
   'lua_ls',
-  'solargraph',
+  -- 'solargraph',
   'tsserver',
 })
 
 ------------------------------------------------------------------
 -- Key Bindings
-lsp.on_attach(function(_, bufnr)
+lsp_zero.on_attach(function(_, bufnr)
   local opts = { buffer = bufnr, remap = false }
   vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set('n', '<C-h>', function() vim.lsp.buf.hover() end, opts)
@@ -22,10 +22,26 @@ lsp.on_attach(function(_, bufnr)
   vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format() end, opts)
 end)
 
-lsp.setup()
+lsp_zero.setup()
 
+------------------------------------------------------------------
+local lspconfig = require('lspconfig')
+
+local function solargraph_command()
+  -- TODO: detect project structure and generate different commands
+  --   * normal docker compose
+  --   * monorepo type docker compose
+  --   * run solargraph bare-metal
+  return { 'docker', 'compose', 'run', '--rm', 'web', 'bundle', 'exec', 'solargraph', 'stdio' }
+end
+
+lspconfig.solargraph.setup({
+  cmd = solargraph_command()
+})
+
+------------------------------------------------------------------
+-- Completion sources
 local cmp = require('cmp')
-
 cmp.setup({
   snippet = {
     expand = function(args)
