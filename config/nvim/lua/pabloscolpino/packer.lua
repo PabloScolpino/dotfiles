@@ -40,11 +40,13 @@ return require('packer').startup(function(use)
   })
 
   --[ Code manipulation ]-------------------------------------------------------
-  use('bronson/vim-trailing-whitespace')     -- Highlight trailing whitespaces
+  use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
   use('echasnovski/mini.align')
   use('echasnovski/mini.comment')
   use('lukas-reineke/indent-blankline.nvim') -- Blank lines
   use('tpope/vim-abolish')
+  use('chochkov/vim-rspec-focus')
+
   -- use({
   --   "danymat/neogen",
   --   requires = { "nvim-treesitter/nvim-treesitter" },
@@ -122,13 +124,13 @@ return require('packer').startup(function(use)
   use('toppair/reach.nvim')
 
   ----[ Code folding ]----------------------------------------------------------
-  use({
-    'kevinhwang91/nvim-ufo',
-    requires = {
-      'kevinhwang91/promise-async',
-      'ryanoasis/vim-devicons'
-    }
-  })
+  -- use({
+  --   'kevinhwang91/nvim-ufo',
+  --   requires = {
+  --     'kevinhwang91/promise-async',
+  --     'ryanoasis/vim-devicons'
+  --   }
+  -- })
 
   ----[ Markdown preview ]------------------------------------------------------
   use({
