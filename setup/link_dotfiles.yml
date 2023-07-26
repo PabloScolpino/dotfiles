@@ -1,5 +1,5 @@
 ---
-- name: Link configuration files
+- name: Link dotfiles
   ansible.builtin.file:
     src: "${HOME}/.dotfiles/{{ item }}"
     dest: "${HOME}/{{ item }}"
@@ -11,5 +11,3 @@
     - .gitignore_global
     - .inputrc
     - .vimrc
-    - .config/alacritty
-    - .config/i3

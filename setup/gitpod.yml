@@ -2,11 +2,11 @@
 - name: Dotfiles setup for gitpod
   hosts: all
   tasks:
-    - name: Symlinks are present
-      import_tasks: symlinks_present.yml
-
     - name: Packages are present
       import_tasks: packages_present.yml
 
     - name: Terminal Setup
       import_tasks: terminal_setup.yml
+
+    - name: Configure programs
+      import_tasks: link_dotfiles.yml
