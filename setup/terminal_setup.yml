@@ -1,8 +1,8 @@
 ---
-- name: Configure programs
+- name: Link dotfiles
   import_tasks: link_dotfiles.yml
 
-- name: Configure programs
+- name: Link programs config
   import_tasks: link_programs_configs.yml
 
 - name: Configure zsh
