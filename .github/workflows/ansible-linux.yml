@@ -68,12 +68,11 @@ jobs:
 
       - name: Test the playbook.
         run: ./setup.sh
-        working-directory: "../../../.dotfiles/setup"
+        working-directory: "../../../.dotfiles"
         env:
           ANSIBLE_FORCE_COLOR: '1'
 
       - name: Check home
-        working-directory: "../../../.dotfiles/setup"
         run: |
           ls -la $HOME
           ls -la $HOME/.config
