@@ -57,23 +57,23 @@ jobs:
           mv $repo_dir ~/.dotfiles
 
       - name: Install test dependencies.
-        working-directory: "$HOME/.dotfiles"
+        working-directory: "../../../.dotfiles"
         run: |
           sudo apt-get install -y --no-install-recommends python3-setuptools python3-pip python3-wheel
           sudo pip3 install ansible
 
       - name: Test the playbook's syntax.
         run: ansible-playbook gitpod.yml --syntax-check
-        working-directory: "$HOME/.dotfiles/setup"
+        working-directory: "../../../.dotfiles/setup"
 
       - name: Test the playbook.
         run: ./setup.sh
-        working-directory: "$HOME/.dotfiles"
+        working-directory: "../../../.dotfiles/setup"
         env:
           ANSIBLE_FORCE_COLOR: '1'
 
       - name: Check home
-        working-directory: "$HOME/.dotfiles"
+        working-directory: "../../../.dotfiles/setup"
         run: |
           ls -la $HOME
           ls -la $HOME/.config
