@@ -8,6 +8,9 @@
   when: ansible_facts['user_shell'] == '/bin/bash'
 
 - name: Configure programs
+  import_tasks: link_dotfiles.yml
+
+- name: Configure programs
   import_tasks: link_programs_configs.yml
 
 - name: Setup vim

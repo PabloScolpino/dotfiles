@@ -10,4 +10,4 @@
     dest: "${HOME}/.vim/autoload/plug.vim"
 
 - name: Install vim plugins using Plug
-  ansible.builtin.command: vim +PlugInstall +qall
+  ansible.builtin.command: vim -c 'PlugInstall | qa'

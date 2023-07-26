@@ -7,10 +7,3 @@
     dotfiles_repo_version: master
     dotfiles_repo_local_destination: "~/.dotfiles"
     dotfiles_home: "~"
-    dotfiles_files:
-      - .UltiSnips
-      - .editrc
-      - .gemrc
-      - .gitignore_global
-      - .inputrc
-      - .vimrc

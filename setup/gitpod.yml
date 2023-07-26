@@ -7,6 +7,3 @@
 
     - name: Terminal Setup
       import_tasks: terminal_setup.yml
-
-    - name: Configure programs
-      import_tasks: link_dotfiles.yml
