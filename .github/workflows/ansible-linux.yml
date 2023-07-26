@@ -49,6 +49,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          path: "$HOME/.dotfiles"
 
       - name: Install test dependencies.
         run: |
@@ -57,13 +59,13 @@ jobs:
 
       - name: Test the playbook's syntax.
         run: ansible-playbook gitpod.yml --syntax-check
-        working-directory: setup
+        working-directory: "$HOME/.dotfiles/setup"
 
       - name: Test the playbook.
-        run: ansible-playbook gitpod.yml -i inventory
+        run: setup.sh
         env:
           ANSIBLE_FORCE_COLOR: '1'
-        working-directory: setup
+        working-directory: "$HOME/.dotfiles/setup"
 
       - name: Check home
         run: |
