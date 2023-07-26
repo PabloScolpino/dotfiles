@@ -50,6 +50,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Move repository to home dir
+        run: |
+          repo_dir=$(pwd)
+          cd ..
+          mv $repo_dir ~/.dotfiles
+
       - name: Install test dependencies.
         run: |
           sudo apt-get install -y --no-install-recommends python3-setuptools python3-pip python3-wheel
@@ -57,10 +63,11 @@ jobs:
 
       - name: Test the playbook's syntax.
         run: ansible-playbook gitpod.yml --syntax-check
-        working-directory: "setup"
+        working-directory: "$HOME/.dotfiles/setup"
 
       - name: Test the playbook.
         run: ./setup.sh
+        working-directory: "$HOME/.dotfiles"
         env:
           ANSIBLE_FORCE_COLOR: '1'
 
