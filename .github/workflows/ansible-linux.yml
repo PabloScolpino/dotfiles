@@ -60,10 +60,9 @@ jobs:
         working-directory: "setup"
 
       - name: Test the playbook.
-        run: setup.sh
+        run: ./setup.sh
         env:
           ANSIBLE_FORCE_COLOR: '1'
-        working-directory: "setup"
 
       - name: Check home
         run: |
