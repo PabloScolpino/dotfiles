@@ -57,6 +57,7 @@ jobs:
           mv $repo_dir ~/.dotfiles
 
       - name: Install test dependencies.
+        working-directory: "$HOME/.dotfiles"
         run: |
           sudo apt-get install -y --no-install-recommends python3-setuptools python3-pip python3-wheel
           sudo pip3 install ansible
@@ -72,6 +73,7 @@ jobs:
           ANSIBLE_FORCE_COLOR: '1'
 
       - name: Check home
+        working-directory: "$HOME/.dotfiles"
         run: |
           ls -la $HOME
           ls -la $HOME/.config
