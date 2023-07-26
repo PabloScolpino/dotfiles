@@ -1,4 +1,10 @@
 ---
+- name: Configure programs
+  import_tasks: link_dotfiles.yml
+
+- name: Configure programs
+  import_tasks: link_programs_configs.yml
+
 - name: Configure zsh
   import_tasks: zsh_setup.yml
   when: ansible_facts['user_shell'] == '/bin/zsh'
@@ -6,12 +12,6 @@
 - name: Configure bash
   import_tasks: bash_setup.yml
   when: ansible_facts['user_shell'] == '/bin/bash'
-
-- name: Configure programs
-  import_tasks: link_dotfiles.yml
-
-- name: Configure programs
-  import_tasks: link_programs_configs.yml
 
 - name: Setup vim
   import_tasks: vim_setup.yml
