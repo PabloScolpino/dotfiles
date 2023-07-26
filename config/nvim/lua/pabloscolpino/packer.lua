@@ -47,10 +47,11 @@ return require('packer').startup(function(use)
   use('tpope/vim-abolish')
   use('chochkov/vim-rspec-focus')
 
-  -- use({
-  --   "danymat/neogen",
-  --   requires = { "nvim-treesitter/nvim-treesitter" },
-  -- })
+  use({
+    'chipsenkbeil/distant.nvim',
+    branch = 'v0.3',
+  })
+
 
 
   --[ Git ]---------------------------------------------------------------------
