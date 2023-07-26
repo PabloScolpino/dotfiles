@@ -49,12 +49,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          path: 'temp_path'
 
       - name: Move repository to home dir
         run: |
-          repo_dir=$(pwd)
-          cd ..
-          mv $repo_dir ~/.dotfiles
+          mv temp_path ~/.dotfiles
 
       - name: Install test dependencies.
         working-directory: "../../../.dotfiles"
