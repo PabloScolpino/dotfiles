@@ -239,8 +239,6 @@ if has('python') || has('python3')
 endif
 "<<<<<<<<<<<<[ Snippets ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-"============[ Documentation ]================================================
-Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 ">>>>>>>>>>>>[ Validation & lining ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Plug 'prettier/vim-prettier'
@@ -355,7 +353,10 @@ let g:jellybeans_overrides = {'background': { 'ctermbg': 'none', '256ctermbg': '
 if has('termguicolors') && &termguicolors
   let g:jellybeans_overrides['background']['guibg'] = 'none'
 endif
-colorscheme jellybeans
+
+if filereadable(expand("~/.vim/plugged/jellybeans.vim/colors/jellybeans.vim"))
+  colorscheme jellybeans
+endif
 
 "====[ Include extra configurations ]=========================================
 for f in split(glob('~/.vim/extra/*.vim'), '\n')
