@@ -209,7 +209,7 @@ Plug 'tpope/vim-abolish'    " crs fooBar -> foo_bar, MixedCase (crm),
                             " camelCase (crc), snake_case (crs), UPPER_CASE (cru),
                             " dash-case (cr-), dot.case (cr.), space case (cr<space>)
 ">>>>>>>>>>>>[ Autocompletion ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 ">>>>>>>>>>>>>>>>[ Tabnine ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 " if !has('nvim') && v:version > 740 && (has('python') || has('python3'))
@@ -225,12 +225,7 @@ Plug 'github/copilot.vim'
 "   Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
 " endif
 "<<<<<<<<<<<<<<<<[ Tabnine ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
 "<<<<<<<<<<<<[ Autocompletion ]<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-if has('python') || has('python3')
-  Plug 'CoderCookE/vim-chatgpt'
-  let g:chat_gpt_max_tokens=2000
-endif
 
 ">>>>>>>>>>>>[ Snippets ]>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if has('python') || has('python3')
