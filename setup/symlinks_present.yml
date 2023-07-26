@@ -1,0 +1,15 @@
+---
+- name: Link configuration files
+  ansible.builtin.file:
+    src: "${HOME}/.dotfiles/{{ item }}"
+    dest: "${HOME}/{{ item }}"
+    state: link
+  loop:
+    - .UltiSnips
+    - .editrc
+    - .gemrc
+    - .gitignore_global
+    - .inputrc
+    - .vimrc
+    - .config/alacritty
+    - .config/i3
