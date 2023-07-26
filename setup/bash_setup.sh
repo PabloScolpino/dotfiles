@@ -6,4 +6,4 @@ cd ${dotfiles}
 
 git submodule init && git submodule update
 
-echo ". \${dotfiles}/config/source_this.bash" >> $HOME/.bashrc
+echo ". ${dotfiles}/config/source_this.bash" >> $HOME/.bashrc

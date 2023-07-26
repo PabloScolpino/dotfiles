@@ -2,7 +2,6 @@
 
 # https://github.com/sorin-ionescu/prezto
 
-# TODO: check if running zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${HOME}/.zprezto"
 
 setopt EXTENDED_GLOB
