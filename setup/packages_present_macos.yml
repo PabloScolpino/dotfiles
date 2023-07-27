@@ -23,10 +23,30 @@
     - kubectx
     - macvim
     - mosh
-    - nvim
     - pgcli
     - prettier
     - rbenv
     - the_silver_searcher
     - watch
     - yamllint
+
+- name: Ensure $HOME/bin exists
+  ansible.builtin.file:
+    path: "${HOME}/bin"
+    state: directory
+
+- name: Download nvim tarfile
+  get_url:
+    url: https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+    dest: "/tmp/nvim-macos.tar.gz"
+
+- name: Extract nvim tarfile
+  ansible.builtin.unarchive:
+    src: "/tmp/nvim-macos.tar.gz"
+    dest: "${HOME}/bin"
+
+- name: Link binary
+  ansible.builtin.file:
+    src: "${HOME}/bin/nvim-macos/bin/nvim"
+    dest: "${HOME}/bin/nvim"
+    state: link
