@@ -8,7 +8,11 @@ Useful to verify the github actions setup, but does not cover all cases
 ## with `build_and_run.sh`
 more granular control than with act (which only uses root)
 
-    build_and_run.sh
+    ./test.sh
 
     # or better with
-    rerun -p "{build_and_run.sh|Dockerfile|shell_install.sh|ansible_install.sh}" build_and_run.sh
+    rerun -p "{test.sh|Dockerfile|shell_install.sh|ansible_linux_install.sh|ansible_gitpod_install.sh}" ./test.sh
+
+## Manual
+
+    ./terminal.sh

@@ -40,11 +40,7 @@ This is my own terminal profile configuration, here to make it easier to have a 
 
     curl https://raw.githubusercontent.com/PabloScolpino/dotfiles/master/setup/terminal_setup.sh | bash
 
-## [broken] Using [Mac Dev Playbook](https://github.com/geerlingguy/mac-dev-playbook)
-
-1. follow the instructions of **mac dev playbook** up to (and before) executing the install playbook
-1. copy the `setup/mac_dev_playbook_config.yml` into the clone repository above
-1. continue with **mac dev playbook**'s instructions
+# [Testing & development](test/README.md)
 
 # Binding Cheatsheet
 

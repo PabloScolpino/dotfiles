@@ -1,4 +1,10 @@
 ---
+- name: Ensure $HOME/.config exists
+  ansible.builtin.file:
+    path: "$HOME/.config"
+    state: directory
+    mode: 0755
+
 - name: Link programs config
   ansible.builtin.file:
     src: "${HOME}/.dotfiles/config/{{ item }}"

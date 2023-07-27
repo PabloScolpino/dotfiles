@@ -1,0 +1,49 @@
+---
+- name: Update package cache [Linux]
+  become: true
+  tags: always
+  apt:
+    update_cache: true
+  changed_when: false
+
+- name: Packages present [Linux]
+  become: true
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    # - dive # only available as .deb file
+    # - git-delta # only available as .deb file
+    - asciidoctor
+    - fonts-powerline
+    - git
+    - htop
+    - httpie
+    - mosh
+    - pgcli
+    - rbenv
+    - silversearcher-ag
+    - vim-nox
+    - watch
+    - yamllint
+
+- name: Ensure $HOME/bin exists
+  ansible.builtin.file:
+    path: "${HOME}/bin"
+    state: directory
+
+- name: Download nvim tarfile
+  get_url:
+    url: https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    dest: "/tmp/nvim-linux64.tar.gz"
+
+- name: Extract nvim tarfile
+  ansible.builtin.unarchive:
+    src: "/tmp/nvim-linux64.tar.gz"
+    dest: "${HOME}/bin"
+
+- name: Link binary
+  ansible.builtin.file:
+    src: "${HOME}/bin/nvim-linux64/bin/nvim"
+    dest: "${HOME}/bin/nvim"
+    state: link

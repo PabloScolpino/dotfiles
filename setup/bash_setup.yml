@@ -3,3 +3,13 @@
   lineinfile:
     path: "${HOME}/.bashrc"
     line: ". ${HOME}/.dotfiles/config/source_this.bash"
+
+- name: bash-git-prompt init
+  ansible.builtin.command: git submodule init
+  args:
+    chdir: "${HOME}/.dotfiles"
+
+- name: bash-git-prompt update
+  ansible.builtin.command: git submodule update
+  args:
+    chdir: "${HOME}/.dotfiles"

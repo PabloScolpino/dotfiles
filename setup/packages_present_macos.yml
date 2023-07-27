@@ -1,0 +1,32 @@
+---
+- name: Update package cache [MacOS]
+  tags: always
+  ansible.builtin.command: brew update
+  changed_when: false
+
+- name: packages present [MacOS]
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - asciidoctor
+    - bpytop
+    - dive
+    - docutils
+    - exa
+    - fzf
+    - git
+    - git-delta
+    - htop
+    - httpie
+    - k9s
+    - kubectx
+    - macvim
+    - mosh
+    - nvim
+    - pgcli
+    - prettier
+    - rbenv
+    - the_silver_searcher
+    - watch
+    - yamllint

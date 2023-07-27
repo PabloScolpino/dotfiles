@@ -1,64 +1,8 @@
 ---
-- name: Update Package Cache [Linux]
-  become: true
-  tags: always
-  apt:
-    update_cache: true
-  changed_when: false
+- name: Packages are present [Linux]
+  import_tasks: packages_present_linux.yml
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: Update Package Cache [Linux]
-  tags: always
-  ansible.builtin.command: brew update
-  changed_when: false
-  when: ansible_distribution == 'MacOSX'
-
-- name: packages present [Linux]
-  become: true
-  ansible.builtin.package:
-    name: "{{ item }}"
-    state: present
-  loop:
-    # - dive # only available as .deb file
-    # - git-delta # only available as .deb file
-    - asciidoctor
-    - fonts-powerline
-    - git
-    - htop
-    - httpie
-    - mosh
-    - pgcli
-    - rbenv
-    - silversearcher-ag
-    - vim-nox
-    - watch
-    - yamllint
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-
-- name: packages present [macos]
-  ansible.builtin.package:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - asciidoctor
-    - bpytop
-    - dive
-    - docutils
-    - exa
-    - fzf
-    - git
-    - git-delta
-    - htop
-    - httpie
-    - k9s
-    - kubectx
-    - macvim
-    - mosh
-    - nvim
-    - pgcli
-    - prettier
-    - rbenv
-    - the_silver_searcher
-    - watch
-    - yamllint
+- name: Packages are present [MacOSX]
+  import_tasks: packages_present_macos.yml
   when: ansible_distribution == 'MacOSX'

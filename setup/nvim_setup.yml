@@ -6,3 +6,6 @@
     recursive: true
     force: true
     depth: 1
+
+- name: Install nvim plugins using Packer
+  ansible.builtin.command: $HOME/bin/nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
