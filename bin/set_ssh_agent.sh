@@ -1,6 +1,6 @@
 ssh_agent_dir="$HOME/.ssh/agent-environment"
 
-if [ ! -f $HOME/.ssh ];then
+if [ ! -d $HOME/.ssh ];then
   mkdir $HOME/.ssh
   chmod 700 $HOME/.ssh
 fi
