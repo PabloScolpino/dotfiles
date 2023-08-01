@@ -5,5 +5,7 @@ eval "$(rbenv init -)"
 if [ "$platform" = 'Darwin' ]; then
   . $(brew --prefix asdf)/libexec/asdf.sh
 else
-  . "$HOME/.asdf/asdf.sh"
+  if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
+    . "$HOME/.asdf/asdf.sh"
+  fi
 fi
