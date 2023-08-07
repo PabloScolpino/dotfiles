@@ -1,0 +1,9 @@
+---
+- name: Download lazydocker install script
+  get_url:
+    url: https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh
+    dest: "/tmp/lazydocker_install.sh"
+    mode: '0700'
+
+- name: Run the lazydocker install script through bash
+  command: bash /tmp/lazydocker_install.sh
