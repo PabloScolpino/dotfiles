@@ -6,4 +6,4 @@ sudo apt-get install -y --no-install-recommends python3-setuptools python3-pip p
 sudo pip3 install ansible
 
 current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-ansible-playbook $current_dir/setup/gitpod.yml -i $current_dir/setup/inventory
+ansible-playbook $current_dir/setup/gitpod.yml -i $current_dir/setup/inventory & disown
