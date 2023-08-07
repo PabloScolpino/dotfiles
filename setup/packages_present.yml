@@ -6,3 +6,6 @@
 - name: Packages are present [MacOSX]
   import_tasks: packages_present_macos.yml
   when: ansible_distribution == 'MacOSX'
+
+- name: Install lazydocker [Linux/OSX/Windows]
+  ansible.builtin.command: curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
