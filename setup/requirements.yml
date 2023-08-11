@@ -1,2 +1,6 @@
 ---
-- geerlingguy.dotfiles
+collections:
+  - community.general
+
+roles:
+  - geerlingguy.dotfiles
