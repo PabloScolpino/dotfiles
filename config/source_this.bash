@@ -7,6 +7,7 @@ CONFIG=$HOME/.dotfiles/config
 . $CONFIG/env.sh
 . $CONFIG/git.sh
 . $CONFIG/ruby.sh
+. $CONFIG/gitpod.sh
 . $CONFIG/node.sh
 [ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
 
