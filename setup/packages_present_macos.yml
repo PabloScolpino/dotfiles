@@ -5,7 +5,7 @@
   changed_when: false
 
 - name: packages present [MacOS]
-  ansible.builtin.package:
+  community.general.homebrew:
     name: "{{ item }}"
     state: present
   loop:
@@ -32,7 +32,7 @@
 
 - name: Ensure $HOME/bin exists
   ansible.builtin.file:
-    path: "${HOME}/bin"
+    path: "{{ ansible_env.HOME }}/bin"
     state: directory
 
 - name: Download nvim tarfile
@@ -41,12 +41,11 @@
     dest: "/tmp/nvim-macos.tar.gz"
 
 - name: Extract nvim tarfile
-  ansible.builtin.unarchive:
-    src: "/tmp/nvim-macos.tar.gz"
-    dest: "${HOME}/bin"
+  command:
+    cmd: tar -xzf /tmp/nvim-macos.tar.gz -C "{{ ansible_env.HOME }}/bin"
 
 - name: Link binary
   ansible.builtin.file:
-    src: "${HOME}/bin/nvim-macos/bin/nvim"
-    dest: "${HOME}/bin/nvim"
+    src: "{{ ansible_env.HOME }}/bin/nvim-macos/bin/nvim"
+    dest: "{{ ansible_env.HOME }}/bin/nvim"
     state: link
