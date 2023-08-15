@@ -9,3 +9,6 @@
 
 - name: Lazydocker present
   import_tasks: lazydocker_present.yml
+
+- name: asdf present
+  import_tasks: asdf_present.yml
