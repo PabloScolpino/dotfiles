@@ -43,7 +43,7 @@ return require('packer').startup(function(use)
   use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
   use('echasnovski/mini.align')
   use('echasnovski/mini.comment')
-  use('lukas-reineke/indent-blankline.nvim') -- Blank lines
+  use('lukas-reineke/indent-blankline.nvim')
   use('tpope/vim-abolish')
   use('chochkov/vim-rspec-focus')
 
