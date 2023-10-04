@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ex
+
 echo "This is intended to be run by gitpod preconfigurator"
 
 pip install ansible
