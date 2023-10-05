@@ -1,5 +1,8 @@
 ---
 - name: Dotfiles setup for gitpod
+  vars:
+    ansible_python_interpreter: /home/gitpod/.pyenv/shims/python
+
   hosts: all
   tasks:
     - name: Packages are present
