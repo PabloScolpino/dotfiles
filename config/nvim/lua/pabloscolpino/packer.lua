@@ -39,6 +39,12 @@ return require('packer').startup(function(use)
     }
   })
 
+  use({
+    "zbirenbaum/copilot-cmp",
+    requires = { "zbirenbaum/copilot.lua" },
+    after = { "copilot.lua" },
+  })
+
   --[ Code manipulation ]-------------------------------------------------------
   use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
   use('echasnovski/mini.align')
