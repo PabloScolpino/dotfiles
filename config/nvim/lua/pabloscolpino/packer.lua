@@ -4,6 +4,14 @@ return require('packer').startup(function(use)
   --[ Packer can manage itself ]------------------------------------------------
   use('wbthomason/packer.nvim')
 
+  ----[ Buffer management ]-----------------------------------------------------
+  use({
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.3',
+    requires = { { 'nvim-lua/plenary.nvim' } }
+  })
+  use('toppair/reach.nvim')
+
   --[ Code parsing and introspection ]------------------------------------------
   use({
     'nvim-treesitter/nvim-treesitter',
@@ -122,13 +130,6 @@ return require('packer').startup(function(use)
     requires = { 'nvim-treesitter/nvim-treesitter' }
   })
 
-  ----[ Buffer management ]-----------------------------------------------------
-  use({
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  })
-  use('toppair/reach.nvim')
 
   ----[ Code folding ]----------------------------------------------------------
   -- use({

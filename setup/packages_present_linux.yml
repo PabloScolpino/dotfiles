@@ -26,6 +26,7 @@
     - vim-nox
     - watch
     - yamllint
+    - fd-find
 
 - name: Ensure $HOME/bin exists
   ansible.builtin.file:

@@ -29,6 +29,7 @@
     - the_silver_searcher
     - watch
     - yamllint
+    - fd
 
 - name: Ensure $HOME/bin exists
   ansible.builtin.file:
