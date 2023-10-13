@@ -1,10 +1,13 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
+  ------------------------------------------------------------------------------
   --[ Packer can manage itself ]------------------------------------------------
   use('wbthomason/packer.nvim')
 
-  ----[ Buffer management ]-----------------------------------------------------
+
+  ------------------------------------------------------------------------------
+  --[ Buffer management ]-------------------------------------------------------
   use({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.3',
@@ -12,12 +15,15 @@ return require('packer').startup(function(use)
   })
   use('toppair/reach.nvim')
 
+
+  ------------------------------------------------------------------------------
   --[ Code parsing and introspection ]------------------------------------------
   use({
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
   })
   -- use 'nvim-treesitter/playground'
+
 
   ------------------------------------------------------------------------------
   --[ LSP ]---------------------------------------------------------------------
@@ -53,6 +59,7 @@ return require('packer').startup(function(use)
     after = { "copilot.lua" },
   })
 
+  ------------------------------------------------------------------------------
   --[ Code manipulation ]-------------------------------------------------------
   use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
   use('echasnovski/mini.align')
@@ -67,13 +74,15 @@ return require('packer').startup(function(use)
   })
 
 
-
+  ------------------------------------------------------------------------------
   --[ Git ]---------------------------------------------------------------------
   use('tpope/vim-fugitive')
   use('airblade/vim-gitgutter')
   -- use('f-person/git-blame.nvim')
   use("ahmedkhalf/project.nvim") --Project management
 
+
+  ------------------------------------------------------------------------------
   --[ GitHub ]------------------------------------------------------------------
   use({
     'pwntester/octo.nvim',
@@ -83,6 +92,7 @@ return require('packer').startup(function(use)
       'nvim-tree/nvim-web-devicons',
     },
   })
+
 
   ------------------------------------------------------------------------------
   --[ Code execution ]----------------------------------------------------------
@@ -102,6 +112,7 @@ return require('packer').startup(function(use)
     'xeluxee/competitest.nvim',
     requires = { 'MunifTanjim/nui.nvim' }
   })
+
 
   ------------------------------------------------------------------------------
   --[ Interface behavior ]------------------------------------------------------
@@ -146,8 +157,12 @@ return require('packer').startup(function(use)
     run = function() vim.fn["mkdp#util#install"]() end,
   })
 
+
   ------------------------------------------------------------------------------
   --[ Interface appearence ]----------------------------------------------------
+  ----[ Syntax Highlighting ]---------------------------------------------------
+  use('towolf/vim-helm')
+
   ----[ Bufferline ]---------------------------------------------------------------
   use({ 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' })
 
