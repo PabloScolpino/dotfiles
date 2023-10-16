@@ -54,9 +54,9 @@ return require('packer').startup(function(use)
   })
 
   use({
-    "zbirenbaum/copilot-cmp",
-    requires = { "zbirenbaum/copilot.lua" },
-    after = { "copilot.lua" },
+    'zbirenbaum/copilot-cmp',
+    requires = { 'zbirenbaum/copilot.lua' },
+    after = { 'copilot.lua' },
   })
 
   ------------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return require('packer').startup(function(use)
   use('tpope/vim-fugitive')
   use('airblade/vim-gitgutter')
   -- use('f-person/git-blame.nvim')
-  use("ahmedkhalf/project.nvim") --Project management
+  use('ahmedkhalf/project.nvim') --Project management
 
 
   ------------------------------------------------------------------------------
@@ -98,13 +98,20 @@ return require('packer').startup(function(use)
   --[ Code execution ]----------------------------------------------------------
   ----[ Testing ]---------------------------------------------------------------
   use({
-    "nvim-neotest/neotest",
+    'nvim-neotest/neotest',
     requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-      "olimorris/neotest-rspec",
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'antoinemadec/FixCursorHold.nvim',
+      'olimorris/neotest-rspec',
     },
+  })
+
+  use({
+    'nvim-lua/plenary.nvim',
+    requires = {
+      'andythigpen/nvim-coverage'
+    }
   })
 
   ----[ Competitive programming ]-----------------------------------------------
@@ -153,8 +160,8 @@ return require('packer').startup(function(use)
 
   ----[ Markdown preview ]------------------------------------------------------
   use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    'iamcco/markdown-preview.nvim',
+    run = function() vim.fn['mkdp#util#install']() end,
   })
 
 
@@ -164,7 +171,7 @@ return require('packer').startup(function(use)
   use('towolf/vim-helm')
 
   ----[ Bufferline ]---------------------------------------------------------------
-  use({ 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' })
+  use({ 'akinsho/bufferline.nvim', tag = '*', requires = 'nvim-tree/nvim-web-devicons' })
 
   ----[ Airline ]---------------------------------------------------------------
   use({ 'bling/vim-airline', requires = { 'vim-airline/vim-airline-themes' } })
@@ -177,5 +184,5 @@ return require('packer').startup(function(use)
   })
   use('liuchengxu/space-vim-dark')
   use('tomasiser/vim-code-dark')
-  use("rebelot/kanagawa.nvim")
+  use('rebelot/kanagawa.nvim')
 end)
