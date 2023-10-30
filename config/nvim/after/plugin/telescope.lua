@@ -6,14 +6,14 @@ telescope.setup(
       layout_strategy = "horizontal",
       layout_config = {
         horizontal = {
-          prompt_position = "top",
+          prompt_position = "bottom",
           preview_width = 0.75,
-          results_width = 0.95,
+          results_width = 0.25,
         },
         vertical = {
           mirror = false,
         },
-        width = 0.9,
+        width = 0.99,
         height = 0.89,
         preview_cutoff = 120,
       },
