@@ -25,11 +25,11 @@
     - mosh
     - pgcli
     - prettier
-    - rbenv
     - the_silver_searcher
     - watch
     - yamllint
     - fd
+    - rg
 
 - name: Ensure $HOME/bin exists
   ansible.builtin.file:

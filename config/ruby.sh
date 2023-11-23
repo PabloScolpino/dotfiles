@@ -1,14 +1,10 @@
 export RUBY_CONFIGURE_OPTS=--disable-install-doc
 
-eval "$(rbenv init -)"
+if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
+  . "$HOME/.asdf/asdf.sh"
+fi
 
-if [ "$platform" = 'Darwin' ]; then
-  . $(brew --prefix asdf)/libexec/asdf.sh
-else
-  if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
-    . "$HOME/.asdf/asdf.sh"
-  fi
-
+if [ "$platform" != 'Darwin' ]; then
   if [[ -n $(which rvm) ]];then
     # rm -f $HOME/.rvmrc
     gems_path=$(rvm info homes | grep 'gem:' | cut -d ':' -f 2 | sed 's/\s//g' | sed 's/"//g')
