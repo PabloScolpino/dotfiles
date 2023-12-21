@@ -21,6 +21,7 @@
     - httpie
     - mosh
     - pgcli
+    - mycli
     - rbenv
     - silversearcher-ag
     - vim-nox

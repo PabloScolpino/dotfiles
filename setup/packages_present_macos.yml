@@ -24,6 +24,7 @@
     - macvim
     - mosh
     - pgcli
+    - mycli
     - prettier
     - the_silver_searcher
     - watch
@@ -38,7 +39,7 @@
 
 - name: Download nvim tarfile
   get_url:
-    url: https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+    url: https://github.com/neovim/neovim/releases/download/stable/nvim-macos.tar.gz
     dest: "/tmp/nvim-macos.tar.gz"
 
 - name: Extract nvim tarfile
