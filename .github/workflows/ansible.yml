@@ -35,7 +35,10 @@ jobs:
 
       - name: "[macos] Install ansible"
         if: matrix.os == 'macos-latest'
-        run: brew install ansible
+        run: |
+          brew update
+          brew upgrade
+          brew install ansible
 
       - name: "[linux] Install test dependencies"
         if: matrix.os != 'macos-latest'
