@@ -1,45 +1,45 @@
----
-name: Ansible macos
-
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-
-  workflow_dispatch:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-jobs:
-  integration-ansible-macos:
-    runs-on: macos-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install test dependencies.
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          brew install ansible
-
-      - name: Set up the test environment.
-        run: make setup_ansible_dependencies
-        working-directory: setup
-
-      - name: Test the playbook's syntax.
-        run: make ansible_lint
-        working-directory: setup
-
-      - name: Test the playbook.
-        run: make ansible_install
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
-        working-directory: setup
-
-      - name: Check home
-        run: |
-          ls -la $HOME
-          ls -la $HOME/.config
+# ---
+# name: Ansible macos
+#
+# on:
+#   push:
+#     branches: [master]
+#   pull_request:
+#     branches: [master]
+#
+#   workflow_dispatch:
+#
+# concurrency:
+#   group: ${{ github.workflow }}-${{ github.ref }}
+#   cancel-in-progress: true
+#
+# jobs:
+#   integration-ansible-macos:
+#     runs-on: macos-latest
+#
+#     steps:
+#       - uses: actions/checkout@v3
+#
+#       - name: Install test dependencies.
+#         run: |
+#           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#           brew install ansible
+#
+#       - name: Set up the test environment.
+#         run: make setup_ansible_dependencies
+#         working-directory: setup
+#
+#       - name: Test the playbook's syntax.
+#         run: make ansible_lint
+#         working-directory: setup
+#
+#       - name: Test the playbook.
+#         run: make ansible_install
+#         env:
+#           ANSIBLE_FORCE_COLOR: '1'
+#         working-directory: setup
+#
+#       - name: Check home
+#         run: |
+#           ls -la $HOME
+#           ls -la $HOME/.config

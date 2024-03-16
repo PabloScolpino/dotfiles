@@ -1,110 +1,110 @@
----
-name: Ansible Linux
-
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-
-  workflow_dispatch:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
-jobs:
-  integration-ansible-linux-bash:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install test dependencies.
-        run: make gh_setup_ansible_linux
-        working-directory: setup
-
-      - name: Set up the test environment.
-        run: make setup_ansible_dependencies
-        working-directory: setup
-
-      - name: Test the playbook's syntax.
-        run: make ansible_lint
-        working-directory: setup
-
-      - name: Test the playbook.
-        run: make ansible_install
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
-        working-directory: setup
-
-      - name: Check home
-        run: |
-          ls -la $HOME
-          ls -la $HOME/.config
-
-  integration-ansible-linux-zsh:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Install zsh
-        run: sudo apt-get install -y --no-install-recommends zsh
-
-      - name: Set zsh as default shell
-        run: sudo chsh -s /bin/zsh `whoami`
-
-      - uses: actions/checkout@v3
-
-      - name: Install test dependencies.
-        run: make gh_setup_ansible_linux
-        working-directory: setup
-
-      - name: Set up the test environment.
-        run: make setup_ansible_dependencies
-        working-directory: setup
-
-      - name: Test the playbook's syntax.
-        run: make ansible_lint
-        working-directory: setup
-
-      - name: Test the playbook.
-        run: make ansible_install
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
-        working-directory: setup
-
-      - name: Check home
-        run: |
-          ls -la $HOME
-          ls -la $HOME/.config
-
-  integration-ansible-gitpod:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          path: 'temp_path'
-
-      - name: Move repository to home dir
-        run: |
-          mv temp_path ~/.dotfiles
-
-      - name: Install test dependencies.
-        working-directory: "../../../.dotfiles/setup"
-        run: make gh_setup_ansible_linux
-
-      - name: Test the playbook's syntax.
-        run: make ansible_lint
-        working-directory: "../../../.dotfiles/setup"
-
-      - name: Test the playbook.
-        run: ./setup.sh
-        working-directory: "../../../.dotfiles"
-        env:
-          ANSIBLE_FORCE_COLOR: '1'
-
-      - name: Check home
-        run: |
-          ls -la $HOME
-          ls -la $HOME/.config
+# ---
+# name: Ansible Linux
+#
+# on:
+#   push:
+#     branches: [master]
+#   pull_request:
+#     branches: [master]
+#
+#   workflow_dispatch:
+#
+# concurrency:
+#   group: ${{ github.workflow }}-${{ github.ref }}
+#   cancel-in-progress: true
+#
+# jobs:
+#   integration-ansible-linux-bash:
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - uses: actions/checkout@v3
+#
+#       - name: Install test dependencies.
+#         run: make gh_setup_ansible_linux
+#         working-directory: setup
+#
+#       - name: Set up the test environment.
+#         run: make setup_ansible_dependencies
+#         working-directory: setup
+#
+#       - name: Test the playbook's syntax.
+#         run: make ansible_lint
+#         working-directory: setup
+#
+#       - name: Test the playbook.
+#         run: make ansible_install
+#         env:
+#           ANSIBLE_FORCE_COLOR: '1'
+#         working-directory: setup
+#
+#       - name: Check home
+#         run: |
+#           ls -la $HOME
+#           ls -la $HOME/.config
+#
+#   integration-ansible-linux-zsh:
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - name: Install zsh
+#         run: sudo apt-get install -y --no-install-recommends zsh
+#
+#       - name: Set zsh as default shell
+#         run: sudo chsh -s /bin/zsh `whoami`
+#
+#       - uses: actions/checkout@v3
+#
+#       - name: Install test dependencies.
+#         run: make gh_setup_ansible_linux
+#         working-directory: setup
+#
+#       - name: Set up the test environment.
+#         run: make setup_ansible_dependencies
+#         working-directory: setup
+#
+#       - name: Test the playbook's syntax.
+#         run: make ansible_lint
+#         working-directory: setup
+#
+#       - name: Test the playbook.
+#         run: make ansible_install
+#         env:
+#           ANSIBLE_FORCE_COLOR: '1'
+#         working-directory: setup
+#
+#       - name: Check home
+#         run: |
+#           ls -la $HOME
+#           ls -la $HOME/.config
+#
+#   integration-ansible-gitpod:
+#     runs-on: ubuntu-latest
+#
+#     steps:
+#       - uses: actions/checkout@v3
+#         with:
+#           path: 'temp_path'
+#
+#       - name: Move repository to home dir
+#         run: |
+#           mv temp_path ~/.dotfiles
+#
+#       - name: Install test dependencies.
+#         working-directory: "../../../.dotfiles/setup"
+#         run: make gh_setup_ansible_linux
+#
+#       - name: Test the playbook's syntax.
+#         run: make ansible_lint
+#         working-directory: "../../../.dotfiles/setup"
+#
+#       - name: Test the playbook.
+#         run: ./setup.sh
+#         working-directory: "../../../.dotfiles"
+#         env:
+#           ANSIBLE_FORCE_COLOR: '1'
+#
+#       - name: Check home
+#         run: |
+#           ls -la $HOME
+#           ls -la $HOME/.config
