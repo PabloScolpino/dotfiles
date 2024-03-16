@@ -10,9 +10,5 @@ ansible_lint: ## Lint ansible playbooks
 setup_ansible_dependencies: ## Install ansible dependencies
 	ansible-galaxy install -r requirements.yml
 
-gh_setup_ansible_linux:
-	sudo apt-get install -y --no-install-recommends python3-setuptools python3-pip python3-wheel
-	sudo pip3 install ansible
-
 ansible_install: setup_ansible_dependencies ## Install ansible roles and run playbooks
 	ansible-playbook main.yml -i inventory
