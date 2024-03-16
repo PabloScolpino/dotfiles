@@ -4,7 +4,7 @@
     name: "{{ item }}"
     state: present
   loop:
-    - python3-pip"
+    - python3-pip
 
 - name: Clone packer
   ansible.builtin.git:
