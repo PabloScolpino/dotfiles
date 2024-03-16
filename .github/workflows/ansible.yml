@@ -16,8 +16,14 @@ concurrency:
 jobs:
   integration-ansible:
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-22.04, ubuntu-20.04, macos-latest]
+        os: [ubuntu-20.04, ubuntu-22.04, macos-latest]
+        shell: [bash, zsh]
+        exclude:
+          - os: macos-latest
+            shell: bash # Exclude bash for macOS
+
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -37,6 +43,12 @@ jobs:
           sudo apt-get install -y --no-install-recommends python3-setuptools python3-pip python3-wheel
           sudo pip3 install ansible
         working-directory: setup
+
+      - name: "[linux][zsh] install and configure zsh"
+        if: matrix.os != 'macos-latest' && matrix.shell == 'zsh'
+        run: |
+          sudo apt-get install -y --no-install-recommends zsh
+          sudo chsh -s /bin/zsh `whoami`
 
       - name: Set up the test environment.
         run: make setup_ansible_dependencies
