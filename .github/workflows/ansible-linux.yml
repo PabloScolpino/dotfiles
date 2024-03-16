@@ -19,24 +19,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        path: '../../../.dotfiles'
 
       - name: Install test dependencies.
         run: make gh_setup_ansible_linux
-        working-directory: setup
+        working-directory: '~/.dotfiles/setup'
 
       - name: Set up the test environment.
         run: make setup_dependencies
-        working-directory: setup
+        working-directory: '~/.dotfiles/setup'
 
       - name: Test the playbook's syntax.
         run: make lint
-        working-directory: setup
+        working-directory: '~/.dotfiles/setup'
 
       - name: Test the playbook.
         run: make install
         env:
           ANSIBLE_FORCE_COLOR: '1'
-        working-directory: setup
+        working-directory: '~/.dotfiles/setup'
 
       - name: Check home
         run: |
