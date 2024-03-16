@@ -1,5 +1,6 @@
 ---
 - name: Install nvim python dependencies
+  become: true
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
