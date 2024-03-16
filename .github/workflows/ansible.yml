@@ -1,0 +1,54 @@
+---
+name: Ansible
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  integration-ansible:
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-20.04, macos-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install macos dependencies.
+        if: {{ matrix.os == 'macos-latest' }}
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install ansible
+
+      - name: Install linux test dependencies.
+        if: {{ matrix.os != 'macos-latest' }}
+        run: make gh_setup_ansible_linux
+        working-directory: setup
+
+      - name: Set up the test environment.
+        run: make setup_ansible_dependencies
+        working-directory: setup
+
+      - name: Test the playbook's syntax.
+        run: make ansible_lint
+        working-directory: setup
+
+      - name: Test the playbook.
+        run: make ansible_install
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+        working-directory: setup
+
+      - name: Check home
+        run: |
+          ls -la $HOME
+          ls -la $HOME/.config
