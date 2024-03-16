@@ -22,6 +22,7 @@ jobs:
 
       - name: Install test dependencies.
         run: make gh_setup_ansible
+        working-directory: setup
 
       - name: Set up the test environment.
         run: make setup_dependencies
@@ -55,7 +56,7 @@ jobs:
           mv temp_path ~/.dotfiles
 
       - name: Install test dependencies.
-        working-directory: "../../../.dotfiles"
+        working-directory: "../../../.dotfiles/setup"
         run: make gh_setup_ansible
 
       - name: Test the playbook's syntax.
