@@ -26,15 +26,15 @@ jobs:
           sudo pip3 install ansible
 
       - name: Set up the test environment.
-        run: ansible-galaxy install -r requirements.yml
+        run: make setup_dependencies
         working-directory: setup
 
       - name: Test the playbook's syntax.
-        run: ansible-playbook main.yml --syntax-check
+        run: make lint
         working-directory: setup
 
       - name: Test the playbook.
-        run: ansible-playbook main.yml -i inventory
+        run: make install
         env:
           ANSIBLE_FORCE_COLOR: '1'
         working-directory: setup
