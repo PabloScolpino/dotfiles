@@ -1,6 +1,8 @@
 ---
 - name: Dotfiles setup
+
   hosts: all
+
   vars:
     dotfiles_path: "{{ playbook_dir }}/../"
 
