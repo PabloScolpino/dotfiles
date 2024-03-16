@@ -23,15 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install macos dependencies.
-        if: matrix.os == 'macos-latest'
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          brew install ansible
-
-      - name: Install linux test dependencies.
-        if: matrix.os != 'macos-latest'
-        run: make gh_setup_ansible_linux
+      - name: Install test dependencies.
+        run: make gh_setup_ansible
         working-directory: setup
 
       - name: Set up the test environment.
