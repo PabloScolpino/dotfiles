@@ -19,7 +19,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        path: '../../../.dotfiles'
+        with:
+          path: '../../../.dotfiles'
 
       - name: Install test dependencies.
         run: make gh_setup_ansible_linux
