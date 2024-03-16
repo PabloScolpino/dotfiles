@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install test dependencies.
-        run: make gh_setup_ansible
+        run: make gh_setup_ansible_linux
         working-directory: setup
 
       - name: Set up the test environment.
@@ -57,7 +57,7 @@ jobs:
 
       - name: Install test dependencies.
         working-directory: "../../../.dotfiles/setup"
-        run: make gh_setup_ansible
+        run: make gh_setup_ansible_linux
 
       - name: Test the playbook's syntax.
         run: ansible-playbook gitpod.yml --syntax-check
