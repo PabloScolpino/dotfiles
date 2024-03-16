@@ -1,4 +1,12 @@
 ---
+- name: Install nvim python dependencies
+  become: true
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - python3-pip
+
 - name: Clone packer
   ansible.builtin.git:
     repo: https://github.com/wbthomason/packer.nvim

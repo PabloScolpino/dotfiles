@@ -14,7 +14,7 @@ RUN apt-get update -qq \
   && rm -Rf /usr/share/man \
   && apt-get clean
 
-RUN addgitpod user
+RUN adduser user
 RUN echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/user
 USER user
 

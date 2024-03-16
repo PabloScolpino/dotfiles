@@ -1,10 +1,12 @@
 ---
 - name: Dotfiles setup
-  hosts: all
-  tasks:
-    - name: Dotfiles are present
-      import_tasks: dotfiles_present.yml
 
+  hosts: all
+
+  vars:
+    dotfiles_path: "{{ playbook_dir }}/.."
+
+  tasks:
     - name: Packages are present
       import_tasks: packages_present.yml
 

@@ -1,7 +1,7 @@
 ---
 - name: Link dotfiles
   ansible.builtin.file:
-    src: "${HOME}/.dotfiles/{{ item }}"
+    src: "{{ dotfiles_path }}/{{ item }}"
     dest: "${HOME}/{{ item }}"
     state: link
   loop:
