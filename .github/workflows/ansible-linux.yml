@@ -25,15 +25,15 @@ jobs:
         working-directory: setup
 
       - name: Set up the test environment.
-        run: make setup_dependencies
+        run: make setup_ansible_dependencies
         working-directory: setup
 
       - name: Test the playbook's syntax.
-        run: make lint
+        run: make ansible_lint
         working-directory: setup
 
       - name: Test the playbook.
-        run: make install
+        run: make ansible_install
         env:
           ANSIBLE_FORCE_COLOR: '1'
         working-directory: setup
@@ -60,15 +60,15 @@ jobs:
         working-directory: setup
 
       - name: Set up the test environment.
-        run: make setup_dependencies
+        run: make setup_ansible_dependencies
         working-directory: setup
 
       - name: Test the playbook's syntax.
-        run: make lint
+        run: make ansible_lint
         working-directory: setup
 
       - name: Test the playbook.
-        run: make install
+        run: make ansible_install
         env:
           ANSIBLE_FORCE_COLOR: '1'
         working-directory: setup
@@ -95,7 +95,7 @@ jobs:
         run: make gh_setup_ansible_linux
 
       - name: Test the playbook's syntax.
-        run: ansible-playbook gitpod.yml --syntax-check
+        run: make ansible_lint
         working-directory: "../../../.dotfiles/setup"
 
       - name: Test the playbook.

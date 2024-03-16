@@ -26,15 +26,15 @@ jobs:
           brew install ansible
 
       - name: Set up the test environment.
-        run: make setup_dependencies
+        run: make setup_ansible_dependencies
         working-directory: setup
 
       - name: Test the playbook's syntax.
-        run: make lint
+        run: make ansible_lint
         working-directory: setup
 
       - name: Test the playbook.
-        run: make install
+        run: make ansible_install
         env:
           ANSIBLE_FORCE_COLOR: '1'
         working-directory: setup
