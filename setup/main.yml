@@ -4,7 +4,7 @@
   hosts: all
 
   vars:
-    dotfiles_path: "{{ playbook_dir }}/../"
+    dotfiles_path: "{{ playbook_dir }}/.."
 
   tasks:
     - name: Packages are present
