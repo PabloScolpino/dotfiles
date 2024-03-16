@@ -7,7 +7,7 @@
 
 - name: Link programs config
   ansible.builtin.file:
-    src: "{{ playbook_dir }}/../config/{{ item }}"
+    src: "{{ dotfiles_path }}/config/{{ item }}"
     dest: "${HOME}/.config/{{ item }}"
     state: link
   loop:
