@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y --no-install-recommends curl zsh
 
-      - name: Set default shell
+      - name: Set zsh as default shell
         run: sudo chsh -s /bin/zsh `whoami`
 
       - name: Run install script

@@ -14,10 +14,45 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  integration-ansible-linux:
+  integration-ansible-linux-bash:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
+
+      - name: Install test dependencies.
+        run: make gh_setup_ansible_linux
+        working-directory: setup
+
+      - name: Set up the test environment.
+        run: make setup_dependencies
+        working-directory: setup
+
+      - name: Test the playbook's syntax.
+        run: make lint
+        working-directory: setup
+
+      - name: Test the playbook.
+        run: make install
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
+        working-directory: setup
+
+      - name: Check home
+        run: |
+          ls -la $HOME
+          ls -la $HOME/.config
+
+  integration-ansible-linux-zsh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install zsh
+        run: sudo apt-get install -y --no-install-recommends zsh
+
+      - name: Set zsh as default shell
+        run: sudo chsh -s /bin/zsh `whoami`
+
       - uses: actions/checkout@v3
 
       - name: Install test dependencies.
