@@ -1,5 +1,4 @@
-[![Ansible Linux](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible-linux.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible-linux.yml)
-[![Ansible macos](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible-macos.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible-macos.yml)
+[![Ansible](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/ansible.yml)
 [![Bash](https://github.com/PabloScolpino/dotfiles/actions/workflows/bash.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/bash.yml)
 [![Zsh](https://github.com/PabloScolpino/dotfiles/actions/workflows/zsh.yml/badge.svg)](https://github.com/PabloScolpino/dotfiles/actions/workflows/zsh.yml)
 
