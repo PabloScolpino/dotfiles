@@ -23,6 +23,9 @@
       sudo apt-get update
       sudo apt-get install -y --no-install-recommends curl
     elif [ "$platform" == 'Darwin' ]; then
+      # Install brew
+      # [https://brew.sh](https://brew.sh)
+      # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       brew update
       brew install curl
     fi

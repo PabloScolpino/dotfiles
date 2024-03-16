@@ -15,4 +15,4 @@ more granular control than with act (which only uses root)
 
 ## Manual
 
-    ./terminal.sh
+    make test
