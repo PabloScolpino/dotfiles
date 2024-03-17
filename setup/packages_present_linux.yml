@@ -39,6 +39,7 @@
     - mycli
     - pgcli
     - rbenv
+    - ruby-dev
     - silversearcher-ag
     - unzip
     - vim-nox
