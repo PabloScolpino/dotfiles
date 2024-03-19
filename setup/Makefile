@@ -1,4 +1,4 @@
-.PHONY: all help setup
+.PHONY: all help ansible_lint setup_ansible_dependencies ansible_install
 all: help
 
 help:

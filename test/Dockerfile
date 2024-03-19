@@ -1,9 +1,9 @@
-ARG PACKAGES_BASE="sudo ca-certificates tzdata openssh-client"
+ARG PACKAGES_BASE="sudo ca-certificates tzdata openssh-client make"
 ARG PACKAGES_ANSIBLE_DEPENDENCIES="python3-setuptools python3-pip python3-wheel"
 
 ################################################################################
 # Plain Ubuntu base
-FROM ubuntu:18.04 as base
+FROM ubuntu:22.04 as base
 ARG PACKAGES_BASE
 ARG PACKAGES_ANSIBLE_DEPENDENCIES
 
@@ -36,7 +36,7 @@ RUN sudo apt-get update -qq \
   && sudo chsh -s /bin/bash `whoami`
 
 ################################################################################
-# Plain Ubuntu bash
+# Plain Ubuntu zsh
 FROM base as zsh
 RUN sudo apt-get update -qq \
   && sudo apt-get install -yy --no-install-recommends zsh \

@@ -29,6 +29,7 @@
     # - dive # only available as .deb file
     # - git-delta # only available as .deb file
     - asciidoctor
+    - curl
     - fd-find
     - fonts-powerline
     - gh
@@ -38,9 +39,8 @@
     - mosh
     - mycli
     - pgcli
-    - rbenv
-    - ruby-dev
     - silversearcher-ag
+    - tar
     - unzip
     - vim-nox
     - watch
