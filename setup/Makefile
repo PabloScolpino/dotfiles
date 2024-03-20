@@ -12,3 +12,6 @@ setup_ansible_dependencies: ## Install ansible dependencies
 
 ansible_install: setup_ansible_dependencies ## Install ansible roles and run playbooks
 	ansible-playbook main.yml -i inventory
+
+gitpod_install: setup_ansible_dependencies ## Install ansible roles and run playbooks for gitpod
+	ansible-playbook gitpod.yml -i inventory
