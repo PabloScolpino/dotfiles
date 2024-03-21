@@ -1,6 +1,5 @@
 ---
 - name: Dotfiles setup
-
   hosts: all
 
   vars:

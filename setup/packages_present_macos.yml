@@ -14,6 +14,7 @@
     - dive
     - docutils
     - exa
+    - fd
     - fzf
     - git
     - git-delta
@@ -23,14 +24,13 @@
     - kubectx
     - macvim
     - mosh
-    - pgcli
     - mycli
+    - pgcli
     - prettier
+    - rg
     - the_silver_searcher
     - watch
     - yamllint
-    - fd
-    - rg
 
 - name: Ensure $HOME/bin exists
   ansible.builtin.file:

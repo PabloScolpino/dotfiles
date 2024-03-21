@@ -39,6 +39,7 @@
     - mosh
     - mycli
     - pgcli
+    - python3-pip # for nvim
     - silversearcher-ag
     - tar
     - unzip
