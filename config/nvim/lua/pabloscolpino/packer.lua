@@ -62,10 +62,11 @@ return require('packer').startup(function(use)
   ------------------------------------------------------------------------------
   --[ Code manipulation ]-------------------------------------------------------
   use('bronson/vim-trailing-whitespace') -- Highlight trailing whitespaces
+  use('chochkov/vim-rspec-focus')
   use('echasnovski/mini.comment')
+  use('godlygeek/tabular')
   use('lukas-reineke/indent-blankline.nvim')
   use('tpope/vim-abolish')
-  use('chochkov/vim-rspec-focus')
 
   use({
     'chipsenkbeil/distant.nvim',
