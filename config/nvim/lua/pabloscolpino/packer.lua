@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
   --[ LSP ]---------------------------------------------------------------------
   use({
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     requires = {
       -- LSP Support
       { 'neovim/nvim-lspconfig' }, -- Required
@@ -53,11 +53,19 @@ return require('packer').startup(function(use)
     }
   })
 
-  use({
-    'zbirenbaum/copilot-cmp',
-    requires = { 'zbirenbaum/copilot.lua' },
-    after = { 'copilot.lua' },
-  })
+  -- use({
+  --   'mrjosh/helm-ls',
+  --   requires = {
+  --     'towolf/vim-helm'
+  --   }
+  -- })
+  use('towolf/vim-helm')
+
+  -- use({
+  --   'zbirenbaum/copilot-cmp',
+  --   requires = { 'zbirenbaum/copilot.lua' },
+  --   after = { 'copilot.lua' },
+  -- })
 
   ------------------------------------------------------------------------------
   --[ Code manipulation ]-------------------------------------------------------
@@ -66,32 +74,15 @@ return require('packer').startup(function(use)
   use('echasnovski/mini.comment')
   use('godlygeek/tabular')
   use('lukas-reineke/indent-blankline.nvim')
+  -- use('stevearc/conform.nvim')
   use('tpope/vim-abolish')
-
-  use({
-    'chipsenkbeil/distant.nvim',
-    branch = 'v0.3',
-  })
-
 
   ------------------------------------------------------------------------------
   --[ Git ]---------------------------------------------------------------------
   use('tpope/vim-fugitive')
   use('airblade/vim-gitgutter')
-  -- use('f-person/git-blame.nvim')
+  use('f-person/git-blame.nvim')
   use('ahmedkhalf/project.nvim') --Project management
-
-
-  ------------------------------------------------------------------------------
-  --[ GitHub ]------------------------------------------------------------------
-  use({
-    'pwntester/octo.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-  })
 
 
   ------------------------------------------------------------------------------
@@ -168,8 +159,6 @@ return require('packer').startup(function(use)
 
   ------------------------------------------------------------------------------
   --[ Interface appearence ]----------------------------------------------------
-  ----[ Syntax Highlighting ]---------------------------------------------------
-  use('towolf/vim-helm')
 
   ----[ Bufferline ]---------------------------------------------------------------
   use({ 'akinsho/bufferline.nvim', tag = '*', requires = 'nvim-tree/nvim-web-devicons' })

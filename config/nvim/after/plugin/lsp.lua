@@ -1,85 +1,94 @@
 local lsp_zero = require('lsp-zero')
-lsp_zero.preset('recommended')
+local lspconfig = require('lspconfig')
 
-------------------------------------------------------------------
--- Servers installed
-lsp_zero.ensure_installed({
-  'clangd',
-  'dockerls',
-  'eslint',
-  'lua_ls',
-  -- 'solargraph',
-  'tsserver',
-  'yamlls',
-})
+-- lsp_zero.preset('recommended')
 
 ------------------------------------------------------------------
 -- Key Bindings
 lsp_zero.on_attach(function(_, bufnr)
+  lsp_zero.default_keymaps({ buffer = bufnr })
   local opts = { buffer = bufnr, remap = false }
   vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set('n', '<C-h>', function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set('n', '<C-/>', function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format() end, opts)
+
+  -- vim.keymap.set('n', '<C-h>', function() vim.lsp.buf.hover() end, opts)
+  -- vim.keymap.set('n', '<C-/>', function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 lsp_zero.setup({})
 
-local lspconfig = require('lspconfig')
 ------------------------------------------------------------------
--- Run solargraph inside the project's container whenever possible
--- TODO: detect project structure and generate different commands
---   * normal docker compose
---   * monorepo type docker compose
---   * run solargraph bare-metal
--- local root_pattern = lspconfig.util.root_pattern('.git')
--- print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
--- print(root_pattern)
--- print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
--- lua local lspconfig = require('lspconfig'); local bufname = vim.api.nvim_buf_get_name(0); local filename = lspconfig.util.path.is_absolute(bufname) and bufname or lspconfig.util.path.join(vim.loop.cwd(), bufname); print(filename)
---
--- local function solargraph_normal_docker_compose()
---   return { 'docker', 'compose', 'run', '--rm', 'web', 'bundle', 'exec', 'solargraph', 'stdio' }
--- end
---
--- local function solargraph_command_monorepo()
---   local bufname = vim.api.nvim_buf_get_name(0) -- The name of the current buffer
---
---   local filename = lspconfig.util.path.is_absolute(bufname) and bufname or
---       lspconfig.util.path.join(vim.loop.cwd(), bufname) -- Turned into a filename
---
---   local project_dirname = root_pattern(filename) or
---       lspconfig.util.path.dirname(filename) -- Then the directory of the project
---   return {
---     'docker',
---     'compose',
---     'run',
---     '--rm',
---     'gem-builder',
---     'bash',
---     '-c',
---     '\"cd pbr && asdf install && gem install solargraph && bundle exec solargraph stdio\"'
---   }
--- end
---
--- local function solargraph_command()
---   return solargraph_normal_docker_compose()
--- end
-
-lspconfig.solargraph.setup({
-  -- cmd = solargraph_command()
-  cmd = { 'bundle', 'exec', 'solargraph', 'stdio' }
+-- Servers installed
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'clangd',
+    'dockerls',
+    'eslint',
+    'helm_ls',
+    'lua_ls',
+    'solargraph',
+    'tsserver',
+    'yamlls',
+  },
+  automatic_installation = true,
+  handlers = {
+    lsp_zero.default_setup,
+    lua_ls = function()
+      local lua_opts = lsp_zero.nvim_lua_ls()
+      lspconfig.lua_ls.setup(lua_opts)
+    end,
+    yamlls = function()
+      lspconfig.yamlls.setup({
+        filetypes = { "yaml", "yml" },
+        settings = {
+          yaml = {
+            format = {
+              enable = true,
+              formatter = 'yamlfmt',
+            },
+            validate = true,
+          },
+        },
+        on_attach = function(client, bufnr)
+          if client.server_capabilities.documentFormattingProvider then
+            vim.cmd(':MasonInstall yamlfmt<CR>')
+            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>z', '<cmd>lua vim.lsp.buf.format()<CR>',
+              { noremap = true, silent = true })
+          else
+            print("Formatting not supported by yamlls")
+          end
+        end
+      })
+    end,
+    -- solargraph = function()
+    --   require('lspconfig').solargraph.setup({
+    --     -- cmd = solargraph_command()
+    --     cmd = { 'bundle', 'exec', 'solargraph', 'stdio' }
+    --   })
+    -- end,
+  },
+  -- lsp_zero.buffer_autoformat()
 })
 
+
 ------------------------------------------------------------------
--- fix lsp-lua for neovim config files
--- lspconfig.lua_ls.setup({
---   diagnostics = { globals = { "vim" } }
--- })
+-- Completion sources
+lspconfig.solargraph.setup({
+  on_attach = function(client, bufnr)
+    lsp_zero.async_autoformat(client, bufnr)
+  end
+})
+lspconfig.yamlls.setup({
+  on_attach = function(client, bufnr)
+    lsp_zero.async_autoformat(client, bufnr)
+  end
+})
 
 ------------------------------------------------------------------
 -- Completion sources
 local cmp = require('cmp')
+-- local cmp_action = lsp_zero.cmp_action()
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -100,8 +109,9 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'cmp_tabnine' },
     { name = 'ultisnips' },
-    { name = 'buffer' },
+    { name = 'buffer',     keyword_length = 3 },
   },
+  formatting = lsp_zero.cmp_format({ details = true })
 })
 
 vim.g.UltiSnipsSnippetDirectories = { '~/.UltiSnips' }
