@@ -51,39 +51,30 @@ require('mason-lspconfig').setup({
           },
         },
         on_attach = function(client, bufnr)
-          if client.server_capabilities.documentFormattingProvider then
-            vim.cmd(':MasonInstall yamlfmt<CR>')
-            vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>z', '<cmd>lua vim.lsp.buf.format()<CR>',
-              { noremap = true, silent = true })
-          else
-            print("Formatting not supported by yamlls")
-          end
+          lsp_zero.async_autoformat(client, bufnr)
+          -- if client.server_capabilities.documentFormattingProvider then
+          --   vim.cmd(':MasonInstall yamlfmt<CR>')
+          --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>z', '<cmd>lua vim.lsp.buf.format()<CR>',
+          --     { noremap = true, silent = true })
+          -- else
+          --   print("Formatting not supported by yamlls")
+          -- end
         end
       })
     end,
-    -- solargraph = function()
-    --   require('lspconfig').solargraph.setup({
-    --     -- cmd = solargraph_command()
-    --     cmd = { 'bundle', 'exec', 'solargraph', 'stdio' }
-    --   })
-    -- end,
+    solargraph = function()
+      lspconfig.solargraph.setup({
+        -- cmd = solargraph_command()
+        cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
+        on_attach = function(client, bufnr)
+          lsp_zero.async_autoformat(client, bufnr)
+        end
+      })
+    end,
   },
   -- lsp_zero.buffer_autoformat()
 })
 
-
-------------------------------------------------------------------
--- Completion sources
-lspconfig.solargraph.setup({
-  on_attach = function(client, bufnr)
-    lsp_zero.async_autoformat(client, bufnr)
-  end
-})
-lspconfig.yamlls.setup({
-  on_attach = function(client, bufnr)
-    lsp_zero.async_autoformat(client, bufnr)
-  end
-})
 
 ------------------------------------------------------------------
 -- Completion sources
