@@ -33,5 +33,6 @@ vim.keymap.set('n', '<Leader>vo', builtin.vim_options, {})
 vim.keymap.set('n', '<Leader>vk', builtin.keymaps, { desc = 'List vim keymaps' })
 
 vim.keymap.set('n', '<Leader>gl', builtin.git_commits, { desc = 'Show git history with diffs' })
+vim.keymap.set('n', '<Leader>gs', builtin.git_stash, { desc = 'Show git stash' })
 vim.keymap.set('n', '<Leader>gbl', builtin.git_bcommits, { desc = 'Show git history with diffs for current buffer' })
 vim.keymap.set('n', '<Leader>bb', builtin.buffers, {})
