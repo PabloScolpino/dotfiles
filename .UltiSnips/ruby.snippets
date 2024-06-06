@@ -4,17 +4,17 @@ puts "#{__FILE__}:#{__LINE__}\t#{__method__}"
 endsnippet
 
 snippet dr "Poor man's debug for ruby" b
-puts ('-' * 80).red
+puts AmazingPrint::Colors.red('>' * 80)
 puts "#{__FILE__}:#{__LINE__}\t#{__method__}"
 endsnippet
 
 snippet dg "Poor man's debug for ruby" b
-puts ('-' * 80).green
+puts AmazingPrint::Colors.green('-' * 80)
 puts "#{__FILE__}:#{__LINE__}\t#{__method__}"
 endsnippet
 
 snippet db "Poor man's debug for ruby" b
-puts ('-' * 80).blue
+puts AmazingPrint::Colors.blue('-' * 80)
 puts "#{__FILE__}:#{__LINE__}\t#{__method__}"
 endsnippet
 
