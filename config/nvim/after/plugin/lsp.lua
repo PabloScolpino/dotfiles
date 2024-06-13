@@ -27,7 +27,7 @@ require('mason-lspconfig').setup({
     'eslint',
     'helm_ls',
     'lua_ls',
-    'solargraph',
+    'ruby_lsp',
     'tsserver',
     'yamlls',
   },
@@ -62,15 +62,17 @@ require('mason-lspconfig').setup({
         end
       })
     end,
-    solargraph = function()
-      lspconfig.solargraph.setup({
-        -- cmd = solargraph_command()
-        cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
-        on_attach = function(client, bufnr)
-          lsp_zero.async_autoformat(client, bufnr)
-        end
-      })
-    end,
+
+    -- solargraph = function()
+    --   lspconfig.solargraph.setup({
+    --     -- cmd = solargraph_command()
+    --     cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
+    --     -- cmd = { 'solargraph', 'stdio' },
+    --     on_attach = function(client, bufnr)
+    --       lsp_zero.async_autoformat(client, bufnr)
+    --     end
+    --   })
+    -- end,
   },
   -- lsp_zero.buffer_autoformat()
 })
