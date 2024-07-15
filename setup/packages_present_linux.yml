@@ -47,6 +47,7 @@
     - vim-nox
     - watch
     - yamllint
+    - tmux
 
 - name: Ensure $HOME/bin exists
   ansible.builtin.file:
