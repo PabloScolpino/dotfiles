@@ -40,13 +40,13 @@
     - mosh
     - mycli
     - pgcli
-    - python3-pip # for nvim
+      #- python3-pip # for nvim
     - silversearcher-ag
     - tar
     - unzip
     - vim-nox
     - watch
-    - yamllint
+      #- yamllint
     - tmux
 
 - name: Ensure $HOME/bin exists
