@@ -10,6 +10,8 @@
   tasks:
     - name: Packages are present
       import_tasks: packages_present.yml
+      vars:
+        in_gitpod: true
 
     - name: Terminal Setup
       import_tasks: terminal_setup.yml

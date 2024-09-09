@@ -33,5 +33,5 @@ ubuntu_zsh_shell: build_ubuntu_zsh ## test SHELL install on UBUNTU-ZSH
 ubuntu_zsh_ansible: build_ubuntu_zsh ## test ANSIBLE install on UBUNTU-ZSH
 	docker run -v ${PWD}/..:/home/user/.dotfiles -v ${PWD}:/test --rm dotfile-test:zsh /test/ansible_install.sh
 
-bash_gitpod_ansible: build_gitpod ## test SHELL install on GITPOD
+bash_gitpod_ansible: build_gitpod_bash ## test SHELL install on GITPOD
 	docker run -v ${PWD}/..:/home/gitpod/.dotfiles -v ${PWD}:/test --rm dotfile-test:gitpod-bash /test/ansible_install.sh
