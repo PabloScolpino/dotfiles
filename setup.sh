@@ -4,6 +4,9 @@ set -ex
 
 echo "This is intended to be run by gitpod preconfigurator"
 
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 pyenv global 3.12.4
 pip install ansible
 
