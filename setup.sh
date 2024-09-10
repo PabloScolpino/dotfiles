@@ -12,3 +12,6 @@ pip install ansible
 
 current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 ansible-playbook $current_dir/setup/gitpod.yml -i $current_dir/setup/inventory & disown
+
+sudo chown gitpod ~/.bash_profile
+echo -e "\nif [ -f ~/.bashrc ]; then\n    source ~/.bashrc\nfi" >> ~/.bash_profile
