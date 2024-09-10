@@ -6,6 +6,7 @@ echo "This is intended to be run by gitpod preconfigurator"
 
 echo "this is being run by: $(whoami)"
 
+touch ~/.bash_profile
 sudo chown gitpod ~/.bash_profile
 echo -e "\nif [ -f ~/.bashrc ]; then\n    source ~/.bashrc\nfi" >> ~/.bash_profile
 
