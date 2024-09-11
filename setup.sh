@@ -25,6 +25,7 @@ echo 'export TERM=xterm-256color-italic' >> ~/.bashrc
 
 ################################################################################
 # Configure pyenv and global python version
+unset LANG
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
