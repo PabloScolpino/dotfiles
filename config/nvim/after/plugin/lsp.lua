@@ -28,7 +28,7 @@ require('mason-lspconfig').setup({
     'helm_ls',
     'lua_ls',
     'ruby_lsp',
-    'tsserver',
+    'ts_ls',
     'yamlls',
   },
   automatic_installation = true,
