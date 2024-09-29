@@ -26,11 +26,11 @@ alias trw='tmate -S /tmp/tmate.sock display -p "#{tmate_ssh}"'
 alias tro='tmate -S /tmp/tmate.sock display -p "#{tmate_ssh_ro}"'
 
 alias rerun='rerun --no-notify'
-alias dc='docker-compose'
-alias dcb='docker-compose build'
-alias dce='docker-compose exec'
-alias dcr='docker-compose run --rm'
-alias dcu='docker-compose up --build'
+alias dc='docker compose'
+alias dcb='docker compose build'
+alias dce='docker compose exec'
+alias dcr='docker compose run --rm'
+alias dcu='docker compose up --build'
 
 alias docker_clean_logs='sudo find /var/lib/docker/containers -name "*.log"  -exec truncate -s 0 {} \;'
 
