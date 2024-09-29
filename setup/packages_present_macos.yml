@@ -13,7 +13,6 @@
     - bpytop
     - dive
     - docutils
-    - exa
     - fd
     - fzf
     - git
@@ -31,6 +30,7 @@
     - the_silver_searcher
     - watch
     - yamllint
+    - eza
 
 - name: Ensure $HOME/bin exists
   ansible.builtin.file:

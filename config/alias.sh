@@ -1,9 +1,9 @@
-if [ -n "$(command -v exa)" ]
+if [ -n "$(command -v eza)" ]
 then
-  alias ls="exa -l"
-  alias l="exa -l"
-  alias lt="exa -l -T --level=3"
-  alias a="clear;exa -l"
+  alias ls="eza -l"
+  alias l="eza -l"
+  alias lt="eza -l -T --level=3"
+  alias a="clear;eza -l"
 else
   alias l="ls -l -G"
   alias a="clear;ls -l -G"
