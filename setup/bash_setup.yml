@@ -2,7 +2,12 @@
 - name: Source bashrc custom file
   lineinfile:
     path: "${HOME}/.bashrc"
-    line: ". {{ dotfiles_path }}/config/source_this.bash"
+    line: "export DOTFILES_PATH={{ dotfiles_path }}"
+
+- name: Source bashrc custom file
+  lineinfile:
+    path: "${HOME}/.bashrc"
+    line: ". ${DOTFILES_PATH}/config/source_this.bash"
 
 - name: bash-git-prompt init
   ansible.builtin.command: git submodule init

@@ -33,4 +33,10 @@ pyenv global 3.12.4
 pip install ansible
 
 current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-ansible-playbook $current_dir/setup/gitpod.yml -i $current_dir/setup/inventory & disown
+if [ -z ${CODESPACES} ]; then
+  echo On Gitpod
+  ansible-playbook $current_dir/setup/gitpod.yml -i $current_dir/setup/inventory & disown
+else
+  echo On Codespaces
+  ansible-playbook $current_dir/setup/gitpod.yml -i $current_dir/setup/inventory
+fi

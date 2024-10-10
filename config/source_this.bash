@@ -1,14 +1,17 @@
-CONFIG=$HOME/.dotfiles/config
+DOTFILES_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/.."
+export DOTFILES_PATH
 
-. $CONFIG/prompt.sh
-. $CONFIG/path.sh
-. $CONFIG/ld_library_path.sh
-. $CONFIG/alias.sh
-. $CONFIG/env.sh
-. $CONFIG/git.sh
-. $CONFIG/ruby.sh
-. $CONFIG/gitpod.sh
-. $CONFIG/node.sh
-[ -f $CONFIG/extras.sh ] && source $CONFIG/extras.sh
+config_path=${DOTFILES_PATH}/config
 
-$HOME/.dotfiles/bin/set_ssh_agent.sh
+. $config_path/prompt.sh
+. $config_path/path.sh
+. $config_path/ld_library_path.sh
+. $config_path/alias.sh
+. $config_path/env.sh
+. $config_path/git.sh
+. $config_path/ruby.sh
+. $config_path/gitpod.sh
+. $config_path/node.sh
+[ -f $config_path/extras.sh ] && source $config_path/extras.sh
+
+$DOTFILES_PATH/bin/set_ssh_agent.sh

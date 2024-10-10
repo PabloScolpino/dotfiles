@@ -6,8 +6,8 @@ if [ -d "$HOME/bin" ]; then
     export PATH="$HOME/bin:$PATH"
 fi
 
-if [ -d "$HOME/.dotfiles/bin" ]; then
-    export PATH="$HOME/.dotfiles/bin:$PATH"
+if [ -d "${DOTFILES_PATH}/bin" ]; then
+    export PATH="${DOTFILES_PATH}/bin:$PATH"
 fi
 
 if [ -d "$HOME/.asdf/bin" ]; then
