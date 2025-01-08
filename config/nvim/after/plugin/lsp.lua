@@ -100,7 +100,7 @@ cmp.setup({
   sources = {
     { name = 'copilot' },
     { name = 'nvim_lsp' },
-    { name = 'cmp_tabnine' },
+    -- { name = 'cmp_tabnine' },
     { name = 'ultisnips' },
     { name = 'buffer',     keyword_length = 3 },
   },
