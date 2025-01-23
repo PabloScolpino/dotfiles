@@ -29,25 +29,26 @@
   loop:
     # - dive # only available as .deb file
     # - git-delta # only available as .deb file
-    #- asciidoctor
-    #- curl
-    #- fd-find
-    #- fonts-powerline
-    #- gh
-    #- git
-    #- htop
-    #- httpie
-    #- mosh
-    #- mycli
-    #- pgcli
-      #- python3-pip # for nvim
-      #- silversearcher-ag
-      #- tar
-      #- unzip
-      #- vim-nox
-      #- watch
-      #- yamllint
-      #- tmux
+    # 
+    # - asciidoctor installs ruby 3.1
+    - curl
+    - fd-find
+    - fonts-powerline
+    - gh
+    - git
+    - htop
+    - httpie
+    - mosh
+    - mycli
+    - pgcli
+    - python3-pip # for nvim
+    - silversearcher-ag
+    - tar
+    - unzip
+    - vim-nox
+    - watch
+    - yamllint
+    - tmux
 
 - name: Ensure $HOME/bin exists
   ansible.builtin.file:
