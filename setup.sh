@@ -29,7 +29,11 @@ unset LANG
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-pyenv global 3.12.4
+if [ -z ${CODESPACES} ]; then
+  pyenv global 3.12.8
+else
+  pyenv global 3.12.4
+fi
 pip install ansible
 
 current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
