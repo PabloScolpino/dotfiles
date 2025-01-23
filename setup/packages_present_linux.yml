@@ -45,7 +45,7 @@
     - silversearcher-ag
     - tar
     - unzip
-    - vim-nox
+    # - vim-nox installs ruby 3.1
     - watch
     - yamllint
     - tmux
