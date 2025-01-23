@@ -30,9 +30,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 if [ -z ${CODESPACES} ]; then
-  pyenv global 3.12.8
-else
+  echo On Gitpod
   pyenv global 3.12.4
+else
+  echo On Codespaces
+  pyenv global 3.12.8
 fi
 pip install ansible
 
