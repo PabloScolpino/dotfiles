@@ -29,25 +29,25 @@
   loop:
     # - dive # only available as .deb file
     # - git-delta # only available as .deb file
-    - asciidoctor
-    - curl
-    - fd-find
-    - fonts-powerline
-    - gh
-    - git
-    - htop
-    - httpie
-    - mosh
-    - mycli
-    - pgcli
+    #- asciidoctor
+    #- curl
+    #- fd-find
+    #- fonts-powerline
+    #- gh
+    #- git
+    #- htop
+    #- httpie
+    #- mosh
+    #- mycli
+    #- pgcli
       #- python3-pip # for nvim
-    - silversearcher-ag
-    - tar
-    - unzip
-    - vim-nox
-    - watch
+      #- silversearcher-ag
+      #- tar
+      #- unzip
+      #- vim-nox
+      #- watch
       #- yamllint
-    - tmux
+      #- tmux
 
 - name: Ensure $HOME/bin exists
   ansible.builtin.file:

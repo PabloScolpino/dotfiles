@@ -4,7 +4,7 @@
   hosts: all
 
   vars:
-    ansible_python_interpreter: /home/gitpod/.pyenv/shims/python
+    # ansible_python_interpreter: /home/gitpod/.pyenv/shims/python
     dotfiles_path: "{{ playbook_dir }}/.."
     in_cloud_env: true
 
@@ -12,5 +12,5 @@
     - name: Packages are present
       import_tasks: packages_present.yml
 
-    - name: Terminal Setup
-      import_tasks: terminal_setup.yml
+        # - name: Terminal Setup
+        # import_tasks: terminal_setup.yml
