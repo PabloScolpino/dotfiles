@@ -1,5 +1,4 @@
 local lsp_zero = require('lsp-zero')
-local lspconfig = require('lspconfig')
 
 -- lsp_zero.preset('recommended')
 
@@ -27,54 +26,40 @@ require('mason-lspconfig').setup({
     'eslint',
     'helm_ls',
     'lua_ls',
+    -- 'rubocop',
     'ruby_lsp',
     'ts_ls',
     'yamlls',
   },
   automatic_installation = true,
-  handlers = {
-    lsp_zero.default_setup,
-    lua_ls = function()
-      local lua_opts = lsp_zero.nvim_lua_ls()
-      lspconfig.lua_ls.setup(lua_opts)
-    end,
-    yamlls = function()
-      lspconfig.yamlls.setup({
-        filetypes = { "yaml", "yml" },
-        settings = {
-          yaml = {
-            format = {
-              enable = true,
-              formatter = 'yamlfmt',
-            },
-            validate = true,
-          },
-        },
-        on_attach = function(client, bufnr)
-          lsp_zero.async_autoformat(client, bufnr)
-          -- if client.server_capabilities.documentFormattingProvider then
-          --   vim.cmd(':MasonInstall yamlfmt<CR>')
-          --   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>z', '<cmd>lua vim.lsp.buf.format()<CR>',
-          --     { noremap = true, silent = true })
-          -- else
-          --   print("Formatting not supported by yamlls")
-          -- end
-        end
-      })
-    end,
+})
 
-    -- solargraph = function()
-    --   lspconfig.solargraph.setup({
-    --     -- cmd = solargraph_command()
-    --     cmd = { 'bundle', 'exec', 'solargraph', 'stdio' },
-    --     -- cmd = { 'solargraph', 'stdio' },
-    --     on_attach = function(client, bufnr)
-    --       lsp_zero.async_autoformat(client, bufnr)
-    --     end
-    --   })
-    -- end,
+local lspconfig = require('lspconfig')
+
+lspconfig.clangd.setup({})
+lspconfig.dockerls.setup({})
+lspconfig.eslint.setup({})
+lspconfig.helm_ls.setup({})
+lspconfig.lua_ls.setup({})
+lspconfig.rubocop.setup({
+  cmd = { "bundle", "exec", "rubocop", "--lsp" },
+})
+lspconfig.ruby_lsp.setup({})
+lspconfig.ts_ls.setup({})
+lspconfig.yamlls.setup({
+  filetypes = { "yaml", "yml" },
+  settings = {
+    yaml = {
+      format = {
+        enable = true,
+        formatter = 'yamlfmt',
+      },
+      validate = true,
+    },
   },
-  -- lsp_zero.buffer_autoformat()
+  on_attach = function(client, bufnr)
+    lsp_zero.async_autoformat(client, bufnr)
+  end
 })
 
 
@@ -102,7 +87,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     -- { name = 'cmp_tabnine' },
     { name = 'ultisnips' },
-    { name = 'buffer',     keyword_length = 3 },
+    { name = 'buffer',   keyword_length = 3 },
   },
   formatting = lsp_zero.cmp_format({ details = true })
 })
