@@ -1,0 +1,83 @@
+---
+# - name: Ensure $HOME/bin exists
+#   ansible.builtin.file:
+#     path: "${HOME}/bin"
+#     state: directory
+
+
+- name: Set os_type variable based on the system
+  set_fact:
+    os_type: >-
+      {{
+        (
+          "macos" if ansible_system == "Darwin"
+          else "linux64" if ansible_system == "Linux" and ansible_architecture == "x86_64"
+          else "other"
+        ) | trim
+      }}
+
+- name: Set nvim directory
+  set_fact:
+    nvim_path: "{{ ansible_env.HOME }}/bin/nvim-{{ os_type }}"
+    nvim_download_path: /tmp/nvim.tar.gz
+    nvim_untar_path: /tmp/nvim/
+
+- name: Set Neovim URL based on architecture
+  set_fact:
+    nvim_download_url: >-
+      {% if ansible_system == "Darwin" %}
+        https://github.com/neovim/neovim/releases/latest/download/nvim-macos-{{ ansible_architecture }}.tar.gz
+      {% elif ansible_system == "Linux" and ansible_architecture == "x86_64" %}
+        https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+      {% endif %}
+
+- name: show facts
+  debug:
+    msg: "{{ nvim_download_url }}"
+
+
+- name: Remove transient paths
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - "{{ nvim_download_path }}"
+    - "{{ nvim_untar_path }}"
+
+- name: Ensure paths exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ ansible_env.HOME }}/bin"
+    - "{{ nvim_untar_path }}"
+
+- name: Download nvim tarfile
+  get_url:
+    url: "{{ nvim_download_url }}"
+    dest: "{{ nvim_download_path }}"
+
+- name: Extract nvim tarfile
+  ansible.builtin.unarchive:
+    src: "{{ nvim_download_path }}"
+    dest: "{{ nvim_untar_path }}"
+    remote_src: yes
+
+- name: Remove existing nvim package
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - "{{ nvim_path }}"
+
+- name: Rename extracted nvim directory
+  command:
+    cmd: mv -f "{{ nvim_untar_path }}/nvim-{{ os_type }}-{{ ansible_architecture }}" "{{ nvim_path }}"
+  args:
+    creates: "{{ nvim_path }}"
+
+- name: Link binary
+  ansible.builtin.file:
+    src: "{{ nvim_path }}/bin/nvim"
+    dest: "{{ ansible_env.HOME }}/bin/nvim"
+    state: link

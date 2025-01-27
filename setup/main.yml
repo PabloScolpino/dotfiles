@@ -4,6 +4,7 @@
 
   vars:
     dotfiles_path: "{{ playbook_dir }}/.."
+    in_cloud_env: false
 
   tasks:
     - name: Packages are present
