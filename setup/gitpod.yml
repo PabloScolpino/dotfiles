@@ -4,7 +4,6 @@
   hosts: all
 
   vars:
-    # ansible_python_interpreter: /home/gitpod/.pyenv/shims/python
     dotfiles_path: "{{ playbook_dir }}/.."
     in_cloud_env: true
 
