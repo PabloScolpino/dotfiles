@@ -4,7 +4,6 @@
 #     path: "${HOME}/bin"
 #     state: directory
 
-
 - name: Set os_type variable based on the system
   set_fact:
     os_type: >-
@@ -22,19 +21,22 @@
     nvim_download_path: /tmp/nvim.tar.gz
     nvim_untar_path: /tmp/nvim/
 
+- name: Set cleaned up os name
+  set_fact:
+    os_name: >-
+      {%- if ansible_system == "Darwin" -%}
+      macos
+      {%- elif ansible_system == "Linux" -%}
+      linux
+      {%- endif -%}
+
 - name: Set Neovim URL based on architecture
   set_fact:
-    nvim_download_url: >-
-      {% if ansible_system == "Darwin" %}
-        https://github.com/neovim/neovim/releases/latest/download/nvim-macos-{{ ansible_architecture }}.tar.gz
-      {% elif ansible_system == "Linux" and ansible_architecture == "x86_64" %}
-        https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-      {% endif %}
+    nvim_download_url: https://github.com/neovim/neovim/releases/latest/download/nvim-{{ os_name }}-{{ ansible_architecture }}.tar.gz
 
 - name: show facts
   debug:
     msg: "{{ nvim_download_url }}"
-
 
 - name: Remove transient paths
   ansible.builtin.file:
@@ -72,7 +74,7 @@
 
 - name: Rename extracted nvim directory
   command:
-    cmd: mv -f "{{ nvim_untar_path }}/nvim-{{ os_type }}-{{ ansible_architecture }}" "{{ nvim_path }}"
+    cmd: mv -f "{{ nvim_untar_path }}/nvim-{{ os_name }}-{{ ansible_architecture }}" "{{ nvim_path }}"
   args:
     creates: "{{ nvim_path }}"
 
