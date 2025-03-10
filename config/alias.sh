@@ -40,3 +40,6 @@ platform=$(uname)
 if [ "$platform" = 'Darwin' ]; then
   alias lsports='sudo lsof -iTCP -sTCP:LISTEN -n -P'
 fi
+
+alias ght='~/bin/codespace_tunel'
+alias ghs='~/bin/codespace_ssh'

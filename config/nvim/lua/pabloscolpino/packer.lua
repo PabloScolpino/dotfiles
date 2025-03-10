@@ -62,15 +62,15 @@ return require('packer').startup(function(use)
   -- })
   ------------------------------------------------------------------------------
   --[ Code assistant ]----------------------------------------------------------
-  use({
-    "yetone/avante.nvim",
-    requires = {
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "hrsh7th/nvim-cmp",
-    }
-  })
+  -- use({
+  --   "yetone/avante.nvim",
+  --   requires = {
+  --     "stevearc/dressing.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     "hrsh7th/nvim-cmp",
+  --   }
+  -- })
   --{
   --   "yetone/avante.nvim",
   --   event = "VeryLazy",
@@ -167,10 +167,10 @@ return require('packer').startup(function(use)
   ------------------------------------------------------------------------------
   --[ Interface behavior ]------------------------------------------------------
   use('mbbill/undotree') -- Undo history
-  use({
-    'nvim-orgmode/orgmode',
-    requires = { 'nvim-treesitter/nvim-treesitter' }
-  })
+  -- use({
+  --   'nvim-orgmode/orgmode',
+  --   requires = { 'nvim-treesitter/nvim-treesitter' }
+  -- })
   -- use({
   --   'nvim-orgmode/orgmode',
   --   config = function()
