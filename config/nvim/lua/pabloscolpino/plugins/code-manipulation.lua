@@ -1,6 +1,6 @@
 local highlight = {
-    "CursorColumn",
-    "Whitespace",
+  "CursorColumn",
+  "Whitespace",
 }
 
 return {
@@ -27,12 +27,12 @@ return {
     opts = {
       indent = { highlight = highlight, char = "" },
       whitespace = {
-          highlight = highlight,
-          remove_blankline_trail = false,
+        highlight = highlight,
+        remove_blankline_trail = false,
       },
       scope = { enabled = false },
     },
   },
   -- {'stevearc/conform.nvim'},
-  {'tpope/vim-abolish'},
+  { 'tpope/vim-abolish' },
 }

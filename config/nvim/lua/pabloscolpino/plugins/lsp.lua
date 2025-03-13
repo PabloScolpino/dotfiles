@@ -6,16 +6,26 @@ return {
   },
   {
     'hrsh7th/nvim-cmp',
+    dependencies = {
+      'VonHeikemen/lsp-zero.nvim'
+    },
     event = 'InsertEnter',
     config = function()
       local cmp = require('cmp')
 
       cmp.setup({
         sources = {
-          {name = 'nvim_lsp'},
+          -- { name = 'copilot' },
+          { name = 'nvim_lsp' },
+          -- { name = 'cmp_tabnine' },
+          { name = 'ultisnips' },
+          { name = 'buffer',   keyword_length = 3 },
         },
+        formatting = require("lsp-zero").cmp_format({ details = true }),
         mapping = cmp.mapping.preset.insert({
-          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
         }),
@@ -29,12 +39,12 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
-    cmd = {'LspInfo', 'LspInstall', 'LspStart'},
-    event = {'BufReadPre', 'BufNewFile'},
+    cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'williamboman/mason.nvim'},
-      {'williamboman/mason-lspconfig.nvim'},
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'williamboman/mason.nvim' },
+      { 'williamboman/mason-lspconfig.nvim' },
     },
     init = function()
       -- Reserve a space in the gutter
@@ -57,7 +67,7 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)
-          local opts = {buffer = event.buf}
+          local opts = { buffer = event.buf }
 
           vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
           vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
@@ -67,13 +77,24 @@ return {
           vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
           vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
           vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-          vim.keymap.set({'n', 'x'}, '<ctrl+f>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+          vim.keymap.set({ 'n', 'x' }, '<C-f>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
           vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
         end,
       })
 
       require('mason-lspconfig').setup({
-        ensure_installed = {},
+        ensure_installed = {
+          'clangd',
+          'dockerls',
+          'eslint',
+          'helm_ls',
+          'lua_ls',
+          -- 'rubocop',
+          'ruby_lsp',
+          'ts_ls',
+          'yamlls',
+        },
+        automatic_installation = true,
         handlers = {
           -- this first function is the "default handler"
           -- it applies to every language server without a "custom handler"

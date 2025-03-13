@@ -1,8 +1,8 @@
-  return {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    opts = {
-      defaults = {
+return {
+  'nvim-treesitter/nvim-treesitter',
+  build = ':TSUpdate',
+  opts = {
+    defaults = {
       -- A list of parser names, or "all" (the five listed parsers should always be installed)
       ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "ruby", "javascript", "typescript", "yaml" },
 
@@ -23,5 +23,5 @@
         additional_vim_regex_highlighting = false,
       },
     }
-    }
   }
+}
