@@ -17,28 +17,35 @@ return {
     dependencies = 'nvim-tree/nvim-web-devicons'
     -- vim.opt.termguicolors = true
   },
+  -- {
+  --   'metalelf0/jellybeans-nvim',
+  --   as = 'jellybeans-nvim',
+  --   dependencies = { 'rktjmp/lush.nvim' },
+  -- },
   {
-    -- {
-    --   'metalelf0/jellybeans-nvim',
-    --   as = 'jellybeans-nvim',
-    --   dependencies = { 'rktjmp/lush.nvim' },
-    -- },
-    -- 'liuchengxu/space-vim-dark',
-    {
-      'tomasiser/vim-code-dark',
-      config = function()
-        vim.cmd.colorscheme "codedark"
-        vim.cmd("highlight Normal guibg=#000000")
-        vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
-        -- vim.api.nvim_set_hl(0, "Comment", { fg = "grey", bg = "NONE" })
-      end,
-    }
-    -- 'rebelot/kanagawa.nvim',
-    -- config = function()
-    --   require("kanagawa").setup({})
-    --   vim.cmd.colorscheme "kanagawa"
-    -- end,
+    'tomasiser/vim-code-dark',
+    config = function()
+      -- Optional: set background type if needed
+      vim.o.background = "dark"
+
+      -- Load the colorscheme
+      vim.cmd('colorscheme codedark')
+
+      -- Use an autocommand to override highlight groups after the colorscheme is loaded
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        callback = function()
+          vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+          vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
+          -- Uncomment and adjust below if you want to change other highlight groups
+          -- vim.api.nvim_set_hl(0, "Comment", { fg = "grey", bg = "NONE" })
+        end,
+      })
+
+      -- Immediately override once at startup
+      vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
+    end,
   },
   {
     'toppair/reach.nvim',
