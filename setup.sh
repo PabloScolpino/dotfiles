@@ -28,21 +28,11 @@ echo 'export TERM=xterm-256color-italic' >> ~/.bashrc
 unset LANG
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
 eval "$(pyenv init -)"
-if [ -z ${CODESPACES} ]; then
-  echo On Gitpod
-  pyenv global 3.12.4
-else
-  echo On Codespaces
-  pyenv global 3.12.8
-fi
+
+pyenv global $(pyenv versions --bare | grep -v "/" | grep -E "^[0-9]+\.[0-9]+\.[0-9]+$" | sort -V | tail -1)
 pip install ansible
 
-current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-if [ -z ${CODESPACES} ]; then
-  echo On Gitpod
-  ansible-playbook $current_dir/setup/gitpod.yml -i $current_dir/setup/inventory & disown
-else
-  echo On Codespaces
-  ansible-playbook $current_dir/setup/gitpod.yml -i $current_dir/setup/inventory
-fi
+cd setup
+make install_in_cde

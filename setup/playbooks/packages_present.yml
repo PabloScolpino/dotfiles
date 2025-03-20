@@ -15,4 +15,4 @@
 
 - name: asdf present
   import_tasks: asdf_present.yml
-  when: in_cloud_env != true
+  when: install_asdf == true

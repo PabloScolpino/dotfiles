@@ -37,3 +37,5 @@ vim.keymap.set("n", "<Leader>p", vim.cmd.bprevious, { desc = "jump to previous b
 vim.keymap.set("n", "<Leader>n", vim.cmd.bnext, { desc = "jump to next buffer" })
 
 vim.keymap.set("n", "<F9>", ":!%:p<Enter>", { desc = "Execute current file" })
+
+vim.keymap.set("n", "<BS><BS>", vim.cmd.FixWhitespace)

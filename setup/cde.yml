@@ -1,10 +1,11 @@
 ---
-- name: Dotfiles setup
+- name: Dotfiles setup for cloud development environment
+
   hosts: all
 
   vars:
     dotfiles_path: "{{ playbook_dir }}/.."
-    install_asdf: true
+    install_asdf: false
     install_nvim: true
 
   tasks:

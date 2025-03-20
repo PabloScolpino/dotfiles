@@ -4,4 +4,4 @@
 # git clone https://github.com/PabloScolpino/dotfiles.git ~/.dotfiles
 
 cd ~/.dotfiles/setup
-make install
+make install_in_cde

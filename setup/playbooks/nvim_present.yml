@@ -15,6 +15,16 @@
         ) | trim
       }}
 
+- name: Set architecture variable based on the system
+  set_fact:
+    os_architecture: >-
+      {{
+        (
+          "arm64" if ansible_architecture == "aarch64"
+          else ansible_architecture
+        ) | trim
+      }}
+
 - name: Set nvim directory
   set_fact:
     nvim_path: "{{ ansible_env.HOME }}/bin/nvim-{{ os_type }}"
@@ -32,7 +42,7 @@
 
 - name: Set Neovim URL based on architecture
   set_fact:
-    nvim_download_url: https://github.com/neovim/neovim/releases/latest/download/nvim-{{ os_name }}-{{ ansible_architecture }}.tar.gz
+    nvim_download_url: https://github.com/neovim/neovim/releases/latest/download/nvim-{{ os_name }}-{{ os_architecture }}.tar.gz
 
 - name: show facts
   debug:
@@ -74,7 +84,7 @@
 
 - name: Rename extracted nvim directory
   command:
-    cmd: mv -f "{{ nvim_untar_path }}/nvim-{{ os_name }}-{{ ansible_architecture }}" "{{ nvim_path }}"
+    cmd: mv -f "{{ nvim_untar_path }}/nvim-{{ os_name }}-{{ os_architecture }}" "{{ nvim_path }}"
   args:
     creates: "{{ nvim_path }}"
 

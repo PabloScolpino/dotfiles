@@ -1,2 +1,0 @@
-unset GIT_EDITOR
-unset GP_OPEN_EDITOR
