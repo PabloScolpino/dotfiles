@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04, macos-latest]
+        os: [ubuntu-22.04, ubuntu-latest, macos-latest]
         shell: [bash, zsh]
         exclude:
           - os: macos-latest
@@ -62,7 +62,7 @@ jobs:
         working-directory: setup
 
       - name: Test the playbook.
-        run: make ansible_install
+        run: make install
         env:
           ANSIBLE_FORCE_COLOR: '1'
         working-directory: setup
