@@ -1,6 +1,7 @@
 return {
   {
     'tpope/vim-fugitive',
+    cmd = {"Git", "Gdiff", "Gvdiff", "Gstatus", "Gcommit"},
     keys = {
       { "<leader>s", ":Git<CR>", desc = 'Show git status'  },
       { "<leader>gd", ":Gdiff<CR>", desc = 'Show git diff of current buffer' },
