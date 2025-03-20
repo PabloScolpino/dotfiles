@@ -10,7 +10,7 @@
 
   tasks:
     - name: Packages are present
-      import_tasks: packages_present.yml
+      import_tasks: playbooks/packages_present.yml
 
     - name: Terminal Setup
-      import_tasks: terminal_setup.yml
+      import_tasks: playbooks/terminal_setup.yml
