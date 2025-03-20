@@ -10,7 +10,6 @@ config_path=${DOTFILES_PATH}/config
 . $config_path/env.sh
 . $config_path/git.sh
 . $config_path/ruby.sh
-. $config_path/gitpod.sh
 . $config_path/node.sh
 [ -f $config_path/extras.sh ] && source $config_path/extras.sh
 

@@ -45,7 +45,14 @@
     - silversearcher-ag
     - tar
     - unzip
-    # - vim-nox installs ruby 3.1
     - watch
     - yamllint
     - tmux
+
+# vim-nox installs ruby 3.1, that is a problem in CDE's
+- name: Vim present [Linux]
+  become: true
+  ansible.builtin.package:
+    name: vim-nox
+    state: present
+  when: install_nvim != true

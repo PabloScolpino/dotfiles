@@ -15,6 +15,4 @@
 
 - name: Setup vim
   import_tasks: vim_setup.yml
-
-- name: Setup nvim
-  import_tasks: nvim_setup.yml
+  when: install_nvim != true

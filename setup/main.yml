@@ -4,7 +4,8 @@
 
   vars:
     dotfiles_path: "{{ playbook_dir }}/.."
-    in_cloud_env: false
+    install_asdf: true
+    install_nvim: true
 
   tasks:
     - name: Packages are present

@@ -1,11 +1,12 @@
 ---
-- name: Dotfiles setup for gitpod
+- name: Dotfiles setup for cloud development environment
 
   hosts: all
 
   vars:
     dotfiles_path: "{{ playbook_dir }}/.."
-    in_cloud_env: true
+    install_asdf: false
+    install_nvim: true
 
   tasks:
     - name: Packages are present

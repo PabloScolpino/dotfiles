@@ -1,4 +1,4 @@
-.PHONY: all help ansible_lint setup_ansible_dependencies ansible_install
+.PHONY: all help ansible_lint setup_ansible_dependencies install install_in_cde
 all: help
 
 help:
@@ -10,8 +10,8 @@ ansible_lint: ## Lint ansible playbooks
 setup_ansible_dependencies: ## Install ansible dependencies
 	ansible-galaxy install -r requirements.yml
 
-ansible_install: setup_ansible_dependencies ## Install ansible roles and run playbooks
+install: setup_ansible_dependencies ## Install ansible roles and run playbooks
 	ansible-playbook main.yml -i inventory
 
-gitpod_install: setup_ansible_dependencies ## Install ansible roles and run playbooks for gitpod
-	ansible-playbook gitpod.yml -i inventory
+install_in_cde: setup_ansible_dependencies ## Install ansible roles and run playbooks for cloud development environments
+	ansible-playbook cde.yml -i inventory

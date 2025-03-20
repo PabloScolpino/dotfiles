@@ -3,7 +3,7 @@ ARG PACKAGES_ANSIBLE_DEPENDENCIES="python3-setuptools python3-pip python3-wheel"
 
 ################################################################################
 # Plain Ubuntu base
-FROM ubuntu:22.04 as base
+FROM ubuntu:22.04 AS base
 ARG PACKAGES_BASE
 ARG PACKAGES_ANSIBLE_DEPENDENCIES
 
@@ -19,17 +19,17 @@ RUN echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers.d/user
 USER user
 
 # Install ansible 2.10+
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 RUN pip3 install --upgrade pip && pip3 install ansible
 # ansible binaries are in ~/.local/bin
-ENV PATH $PATH:/home/user/.local/bin
+ENV PATH=$PATH:/home/user/.local/bin
 
 WORKDIR /home/user
 
 ################################################################################
 # Plain Ubuntu bash
-FROM base as bash
+FROM base AS bash
 RUN sudo apt-get update -qq \
   && sudo apt-get install -yy --no-install-recommends bash \
   && sudo apt-get clean \
@@ -37,7 +37,7 @@ RUN sudo apt-get update -qq \
 
 ################################################################################
 # Plain Ubuntu zsh
-FROM base as zsh
+FROM base AS zsh
 RUN sudo apt-get update -qq \
   && sudo apt-get install -yy --no-install-recommends zsh \
   && sudo apt-get clean \
@@ -45,7 +45,7 @@ RUN sudo apt-get update -qq \
 
 ################################################################################
 # Gitpod base
-FROM gitpod/workspace-full:latest as base-gitpod
+FROM gitpod/workspace-full:latest AS base-gitpod
 ARG PACKAGES_BASE
 ARG PACKAGES_ANSIBLE_DEPENDENCIES
 
@@ -55,18 +55,22 @@ RUN DEBIAN_FRONTEND=noninteractive sudo apt-get install -qq -yy --no-install-rec
   && sudo apt-get clean
 
 # Install ansible 2.10+
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 RUN pip3 install --upgrade pip && pip3 install ansible
 # ansible binaries are in ~/.local/bin
-ENV PATH $PATH:/home/gitpod/.local/bin
+ENV PATH=$PATH:/home/gitpod/.local/bin
 
 WORKDIR /home/gitpod
 
 ################################################################################
 # Gitpod bash
-FROM base-gitpod as gitpod-bash
+FROM base-gitpod AS gitpod-bash
 RUN sudo apt-get update -qq \
   && sudo apt-get install -yy --no-install-recommends bash \
   && sudo apt-get clean \
   && sudo chsh -s /bin/bash `whoami`
+
+################################################################################
+# Codespaces
+FROM mcr.microsoft.com/devcontainers/universal:latest AS codespace

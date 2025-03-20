@@ -34,5 +34,5 @@ eval "$(pyenv init -)"
 pyenv global $(pyenv versions --bare | grep -v "/" | grep -E "^[0-9]+\.[0-9]+\.[0-9]+$" | sort -V | tail -1)
 pip install ansible
 
-current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-ansible-playbook $current_dir/setup/gitpod.yml -i $current_dir/setup/inventory
+cd setup
+make install_in_cde
