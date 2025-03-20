@@ -14,8 +14,22 @@ return {
   {
     'akinsho/bufferline.nvim',
     version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons'
-    -- vim.opt.termguicolors = true
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      vim.opt.termguicolors = true
+      require("bufferline").setup{
+        options = {
+          mode = "buffers",
+          show_buffer_icons = true,
+          show_buffer_close_icons = true,
+          show_close_icon = true,
+          show_tab_indicators = true,
+          separator_style = "thin",
+          always_show_bufferline = true,
+          position = "top",
+        }
+      }
+    end
   },
   -- {
   --   'metalelf0/jellybeans-nvim',
