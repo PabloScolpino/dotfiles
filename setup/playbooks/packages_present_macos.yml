@@ -32,4 +32,6 @@
     - watch
     - yamllint
     - eza
+    - font-roboto-mono-nerd-font
+    - font-roboto-mono-for-powerline
 

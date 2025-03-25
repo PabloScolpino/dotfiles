@@ -1,15 +1,29 @@
+local reach_options = {
+  filter = function(mark)
+    return mark:match('[a-zA-Z]') -- return true to disable
+  end,
+  -- A map of action to key that should be used to invoke it
+  actions = {
+    split = '-',
+    vertsplit = '|',
+    tabsplit = ']',
+    delete = '<Space>',
+  },
+}
+
 return {
   {
     'bling/vim-airline',
-    dependencies = { 'vim-airline/vim-airline-themes' }
-    -- vim.g.airline_theme = 'jellybeans'
-    -- vim.g.airline_powerline_fonts = 1
-    -- vim.g.airline_extensions_tabline_enabled = 1
-    -- vim.g.airline_extensions_tabline_left_sep = ' '
-    -- vim.g.airline_extensions_tabline_left_alt_sep = '|'
-    -- vim.g.airline_extensions_tabline_fnamemod = ':t'
-    -- vim.opt.laststatus=2
-
+    dependencies = { 'vim-airline/vim-airline-themes' },
+    config = function()
+      vim.g.airline_theme = 'jellybeans'
+      vim.g.airline_powerline_fonts = 1
+      vim.g.airline_extensions_tabline_enabled = 1
+      vim.g.airline_extensions_tabline_left_sep = ' '
+      vim.g.airline_extensions_tabline_left_alt_sep = '|'
+      vim.g.airline_extensions_tabline_fnamemod = ':t'
+      vim.opt.laststatus = 2
+    end
   },
   {
     'akinsho/bufferline.nvim',
@@ -17,7 +31,7 @@ return {
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       vim.opt.termguicolors = true
-      require("bufferline").setup{
+      require("bufferline").setup {
         options = {
           mode = "buffers",
           show_buffer_icons = true,
@@ -64,10 +78,10 @@ return {
   {
     'toppair/reach.nvim',
     keys = {
-      { '<C-j>', function() require("reach").switch_to_buffer(1, options) end },
-      { '<C-k>', function() require("reach").switch_to_buffer(2, options) end },
-      { '<C-l>', function() require("reach").switch_to_buffer(3, options) end },
-      { '<C-;>', function() require("reach").switch_to_buffer(4, options) end },
+      { '<C-j>', function() require("reach").switch_to_buffer(1, reach_options) end },
+      { '<C-k>', function() require("reach").switch_to_buffer(2, reach_options) end },
+      { '<C-l>', function() require("reach").switch_to_buffer(3, reach_options) end },
+      { '<C-;>', function() require("reach").switch_to_buffer(4, reach_options) end },
     }
   }
 }

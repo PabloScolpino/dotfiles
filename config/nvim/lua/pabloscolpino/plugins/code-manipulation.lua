@@ -4,7 +4,6 @@ local highlight = {
 }
 
 return {
-  --[ Code manipulation ]-------------------------------------------------------
   {
     'bronson/vim-trailing-whitespace'
   },
