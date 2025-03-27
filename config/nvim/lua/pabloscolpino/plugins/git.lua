@@ -1,18 +1,20 @@
 return {
   {
     'tpope/vim-fugitive',
-    cmd = {"Git", "Gdiff", "Gvdiff", "Gstatus", "Gcommit"},
+    cmd = { "Git", "Gdiff", "Gvdiff", "Gstatus", "Gcommit" },
+    lazy = false,
     keys = {
-      { "<leader>s", ":Git<CR>", desc = 'Show git status'  },
-      { "<leader>gd", ":Gdiff<CR>", desc = 'Show git diff of current buffer' },
-      { "<leader>gc", ":Git commit<CR>", desc = 'Start git commit' }
+      { "<leader>s",  "<Cmd>Git<CR>",        desc = 'Show git status' },
+      { "<leader>gd", "<Cmd>Gdiff<CR>",      desc = 'Show git diff of current buffer' },
+      { "<leader>gc", "<Cmd>Git commit<CR>", desc = 'Start git commit' }
     }
   },
   {
-    'airblade/vim-gitgutter' ,
+    'airblade/vim-gitgutter',
+    lazy = false,
     keys = {
-      { "<Leader>gh", ":GitGutterLineHighlightsToggle<CR>", desc = "" },
-      { "<Leader>gj", ":GitGutterFold<CR>", desc = "" },
+      { "<Leader>gh", "<Cmd>GitGutterLineHighlightsToggle<CR>", desc = "Toggle git diff line highlight" },
+      { "<Leader>gj", "<Cmd>GitGutterFold<CR>",                 desc = "Fold git diff block" },
     }
   },
   { 'f-person/git-blame.nvim' },

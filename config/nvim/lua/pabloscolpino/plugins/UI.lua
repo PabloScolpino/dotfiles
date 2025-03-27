@@ -1,16 +1,3 @@
-local reach_options = {
-  filter = function(mark)
-    return mark:match('[a-zA-Z]') -- return true to disable
-  end,
-  -- A map of action to key that should be used to invoke it
-  actions = {
-    split = '-',
-    vertsplit = '|',
-    tabsplit = ']',
-    delete = '<Space>',
-  },
-}
-
 return {
   {
     'bling/vim-airline',
@@ -77,11 +64,76 @@ return {
   },
   {
     'toppair/reach.nvim',
+    lazy = false,
+    opts = {
+      actions = {
+        split = '-',
+        vertsplit = '|',
+        tabsplit = ']',
+        delete = '<Space>',
+      },
+    },
+    config = function()
+      require('reach').setup({})
+    end,
     keys = {
-      { '<C-j>', function() require("reach").switch_to_buffer(1, reach_options) end },
-      { '<C-k>', function() require("reach").switch_to_buffer(2, reach_options) end },
-      { '<C-l>', function() require("reach").switch_to_buffer(3, reach_options) end },
-      { '<C-;>', function() require("reach").switch_to_buffer(4, reach_options) end },
+      { '<C-j>', function() require("reach").switch_to_buffer(1) end },
+      { '<C-k>', function() require("reach").switch_to_buffer(2) end },
+      { '<C-l>', function() require("reach").switch_to_buffer(3) end },
+      { '<C-;>', function() require("reach").switch_to_buffer(4) end },
+      { '<C-h>', function() require("reach").switch_to_buffer(0) end },
     }
+  },
+  -- Search UI
+  -- {
+  --   "folke/flash.nvim",
+  --   event = "VeryLazy",
+  --   ---@type Flash.Config
+  --   opts = {},
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+  --     { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+  --     { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+  --     { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+  --     { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+  --   },
+  -- }
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
   }
 }
