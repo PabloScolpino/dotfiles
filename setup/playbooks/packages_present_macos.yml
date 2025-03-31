@@ -32,6 +32,9 @@
     - watch
     - yamllint
     - eza
+
+- name: install casks [MacOs]
+  ansible.builtin.command: brew install --cask "{{ item }}"
+  loop:
     - font-roboto-mono-nerd-font
     - font-roboto-mono-for-powerline
-

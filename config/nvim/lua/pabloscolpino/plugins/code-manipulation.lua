@@ -9,10 +9,10 @@ return {
   },
   {
     'chochkov/vim-rspec-focus',
-    config = function()
-      vim.keymap.set('n', '<Leader>rf', "<Cmd>AddFocusTag<CR>", { desc = "Add rspec focus tag" })
-      vim.keymap.set('n', '<Leader>ru', "<Cmd>RemoveAllFocusTags<CR>", { desc = "Remove all focus tags in file" })
-    end,
+    keys = {
+      { '<Leader>rf', "<Cmd>AddFocusTag<CR>",        desc = "Add rspec focus tag" },
+      { '<Leader>ru', "<Cmd>RemoveAllFocusTags<CR>", desc = "Remove all focus tags in file" }
+    }
   },
   {
     'echasnovski/mini.comment'
@@ -43,28 +43,18 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     lazy = false,
-    config = function()
-      require("refactoring").setup({})
-      vim.keymap.set({ "n", "v" }, "<leader>re", "<Cmd>Refactor extract<CR>")
-      vim.keymap.set("x", "<leader>rf", "<Cmd>Refactor extract_to_file<CR>")
-
-      vim.keymap.set("x", "<leader>rv", "<Cmd>Refactor extract_var<CR>")
-
-      vim.keymap.set({ "n", "x" }, "<leader>ri", "<Cmd>Refactor inline_var<CR>")
-
-      vim.keymap.set("n", "<leader>rI", "<Cmd>Refactor inline_func<CR>")
-
-      vim.keymap.set("n", "<leader>rb", "<Cmd>Refactor extract_block<CR>")
-      vim.keymap.set("n", "<leader>rbf", "<Cmd>Refactor extract_block_to_file<CR>")
-    end,
+    keys = {
+      { "<leader>re",  "<Cmd>Refactor extract<CR>",               desc = "Extract",               mode = { "n", "v" } },
+      { "<leader>rf",  "<Cmd>Refactor extract_to_file<CR>",       desc = "Extract to file",       mode = "x" },
+      { "<leader>rv",  "<Cmd>Refactor extract_var<CR>",           desc = "Extract variable",      mode = "x" },
+      { "<leader>ri",  "<Cmd>Refactor inline_var<CR>",            desc = "Inline variable",       mode = { "n", "x" } },
+      { "<leader>rI",  "<Cmd>Refactor inline_func<CR>",           desc = "Inline function",       mode = "n" },
+      { "<leader>rb",  "<Cmd>Refactor extract_block<CR>",         desc = "Extract block",         mode = "n" },
+      { "<leader>rbf", "<Cmd>Refactor extract_block_to_file<CR>", desc = "Extract block to file", mode = "n" }
+    },
   },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
   }
 }

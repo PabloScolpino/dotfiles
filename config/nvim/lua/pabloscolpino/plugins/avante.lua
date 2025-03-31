@@ -61,6 +61,6 @@ return {
     },
   },
   keys = {
-    { "<leader>at",   "<cmd>AvanteToggle<cr>",    desc = "Toggle Avante Chat " },
+    { "<leader>at", "<cmd>AvanteToggle<cr>", desc = "Toggle Avante Chat " },
   },
 }

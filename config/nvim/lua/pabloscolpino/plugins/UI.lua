@@ -16,21 +16,18 @@ return {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      vim.opt.termguicolors = true
-      require("bufferline").setup {
-        options = {
-          mode = "buffers",
-          show_buffer_icons = true,
-          show_buffer_close_icons = true,
-          show_close_icon = true,
-          show_tab_indicators = true,
-          separator_style = "thin",
-          always_show_bufferline = true,
-          position = "top",
-        }
+    opts = {
+      options = {
+        mode = "buffers",
+        show_buffer_icons = true,
+        show_buffer_close_icons = true,
+        show_close_icon = true,
+        show_tab_indicators = true,
+        separator_style = "thin",
+        always_show_bufferline = true,
+        position = "top",
       }
-    end
+    }
   },
   -- {
   --   'metalelf0/jellybeans-nvim',
@@ -73,9 +70,6 @@ return {
         delete = '<Space>',
       },
     },
-    config = function()
-      require('reach').setup({})
-    end,
     keys = {
       { '<C-j>', function() require("reach").switch_to_buffer(1) end },
       { '<C-k>', function() require("reach").switch_to_buffer(2) end },
@@ -104,36 +98,12 @@ return {
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     keys = {
-      {
-        "<leader>xx",
-        "<cmd>Trouble diagnostics toggle<cr>",
-        desc = "Diagnostics (Trouble)",
-      },
-      {
-        "<leader>xX",
-        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-        desc = "Buffer Diagnostics (Trouble)",
-      },
-      {
-        "<leader>cs",
-        "<cmd>Trouble symbols toggle focus=false<cr>",
-        desc = "Symbols (Trouble)",
-      },
-      {
-        "<leader>cl",
-        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-        desc = "LSP Definitions / references / ... (Trouble)",
-      },
-      {
-        "<leader>xL",
-        "<cmd>Trouble loclist toggle<cr>",
-        desc = "Location List (Trouble)",
-      },
-      {
-        "<leader>xQ",
-        "<cmd>Trouble qflist toggle<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
+      { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>",                        desc = "Diagnostics (Trouble)", },
+      { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",           desc = "Buffer Diagnostics (Trouble)", },
+      { "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>",                desc = "Symbols (Trouble)", },
+      { "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP Definitions / references / ... (Trouble)", },
+      { "<leader>xL", "<cmd>Trouble loclist toggle<cr>",                            desc = "Location List (Trouble)", },
+      { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>",                             desc = "Quickfix List (Trouble)", },
     },
   }
 }
