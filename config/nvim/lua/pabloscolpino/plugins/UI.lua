@@ -1,16 +1,10 @@
 return {
   {
-    'bling/vim-airline',
-    dependencies = { 'vim-airline/vim-airline-themes' },
-    config = function()
-      vim.g.airline_theme = 'jellybeans'
-      vim.g.airline_powerline_fonts = 1
-      vim.g.airline_extensions_tabline_enabled = 1
-      vim.g.airline_extensions_tabline_left_sep = ' '
-      vim.g.airline_extensions_tabline_left_alt_sep = '|'
-      vim.g.airline_extensions_tabline_fnamemod = ':t'
-      vim.opt.laststatus = 2
-    end
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      theme = 'powerline_dark',
+    }
   },
   {
     'akinsho/bufferline.nvim',
@@ -29,36 +23,33 @@ return {
       }
     }
   },
-  -- {
-  --   'metalelf0/jellybeans-nvim',
-  --   as = 'jellybeans-nvim',
-  --   dependencies = { 'rktjmp/lush.nvim' },
-  -- },
   {
-    'tomasiser/vim-code-dark',
-    config = function()
-      -- Optional: set background type if needed
-      vim.o.background = "dark"
-
-      -- Load the colorscheme
-      vim.cmd('colorscheme codedark')
-
-      -- Use an autocommand to override highlight groups after the colorscheme is loaded
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "*",
-        callback = function()
-          vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
-          vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
-          -- Uncomment and adjust below if you want to change other highlight groups
-          -- vim.api.nvim_set_hl(0, "Comment", { fg = "grey", bg = "NONE" })
-        end,
-      })
-
-      -- Immediately override once at startup
-      vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#000000" })
+    'Mofiqul/vscode.nvim',
+    lazy = false,
+    priority = 1000, -- Ensure it loads first
+    opts = {
+      transparent = true,
+    },
+    config = function(_, opts)
+      local theme = require('vscode')
+      theme.setup(opts)
+      theme.load()
     end,
   },
+  {
+    'navarasu/onedark.nvim',
+    opts = {
+      style = 'deep',
+      transparent = true
+    },
+  },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      transparent = true
+    },
+  },
+  { "rebelot/kanagawa.nvim" },
   {
     'toppair/reach.nvim',
     lazy = false,
