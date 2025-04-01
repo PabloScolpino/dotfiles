@@ -1,12 +1,12 @@
 ---
-- name: Ensure git is installed
-  package:
-    name: git
+- name: asdf present [MacOS]
+  community.general.homebrew:
+    name: asdf
     state: present
+  when: ansible_distribution == 'MacOSX'
 
-- name: Clone asdf repository
-  git:
-    repo: 'https://github.com/asdf-vm/asdf.git'
-    dest: '{{ ansible_env.HOME }}/.asdf'
-    version: 'v0.13.1'
-
+- name: asdf present [Linux]
+  ansible.builtin.package:
+    name: asdf
+    state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
