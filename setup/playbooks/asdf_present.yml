@@ -10,3 +10,12 @@
     name: asdf
     state: present
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: asdf plugins present
+  tags: always
+  ansible.builtin.command: asdf plugin add "{{ item }}"
+  changed_when: false
+  loop:
+    - "ruby https://github.com/asdf-vm/asdf-ruby.git"
+    - "nodejs https://github.com/asdf-vm/asdf-nodejs.git"
+    - "lua https://github.com/Stratus3D/asdf-lua.git"

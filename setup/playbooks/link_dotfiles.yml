@@ -11,3 +11,4 @@
     - .gitignore_global
     - .inputrc
     - .vimrc
+    - .tool-versions
