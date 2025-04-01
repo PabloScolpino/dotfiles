@@ -45,10 +45,10 @@
     - python3-pip # for nvim
     - silversearcher-ag
     - tar
+    - tmux
     - unzip
     - watch
     - yamllint
-    - tmux
 
 # vim-nox installs ruby 3.1, that is a problem in CDE's
 - name: Vim present [Linux]
