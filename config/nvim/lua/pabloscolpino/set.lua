@@ -1,8 +1,8 @@
 ----[ make vim yank put data into clipboard ]---------------------------------
 vim.opt.clipboard = "unnamed"
 
------[ Set up smarter search behaviour ]--------------------------------------
-vim.opt.incsearch = true  -- Lookahead as search pattern is specified
+-----[ Set up smarter search behavior ]--------------------------------------
+vim.opt.incsearch = true  -- Look-ahead as search pattern is specified
 vim.opt.ignorecase = true -- Ignore case in all searches...
 vim.opt.smartcase = true  -- ...unless uppercase letters used
 vim.opt.hlsearch = true   -- Highlight all matches
@@ -21,8 +21,6 @@ vim.opt.wrap = false
 -----[ Cursor line ]----------------------------------------------------------
 vim.opt.startofline = true
 vim.opt.cursorline = true
---hi cursorline   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
---hi cursorcolumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 
 -----[ Line Numbers ]---------------------------------------------------------
 vim.opt.number = true
@@ -30,3 +28,14 @@ vim.opt.number = true
 -----[ Additional files]------------------------------------------------------
 vim.opt.swapfile = false
 vim.opt.backup = false
+
+vim.diagnostic.config({
+  -- Use the default configuration
+  virtual_lines = true
+
+  -- Alternatively, customize specific options
+  -- virtual_lines = {
+  --  -- Only show virtual line diagnostics for the current cursor line
+  --  current_line = true,
+  -- },
+})
