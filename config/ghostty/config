@@ -1,0 +1,49 @@
+################################################################################
+# Asthetics
+# theme = "UltraDark"
+theme = "Raycast_Dark"
+background = #000000
+# theme = "iTerm2 Tango Dark"
+# theme = "iTerm2 Dark Background"
+
+unfocused-split-opacity = 0.9
+alpha-blending = linear-corrected
+mouse-hide-while-typing = true
+
+bold-is-bright = true
+font-family = "RobotoMono Nerd Font Mono"
+maximize = true
+
+################################################################################
+# Behavior
+copy-on-select = clipboard
+quit-after-last-window-closed = true
+
+################################################################################
+# Quick Terminal
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+quick-terminal-animation-duration = 0
+quick-terminal-autohide = false
+
+################################################################################
+# Keybindings for navigating between split panes
+keybind = super+h=goto_split:left
+# keybind = super+j=goto_split:down
+# keybind = super+k=goto_split:up
+keybind = super+l=goto_split:right
+
+################################################################################
+# Keybindings for resizing split panes
+keybind = super+shift+h=resize_split:left,10
+keybind = super+shift+l=resize_split:right,10
+keybind = super+shift+0=equalize_splits
+
+# Keybindings for resetting font size
+keybind = super+shift+r=reset_font_size
+
+################################################################################
+# Keybindings for resizing split panes
+keybind = super+shift+k=scroll_page_up
+keybind = super+shift+j=scroll_page_down
+keybind = super+k=scroll_page_lines:-1
+keybind = super+j=scroll_page_lines:1
