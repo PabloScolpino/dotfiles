@@ -56,5 +56,17 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  -- Python semantic highlight
+  -- NOTE: this was last updated on July 2021
+  {
+    "wookayin/semshi",
+    build = ":UpdateRemotePlugins",
+    init = function() -- Example, skip if you're OK with the default config
+      vim.g['semshi#error_sign'] = false
+    end,
+    config = function()
+      -- Any config or setup that would need to be done after plugin loading
+    end,
   }
 }
