@@ -5,6 +5,32 @@ return {
     opts = {},
   },
   {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        panel = {
+          enabled = false,
+        },
+        suggestion = {
+          auto_trigger = true,
+          hide_during_completion = false,
+          keymap = {
+            accept = '<Tab>',
+          },
+        },
+      })
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    dependencies = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+  {
     'hrsh7th/nvim-cmp',
     dependencies = {
       'VonHeikemen/lsp-zero.nvim',
@@ -32,18 +58,6 @@ return {
     },
 
     event = 'InsertEnter',
-    -- opts = function(_, opts)
-    --   table.insert(opts.sources, 1, {
-    --     name = "copilot",
-    --     group_index = 1,
-    --     priority = 100,
-    --   })
-    --   table.insert(opts.sources, 2, {
-    --     name = "nvim_lsp",
-    --     group_index = 2,
-    --     priority = 900,
-    --   })
-    -- end,
     config = function()
       local cmp = require('cmp')
 
