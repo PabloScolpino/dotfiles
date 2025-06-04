@@ -6,13 +6,32 @@ return {
     -- add any opts here
     -- for example
     provider = "claude",
-    openai = {
-      endpoint = "https://api.openai.com/v1",
-      model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000,  -- timeout in milliseconds
-      temperature = 0,  -- adjust if needed
-      max_tokens = 4096,
-      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+    -- provider = "openai",
+    -- auto_suggestions_provider = "copilot",
+    providers = {
+      openai = {
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4o",  -- your desired model (or use gpt-4o, etc.)
+        extra_request_body = {
+          timeout = 30000, -- timeout in milliseconds
+          temperature = 0, -- adjust if needed
+          max_tokens = 4096,
+          -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+        }
+      },
+      claude = {
+        endpoint = "https://api.anthropic.com",
+        -- model = "claude/claude-3-7-sonnet-20250219",
+        model = "claude-3-7-sonnet-20250219",
+        extra_request_body = {
+          temperature = 0.75,
+          max_tokens = 4096,
+        },
+      },
+    },
+    behaviour = {
+      auto_suggestions = false, -- Experimental stage
+      auto_approve_tool_permissions = true
     },
     web_search_engine = {
       provider = "kagi", -- tavily, serpapi, searchapi, google or kagi
@@ -33,7 +52,26 @@ return {
     "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
     "ibhagwan/fzf-lua",              -- for file_selector provider fzf
     "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-    "zbirenbaum/copilot.lua",        -- for providers='copilot'
+    {
+      "zbirenbaum/copilot.lua",      -- for providers='copilot'
+      cmd = "Copilot",
+      -- build = ":Copilot auth<CR>",
+      event = "InsertEnter",
+      config = function()
+        require("copilot").setup({
+          panel = {
+            enabled = false,
+          },
+          suggestion = {
+            auto_trigger = true,
+            hide_during_completion = false,
+            keymap = {
+              accept = '<Tab>',
+            },
+          },
+        })
+      end,
+    },
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
