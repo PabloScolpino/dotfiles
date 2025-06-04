@@ -52,26 +52,28 @@ return {
     "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
     "ibhagwan/fzf-lua",              -- for file_selector provider fzf
     "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
-    {
-      "zbirenbaum/copilot.lua",      -- for providers='copilot'
-      cmd = "Copilot",
-      -- build = ":Copilot auth<CR>",
-      event = "InsertEnter",
-      config = function()
-        require("copilot").setup({
-          panel = {
-            enabled = false,
-          },
-          suggestion = {
-            auto_trigger = true,
-            hide_during_completion = false,
-            keymap = {
-              accept = '<Tab>',
-            },
-          },
-        })
-      end,
-    },
+    -- NOTE: Enable this if you want to use copilot as a provider
+    --       and make sure to diable / remove it from lsp.lua where it is also configured
+    -- {
+    --   "zbirenbaum/copilot.lua",      -- for providers='copilot'
+    --   cmd = "Copilot",
+    --   -- build = ":Copilot auth<CR>",
+    --   event = "InsertEnter",
+    --   config = function()
+    --     require("copilot").setup({
+    --       panel = {
+    --         enabled = false,
+    --       },
+    --       suggestion = {
+    --         auto_trigger = true,
+    --         hide_during_completion = false,
+    --         keymap = {
+    --           accept = '<Tab>',
+    --         },
+    --       },
+    --     })
+    --   end,
+    -- },
     {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
