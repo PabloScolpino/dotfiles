@@ -5,23 +5,97 @@ return {
     opts = {},
   },
   {
+    "zbirenbaum/copilot-cmp",
+    dependencies = {
+      {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+          require("copilot").setup({
+            -- panel = {
+            --   enabled = true,
+            -- },
+            -- suggestion = {
+            --   auto_trigger = true,
+            --   hide_during_completion = true,
+            --   keymap = {
+            --     accept = '<C-yy>',
+            --   },
+            -- },
+          })
+        end,
+      },
+    },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+  {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'VonHeikemen/lsp-zero.nvim'
+      'VonHeikemen/lsp-zero.nvim',
+      'hrsh7th/cmp-buffer',
+      'SirVer/ultisnips',
+      {
+        'quangnguyen30192/cmp-nvim-ultisnips',
+        config = function()
+          -- optional call to setup (see customization section)
+          require("cmp_nvim_ultisnips").setup {}
+        end,
+      }
+      -- {
+      --   'codota/tabnine-nvim',
+      --   build = "./dl_binaries.sh"
+      -- },
+      -- {
+      --   'tzachar/cmp-tabnine',
+      --   build = './install.sh',
+      --   dependencies = 'hrsh7th/nvim-cmp',
+      --   config = function()
+      --     require('cmp_tabnine.config'):setup({
+      --       max_lines = 1000,
+      --       max_num_results = 20,
+      --       sort = true,
+      --       run_on_every_keystroke = true,
+      --       snippet_placeholder = '..',
+      --       ignored_file_types = {},
+      --       show_prediction_strength = true
+      --     })
+      --   end
+      -- }
     },
+
     event = 'InsertEnter',
     config = function()
       local cmp = require('cmp')
 
       cmp.setup({
-        sources = {
-          -- { name = 'copilot' },
-          { name = 'nvim_lsp' },
-          -- { name = 'cmp_tabnine' },
-          { name = 'ultisnips' },
-          { name = 'buffer',   keyword_length = 3 },
+        snippet = {
+          -- REQUIRED - you must specify a snippet engine
+          expand = function(args)
+            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+            vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+            -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+
+            -- For `mini.snippets` users:
+            -- local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
+            -- insert({ body = args.body }) -- Insert at cursor
+            -- cmp.resubscribe({ "TextChangedI", "TextChangedP" })
+            -- require("cmp.config").set_onetime({ sources = {} })
+          end,
         },
-        formatting = require("lsp-zero").cmp_format({ details = true }),
+        -- snippet = {
+        --   expand = function(args)
+        --     vim.snippet.expand(args.body)
+        --   end,
+        -- },
+        window = {
+          -- completion = cmp.config.window.bordered(),
+          -- documentation = cmp.config.window.bordered(),
+        },
         mapping = cmp.mapping.preset.insert({
           ['<Tab>'] = cmp.mapping.select_next_item(),
           ['<S-Tab>'] = cmp.mapping.select_prev_item(),
@@ -29,11 +103,14 @@ return {
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
         }),
-        snippet = {
-          expand = function(args)
-            vim.snippet.expand(args.body)
-          end,
-        },
+        formatting = require("lsp-zero").cmp_format({ details = true }),
+        sources = cmp.config.sources({
+          { name = 'copilot' },
+          { name = 'nvim_lsp' },  -- For vsnip users.
+          -- { name = 'luasnip' }, -- For luasnip users.
+          { name = 'ultisnips' }, -- For ultisnips users.
+          -- { name = 'snippy' }, -- For snippy users.
+          { name = 'buffer' }, })
       })
     end
   },

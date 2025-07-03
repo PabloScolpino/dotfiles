@@ -1,4 +1,68 @@
-return {}
+return {
+  {
+    'chochkov/vim-rspec-focus',
+    lazy = false,
+    keys = {
+      { '<Leader>rf', function() vim.cmd("call rspecfocus#AddFocusToPreviousRspecBlock()") end, desc = "Add rspec focus tag" },
+      { '<Leader>ru', function() vim.cmd("call rspecfocus#RemoveAllFocusTags()") end,           desc = "Remove all focus tags in file" }
+    }
+  }
+  -- {
+  --   'thoughtbot/vim-rspec',
+  --   config = function()
+  --     -- vim.g.rspec_command = "!rspec --drb {spec}"
+  --     -- Lua function to dynamically find the appropriate container and run RSpec inside it
+  --     function FindRspecContainer()
+  --       local handle = io.popen(
+  --         "docker ps --filter 'name=backend' --filter 'name=web' --format '{{.Names}}' | head -n 1")
+  --       local container = handle:read("*a"):gsub("%s+", "") -- Trim any whitespace
+  --       handle:close()
+  --
+  --       if container == "" then
+  --         vim.notify("No running container named 'backend' or 'web' found.", vim.log.levels.ERROR)
+  --         return "!rspec {spec}"
+  --       else
+  --         return "!docker exec -i " .. container .. " rspec {spec}"
+  --       end
+  --     end
+  --
+  --     -- Set the rspec command dynamically using the Lua function
+  --     vim.g.rspec_command = FindRspecContainer()
+  --   end,
+  --   keys = {
+  --     { '<Leader>rr', function() vim.cmd('call RunCurrentSpecFile()') end },
+  --     { '<Leader>rs', function() vim.cmd('call RunNearestSpec()') end },
+  --     { '<Leader>rl', function() vim.cmd('call RunLastSpec()') end },
+  --     { '<Leader>ra', function() vim.cmd('call RunAllSpecs()') end },
+  --   }
+  --
+  -- },
+  -- {
+  --   "nvim-neotest/neotest",
+  --   lazy = true,
+  --   dependencies = {
+  --     "nvim-neotest/nvim-nio",
+  --     "nvim-lua/plenary.nvim",
+  --     "antoinemadec/FixCursorHold.nvim",
+  --     "olimorris/neotest-rspec",
+  --   },
+  --   config = function()
+  --     require("neotest").setup({
+  --       adapters = {
+  --         require("neotest-rspec")({
+  --           rspec_cmd = function()
+  --             return vim.tbl_flatten({
+  --               "bundle",
+  --               "exec",
+  --               "rspec",
+  --             })
+  --           end
+  --         }),
+  --       },
+  --     })
+  --   end,
+  -- },
+}
 -- return {
 --   {
 --     "nvim-neotest/neotest",
