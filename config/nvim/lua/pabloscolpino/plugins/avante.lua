@@ -21,8 +21,8 @@ return {
       },
       claude = {
         endpoint = "https://api.anthropic.com",
-        -- model = "claude/claude-3-7-sonnet-20250219",
-        model = "claude-3-7-sonnet-20250219",
+        -- model = "claude-3-7-sonnet-20250219",
+        model = "claude-sonnet-4-20250514",
         extra_request_body = {
           temperature = 0.75,
           max_tokens = 4096,
