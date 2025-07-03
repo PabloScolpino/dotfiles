@@ -4,6 +4,8 @@ all: help
 help:
 	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+D_RUN := docker run -v ${PWD}/..:/home/user/.dotfiles -v ${PWD}:/test --rm
+
 test:
 	$(MAKE) ansible_bash
 	$(MAKE) ansible_zsh
@@ -25,12 +27,15 @@ build_gitpod_bash:
 build_codespace:
 	docker build --platform linux/amd64 --target codespace -t codespace .
 
+shell_ubuntu_bash: build_ubuntu_bash ## Open a shell in ubuntu bash
+	$(D_RUN) -it dotfile-test:bash bash
+
 test_ubuntu_bash_shell: build_ubuntu_bash ## test SHELL install on UBUNTU-BASH
 	docker run -v ${PWD}:/test --rm dotfile-test:bash /test/shell_install.sh
 
 # test_ubuntu_bash_ansible: build_ubuntu_bash ## test ANSIBLE install on UBUNTU-BASH
 test_ubuntu_bash_ansible: ## test ANSIBLE install on UBUNTU-BASH
-	docker run -v ${PWD}/..:/home/user/.dotfiles -v ${PWD}:/test --rm dotfile-test:bash /test/ansible_install.sh
+	$(D_RUN) dotfile-test:bash /test/ansible_install.sh
 
 ubuntu_bash: ## open a shell in UBUNTU-BASH
 	docker run -v ${PWD}/..:/home/user/.dotfiles -v ${PWD}:/test --rm --interactive --tty dotfile-test:bash bash

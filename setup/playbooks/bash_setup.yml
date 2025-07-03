@@ -1,5 +1,5 @@
 ---
-- name: Source bashrc custom file
+- name: Define DOTFILES_PATH env var
   lineinfile:
     path: "${HOME}/.bashrc"
     line: "export DOTFILES_PATH={{ dotfiles_path }}"
