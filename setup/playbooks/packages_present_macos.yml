@@ -9,14 +9,17 @@
     name: "{{ item }}"
     state: present
   loop:
+    - 7zip
     - asciidoctor
     - bpytop
     - dive
     - docutils
+    - eza
     - fd
     - fzf
     - git
     - git-delta
+    - gnu-tar
     - htop
     - httpie
     - k9s
@@ -28,10 +31,9 @@
     - prettier
     - rg
     - the_silver_searcher
-    - gnu-tar
     - watch
     - yamllint
-    - eza
+    - yazi
 
 - name: install casks [MacOs]
   ansible.builtin.command: brew install --cask "{{ item }}"
