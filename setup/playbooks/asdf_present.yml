@@ -19,28 +19,28 @@
     version: v0.13.1  # Update to the latest version as needed
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: Add asdf to bash configuration [Linux]
+- name: Add asdf to BASH configuration [Linux]
   ansible.builtin.lineinfile:
     path: "{{ ansible_env.HOME }}/.bashrc"
     line: '. "$HOME/.asdf/asdf.sh"'
     state: present
   when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and ansible_facts['user_shell'] == '/bin/bash'
 
-- name: Add asdf completions to bash configuration [Linux]
+- name: Add asdf completions to BASH configuration [Linux]
   ansible.builtin.lineinfile:
     path: "{{ ansible_env.HOME }}/.bashrc"
     line: '. "$HOME/.asdf/completions/asdf.bash"'
     state: present
   when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and ansible_facts['user_shell'] == '/bin/bash'
 
-- name: Add asdf to zsh configuration [Linux]
+- name: Add asdf to ZSH configuration [Linux]
   ansible.builtin.lineinfile:
     path: "{{ ansible_env.HOME }}/.zshrc"
     line: '. "$HOME/.asdf/asdf.sh"'
     state: present
   when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and ansible_facts['user_shell'] == '/bin/zsh'
 
-- name: Add asdf completions to zsh configuration [Linux]
+- name: Add asdf completions to ZSH configuration [Linux]
   ansible.builtin.lineinfile:
     path: "{{ ansible_env.HOME }}/.zshrc"
     line: '. "$HOME/.asdf/completions/asdf.bash"'
@@ -51,10 +51,25 @@
   ansible.builtin.shell: |
     export ASDF_DIR="$HOME/.asdf"
     . "$HOME/.asdf/asdf.sh"
-    asdf plugin add "{{ item.name }}" "{{ item.url }}" || true
+    asdf plugin add "{{ item.name }}" "{{ item.url }}"
   changed_when: false
-  failed_when: false
+  when: ansible_distribution != 'MacOSX'
   loop:
     - { name: ruby, url: "https://github.com/asdf-vm/asdf-ruby.git" }
     - { name: nodejs, url: "https://github.com/asdf-vm/asdf-nodejs.git" }
     - { name: lua, url: "https://github.com/Stratus3D/asdf-lua.git" }
+    - { name: python, url: "https://github.com/asdf-community/asdf-python" }
+
+- name: asdf plugins present [MacOS]
+  ansible.builtin.shell: asdf plugin add "{{ item.name }}" "{{ item.url }}"
+  changed_when: false
+  when: ansible_distribution == 'MacOSX'
+  loop:
+    - { name: ruby, url: "https://github.com/asdf-vm/asdf-ruby.git" }
+    - { name: nodejs, url: "https://github.com/asdf-vm/asdf-nodejs.git" }
+    - { name: lua, url: "https://github.com/Stratus3D/asdf-lua.git" }
+    - { name: python, url: "https://github.com/asdf-community/asdf-python" }
+
+- name: asdf versions installed
+  ansible.builtin.shell: asdf install
+  changed_when: false
