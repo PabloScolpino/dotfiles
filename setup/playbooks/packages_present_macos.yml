@@ -34,6 +34,7 @@
     - watch
     - yamllint
     - yazi
+    - gh
 
 - name: install casks [MacOs]
   ansible.builtin.command: brew install --cask "{{ item }}"
