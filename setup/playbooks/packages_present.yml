@@ -7,9 +7,5 @@
   import_tasks: packages_present_macos.yml
   when: ansible_distribution == 'MacOSX'
 
-- name: nvim present
-  import_tasks: nvim_present.yml
-
 - name: Lazydocker present
   import_tasks: lazydocker_present.yml
-
