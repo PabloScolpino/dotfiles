@@ -33,9 +33,24 @@ return {
       auto_suggestions = false, -- Experimental stage
       auto_approve_tool_permissions = true
     },
-    web_search_engine = {
-      provider = "kagi", -- tavily, serpapi, searchapi, google or kagi
-    }
+    ---------------------------------------------------------------------------
+    -- web_search_engine = {
+    -- NOTE: Kagi search api is in beta
+    --   provider = "kagi", -- tavily, serpapi, searchapi, google or kagi
+    -- }
+    ---------------------------------------------------------------------------
+    -- system_prompt as function ensures LLM always has latest MCP server state
+    -- This is evaluated for every message, even in existing chats
+    system_prompt = function()
+      local hub = require("mcphub").get_hub_instance()
+      return hub and hub:get_active_servers_prompt() or ""
+    end,
+    -- Using function prevents requiring mcphub before it's loaded
+    custom_tools = function()
+      return {
+        require("mcphub.extensions.avante").mcp_tool(),
+      }
+    end,
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
