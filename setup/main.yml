@@ -17,3 +17,7 @@
     - name: asdf present
       import_tasks: playbooks/asdf_present.yml
       when: install_asdf == true
+
+    - name: nvim present
+      import_tasks: playbooks/nvim_present.yml
+      when: install_nvim == true

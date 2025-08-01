@@ -93,3 +93,8 @@
     src: "{{ nvim_path }}/bin/nvim"
     dest: "{{ ansible_env.HOME }}/bin/nvim"
     state: link
+
+- name: install provider utils
+  ansible.builtin.shell: |
+    gem install neovim
+    pip install neovim
