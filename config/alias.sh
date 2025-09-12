@@ -43,3 +43,6 @@ fi
 
 alias ght='~/bin/codespace_tunel'
 alias ghs='~/bin/codespace_ssh'
+
+alias r='bundle exec rails'
+alias mr='make rails'
