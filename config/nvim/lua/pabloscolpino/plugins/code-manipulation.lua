@@ -8,13 +8,6 @@ return {
     'bronson/vim-trailing-whitespace'
   },
   {
-    'chochkov/vim-rspec-focus',
-    keys = {
-      { '<Leader>rf', "<Cmd>AddFocusTag<CR>",        desc = "Add rspec focus tag" },
-      { '<Leader>ru', "<Cmd>RemoveAllFocusTags<CR>", desc = "Remove all focus tags in file" }
-    }
-  },
-  {
     'echasnovski/mini.comment'
   },
   {
