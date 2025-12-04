@@ -4,7 +4,8 @@
 
   vars:
     dotfiles_path: "{{ playbook_dir }}/.."
-    install_asdf: true
+    install_asdf: false
+    install_mise: true
     install_nvim: true
 
   tasks:
@@ -17,3 +18,7 @@
     - name: asdf present
       import_tasks: playbooks/asdf_present.yml
       when: install_asdf == true
+
+    - name: mise-en-place present
+      import_tasks: playbooks/mise_present.yml
+      when: install_mise == true

@@ -1,0 +1,32 @@
+---
+- name: mise present [MacOS]
+  community.general.homebrew:
+    name: mise
+    state: present
+  when: ansible_distribution == 'MacOSX'
+
+- name: install mise [Linux]
+  ansible.builtin.shell: |
+    curl https://mise.run | sh
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+
+- name: Add mise completions to zsh configuration [MacOS]
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: 'eval "$(mise activate zsh)"'
+    state: present
+  when: ansible_distribution == 'MacOSX'
+
+- name: Add mise completions to bash configuration [Linux]
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+    line: 'eval "$(~/.local/bin/mise activate bash)"'
+    state: present
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and ansible_facts['user_shell'] == '/bin/bash'
+
+- name: Add mise completions to zsh configuration [Linux]
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: 'eval "$(~/.local/bin/mise activate zsh)"'
+    state: present
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and ansible_facts['user_shell'] == '/bin/zsh'
