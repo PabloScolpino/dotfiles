@@ -9,11 +9,3 @@
   ansible.builtin.shell: |
     curl https://mise.run | sh
   when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
-
-- name: Add mise completions to bash configuration [Linux]
-  ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.bashrc"
-    line: 'eval "$(~/.local/bin/mise activate bash)"'
-    state: present
-    create: yes
-  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and ansible_facts['user_shell'] == '/bin/bash'
