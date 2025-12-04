@@ -50,7 +50,7 @@ FROM zsh AS zsh-ansible
 COPY --chown=user:user . /home/user/.dotfiles
 RUN cd .dotfiles/setup && \
   ansible-galaxy install -r requirements.yml && \
-  ansible-playbook main.yml -i inventory --extra-vars "install_asdf=false"
+  ansible-playbook main.yml -i inventory --extra-vars "install_mise=false"
 
 ################################################################################
 # Gitpod base
