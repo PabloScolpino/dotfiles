@@ -13,4 +13,8 @@ config_path=${DOTFILES_PATH}/config
 . $config_path/node.sh
 [ -f $config_path/extras.sh ] && source $config_path/extras.sh
 
+if command -v mise &> /dev/null; then
+  eval "$(mise activate bash)"
+fi
+
 $DOTFILES_PATH/bin/set_ssh_agent.sh

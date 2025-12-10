@@ -1,0 +1,11 @@
+---
+- name: mise present [MacOS]
+  community.general.homebrew:
+    name: mise
+    state: present
+  when: ansible_distribution == 'MacOSX'
+
+- name: install mise [Linux]
+  ansible.builtin.shell: |
+    curl https://mise.run | sh
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')

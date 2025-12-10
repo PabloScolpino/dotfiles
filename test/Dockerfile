@@ -1,4 +1,4 @@
-ARG PACKAGES_BASE="sudo ca-certificates tzdata openssh-client make"
+ARG PACKAGES_BASE="sudo ca-certificates tzdata openssh-client make locales"
 ARG PACKAGES_ANSIBLE_DEPENDENCIES="python3-setuptools python3-pip python3-wheel"
 
 ################################################################################
@@ -9,6 +9,7 @@ ARG PACKAGES_ANSIBLE_DEPENDENCIES
 
 RUN apt-get update -qq \
   && apt-get install -yy --no-install-recommends $PACKAGES_BASE $PACKAGES_ANSIBLE_DEPENDENCIES \
+  && locale-gen en_US.UTF-8 \
   && rm -Rf /var/lib/apt/lists/* \
   && rm -Rf /usr/share/doc \
   && rm -Rf /usr/share/man \
@@ -42,6 +43,14 @@ RUN sudo apt-get update -qq \
   && sudo apt-get install -yy --no-install-recommends zsh \
   && sudo apt-get clean \
   && sudo chsh -s /bin/zsh `whoami`
+
+################################################################################
+# Ubuntu zsh with
+FROM zsh AS zsh-ansible
+COPY --chown=user:user . /home/user/.dotfiles
+RUN cd .dotfiles/setup && \
+  ansible-galaxy install -r requirements.yml && \
+  ansible-playbook main.yml -i inventory --extra-vars "install_mise=false"
 
 ################################################################################
 # Gitpod base

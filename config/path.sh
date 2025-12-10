@@ -10,10 +10,6 @@ if [ -d "${DOTFILES_PATH}/bin" ]; then
     export PATH="${DOTFILES_PATH}/bin:$PATH"
 fi
 
-if [ -d "$HOME/.asdf/bin" ]; then
-    export PATH="$HOME/.asdf/bin:$PATH"
-fi
-
 if [ -d "$HOME/.cargo/bin" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
