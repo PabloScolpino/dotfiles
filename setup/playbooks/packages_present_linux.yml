@@ -31,6 +31,9 @@
     # - git-delta # only available as .deb file
     #
     # - asciidoctor installs ruby 3.1
+    - libffi-dev # ruby build dep
+    - libyaml-dev # ruby build dep
+    - libreadline-dev # lua build dep
     - curl
     - fd-find
     - fonts-powerline
