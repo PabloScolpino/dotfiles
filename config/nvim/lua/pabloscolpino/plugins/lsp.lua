@@ -34,7 +34,7 @@ return {
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'VonHeikemen/lsp-zero.nvim',
+      { 'onsails/lspkind.nvim' },
       'hrsh7th/cmp-buffer',
       'SirVer/ultisnips',
       {
@@ -103,7 +103,9 @@ return {
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
         }),
-        formatting = require("lsp-zero").cmp_format({ details = true }),
+        formatting = {
+          format = require('lspkind').cmp_format()
+        },
         sources = cmp.config.sources({
           { name = 'copilot' },
           { name = 'nvim_lsp' },  -- For vsnip users.
@@ -171,14 +173,7 @@ return {
           'ts_ls',
           'yamlls',
         },
-        automatic_installation = true,
-        handlers = {
-          -- this first function is the "default handler"
-          -- it applies to every language server without a "custom handler"
-          function(server_name)
-            require('lspconfig')[server_name].setup({})
-          end,
-        }
+        automatic_enable = true,
       })
     end
   }
