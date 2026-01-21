@@ -4,3 +4,5 @@ config/nvim/pack/
 config/nvim/plugin/packer_compiled.lua
 
 xterm-256color-italic.terminfo
+
+.claude/settings.local.json
