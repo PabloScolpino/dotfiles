@@ -168,11 +168,50 @@ return {
           'helm_ls',
           'lua_ls',
           'pylsp',
-          'ruby_lsp',
+          -- 'ruby_lsp',  -- REMOVED: projects provide their own via Gemfile
           'ts_ls',
           'yamlls',
         },
-        automatic_enable = true,
+        automatic_enable = {
+          exclude = { 'ruby_lsp', 'solargraph' }
+        },
+      })
+
+      -- Helper function to detect Ruby version from mise
+      local function get_ruby_version()
+        local result = vim.fn.system('mise current ruby 2>/dev/null')
+        local version = result:match('(%d+%.%d+)')
+        return version and tonumber(version) or nil
+      end
+
+      -- Configure Ruby LSPs with bundle exec (uses project's gems)
+      vim.lsp.config('ruby_lsp', {
+        cmd = { 'mise', 'exec', '--', 'bundle', 'exec', 'ruby-lsp' },
+        filetypes = { 'ruby', 'eruby' },
+        root_markers = { 'Gemfile', '.git' },
+      })
+
+      vim.lsp.config('solargraph', {
+        cmd = { 'mise', 'exec', '--', 'bundle', 'exec', 'solargraph', 'stdio' },
+        filetypes = { 'ruby', 'eruby' },
+        root_markers = { 'Gemfile', '.git' },
+      })
+
+      -- Autocmd to enable correct Ruby LSP based on version
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { 'ruby', 'eruby' },
+        callback = function()
+          local version = get_ruby_version()
+          if version == nil then
+            return -- No Ruby version detected, no LSP
+          end
+
+          if version >= 3.0 then
+            vim.lsp.enable('ruby_lsp')
+          else
+            vim.lsp.enable('solargraph')
+          end
+        end,
       })
     end
   }
