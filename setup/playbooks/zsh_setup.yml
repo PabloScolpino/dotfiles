@@ -22,9 +22,9 @@
 - name: Source zshenv custom file
   lineinfile:
     path: "${HOME}/.zshenv"
-    line: ". ${HOME}/.dotfiles/config/source_this.zshenv"
+    line: ". {{ dotfiles_path }}/config/source_this.zshenv"
 
 - name: Source zshrc custom file
   lineinfile:
     path: "${HOME}/.zshrc"
-    line: ". ${HOME}/.dotfiles/config/source_this.zshrc"
+    line: ". {{ dotfiles_path }}/config/source_this.zshrc"

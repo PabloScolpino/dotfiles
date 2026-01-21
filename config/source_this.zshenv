@@ -1,4 +1,4 @@
-CONFIG=$HOME/.dotfiles/config
+CONFIG="${0:A:h}"
 
 . $CONFIG/env.sh
 . $CONFIG/path.sh

@@ -43,3 +43,5 @@ fi
 
 alias ght='~/bin/codespace_tunel'
 alias ghs='~/bin/codespace_ssh'
+
+alias c='mise exec node@24.11.1 -- claude'

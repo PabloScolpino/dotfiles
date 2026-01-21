@@ -9,5 +9,6 @@ for rcfile in "${HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${HOME}/.${rcfile:t}"
 done
 
-echo ". \$HOME/.dotfiles/config/source_this.zshenv" >> ${HOME}/.zshenv
-echo ". \$HOME/.dotfiles/config/source_this.zshrc" >> ${HOME}/.zshrc
+DOTFILES_ROOT="${0:A:h:h}"
+echo ". \${DOTFILES_ROOT}/config/source_this.zshenv" >> ${HOME}/.zshenv
+echo ". \${DOTFILES_ROOT}/config/source_this.zshrc" >> ${HOME}/.zshrc
