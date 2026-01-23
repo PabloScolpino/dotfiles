@@ -39,3 +39,14 @@ vim.keymap.set("n", "<Leader>n", vim.cmd.bnext, { desc = "jump to next buffer" }
 vim.keymap.set("n", "<F9>", ":!%:p<Enter>", { desc = "Execute current file" })
 
 vim.keymap.set("n", "<BS><BS>", vim.cmd.FixWhitespace)
+
+vim.keymap.set('t', '<C-\\><C-\\>', '<C-c><C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+vim.keymap.set('t', '<C-\\><C-n>', function()
+  local keys = vim.api.nvim_replace_termcodes('<C-c><C-\\><C-n>', true, false, true)
+  vim.api.nvim_feedkeys(keys, 'n', false)
+  vim.schedule(function()
+    local new_width = math.floor(vim.o.columns * 0.7)
+    vim.cmd('rightbelow vertical ' .. new_width .. 'new')
+  end)
+end, { desc = 'New buffer right of terminal (70%)' })

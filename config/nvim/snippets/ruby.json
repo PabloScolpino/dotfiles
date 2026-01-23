@@ -1,0 +1,44 @@
+{
+  "debug": {
+    "prefix": "debug",
+    "body": [
+      "puts '-' * 80",
+      "puts \"#{__FILE__}:#{__LINE__}\\t#{__method__}\""
+    ],
+    "description": "Poor man's debug for ruby"
+  },
+  "dr": {
+    "prefix": "dr",
+    "body": [
+      "puts AmazingPrint::Colors.red('>' * 80)",
+      "puts \"#{__FILE__}:#{__LINE__}\\t#{__method__}\""
+    ],
+    "description": "Poor man's debug (red)"
+  },
+  "dg": {
+    "prefix": "dg",
+    "body": [
+      "puts AmazingPrint::Colors.green('-' * 80)",
+      "puts \"#{__FILE__}:#{__LINE__}\\t#{__method__}\""
+    ],
+    "description": "Poor man's debug (green)"
+  },
+  "db": {
+    "prefix": "db",
+    "body": [
+      "puts AmazingPrint::Colors.blue('-' * 80)",
+      "puts \"#{__FILE__}:#{__LINE__}\\t#{__method__}\""
+    ],
+    "description": "Poor man's debug (blue)"
+  },
+  "pry": {
+    "prefix": "pry",
+    "body": "require 'pry'; binding.pry",
+    "description": "Pry breakpoint"
+  },
+  "fr": {
+    "prefix": "fr",
+    "body": "# frozen_string_literal: true",
+    "description": "Frozen string literal header"
+  }
+}

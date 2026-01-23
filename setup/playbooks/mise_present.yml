@@ -9,3 +9,6 @@
   ansible.builtin.shell: |
     curl https://mise.run | sh
   when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+
+- name: install configured default tools with mise
+  ansible.builtin.shell: mise install

@@ -1,4 +1,4 @@
-CONFIG=$HOME/.dotfiles/config
+CONFIG="${0:A:h}"
 
 source $CONFIG/env.sh
 source $CONFIG/path.sh # zprezto overrides the order of path set up
