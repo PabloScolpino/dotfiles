@@ -171,6 +171,7 @@ return {
           -- 'ruby_lsp',  -- REMOVED: projects provide their own via Gemfile
           'ts_ls',
           'yamlls',
+          'herb_ls',
         },
         automatic_enable = {
           exclude = { 'ruby_lsp', 'solargraph' }

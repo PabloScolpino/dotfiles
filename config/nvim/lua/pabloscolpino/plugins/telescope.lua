@@ -1,6 +1,7 @@
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = { "nvim-lua/plenary.nvim" },
+  cmd = { "Telescope" },
   keys = {
     { "<leader>f",   "<cmd>Telescope git_files<cr>",    desc = "Search filename in git project" },
     { "<leader>ag",  "<cmd>Telescope grep_string<cr>",  desc = "Search for string under cursor" },

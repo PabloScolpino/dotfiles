@@ -3,6 +3,7 @@ then
   alias ls="eza -l"
   alias l="eza -l"
   alias lt="eza -l -T --level=3"
+  alias lrt="eza -l --sort=modified --reverse"
   alias a="clear;eza -l"
 else
   alias l="ls -l -G"

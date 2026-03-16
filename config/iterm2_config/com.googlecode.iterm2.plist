@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AIFeatureFunctionCalling</key>
+	<true/>
+	<key>AIFeatureHostedCodeInterpeter</key>
+	<false/>
+	<key>AIFeatureHostedFileSearch</key>
+	<false/>
+	<key>AIFeatureHostedWebSearch</key>
+	<false/>
+	<key>AIFeatureStreamingResponses</key>
+	<true/>
+	<key>AITermAPI</key>
+	<integer>7</integer>
+	<key>AIVectorStore</key>
+	<integer>0</integer>
+	<key>AIVendor</key>
+	<integer>4</integer>
+	<key>AboutToPasteTabsWithCancel</key>
+	<true/>
+	<key>AboutToPasteTabsWithCancel_selection</key>
+	<integer>0</integer>
+	<key>Actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<integer>53</integer>
+			<key>applyMode</key>
+			<integer>0</integer>
+			<key>escaping</key>
+			<integer>2</integer>
+			<key>parameter</key>
+			<string></string>
+			<key>title</key>
+			<string>Swap vertical panes</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>AiMaxTokens</key>
+	<integer>200000</integer>
+	<key>AiModel</key>
+	<string>claude-opus-4-6</string>
+	<key>AiResponseMaxTokens</key>
+	<integer>128000</integer>
+	<key>AitermURL</key>
+	<string>https://api.anthropic.com/v1/messages</string>
+	<key>AlternateMouseScroll</key>
+	<true/>
+	<key>AutoHideTmuxClientSession</key>
+	<true/>
+	<key>ClosingTmuxWindowKillsTmuxWindows</key>
+	<true/>
+	<key>ClosingTmuxWindowKillsTmuxWindows_selection</key>
+	<integer>1</integer>
+	<key>Default Arrangement Name</key>
+	<string>ssh@work</string>
+	<key>Default Bookmark Guid</key>
+	<string>F6935F99-9140-444A-A81F-1B7C0F873388</string>
+	<key>Default Browser Profile Guid</key>
+	<string>F6935F99-9140-444A-A81F-1B7C0F873388</string>
+	<key>DefaultTabBarHeight</key>
+	<real>28</real>
+	<key>DimOnlyText</key>
+	<false/>
+	<key>EnableDivisionView</key>
+	<true/>
+	<key>EnableProxyIcon</key>
+	<false/>
+	<key>FlashTabBarInFullscreen</key>
+	<true/>
+	<key>GlobalKeyMap</key>
+	<dict>
+		<key>0x19-0x60000</key>
+		<dict>
+			<key>Action</key>
+			<integer>39</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0x4b-0x120000-0x28</key>
+		<dict>
+			<key>Action</key>
+			<integer>9</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0x68-0x100000-0x4</key>
+		<dict>
+			<key>Action</key>
+			<integer>18</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0x6a-0x100000-0x26</key>
+		<dict>
+			<key>Action</key>
+			<integer>6</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0x6b-0x100000-0x28</key>
+		<dict>
+			<key>Action</key>
+			<integer>7</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0x6c-0x100000-0x25</key>
+		<dict>
+			<key>Action</key>
+			<integer>19</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0x77-0x100000-0xd</key>
+		<dict>
+			<key>Action</key>
+			<integer>13</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+			<key>Version</key>
+			<integer>1</integer>
+		</dict>
+		<key>0x9-0x40000</key>
+		<dict>
+			<key>Action</key>
+			<integer>32</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xd-0x20000-0x24</key>
+		<dict>
+			<key>Action</key>
+			<integer>12</integer>
+			<key>Keycode</key>
+			<integer>13</integer>
+			<key>Modifiers</key>
+			<integer>131072</integer>
+			<key>Text</key>
+			<string>\n</string>
+			<key>Version</key>
+			<integer>1</integer>
+		</dict>
+		<key>0xf700-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>7</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf701-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>6</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf702-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>2</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf702-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>33</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf703-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>0</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf703-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>34</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf729-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>5</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72b-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>4</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72c-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>9</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72c-0x20000</key>
+		<dict>
+			<key>Action</key>
+			<integer>9</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72d-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>8</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72d-0x20000</key>
+		<dict>
+			<key>Action</key>
+			<integer>8</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+	</dict>
+	<key>HTMLTabTitles</key>
+	<false/>
+	<key>HapticFeedbackForEsc</key>
+	<false/>
+	<key>HideScrollbar</key>
+	<false/>
+	<key>HideTabNumber</key>
+	<false/>
+	<key>Hotkey</key>
+	<true/>
+	<key>HotkeyChar</key>
+	<integer>32</integer>
+	<key>HotkeyCode</key>
+	<integer>49</integer>
+	<key>HotkeyMigratedFromSingleToMulti</key>
+	<true/>
+	<key>HotkeyModifiers</key>
+	<integer>524288</integer>
+	<key>LanguageAgnosticKeyBindings</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_9CADC91D-6A5C-4589-AC53-0C1CB6462668</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_9CADC91D-6A5C-4589-AC53-0C1CB6462668_selection</key>
+	<integer>0</integer>
+	<key>NeverWarnAboutShortLivedSessions_F6935F99-9140-444A-A81F-1B7C0F873388</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_F6935F99-9140-444A-A81F-1B7C0F873388_selection</key>
+	<integer>0</integer>
+	<key>New Bookmarks</key>
+	<array>
+		<dict>
+			<key>ASCII Anti Aliased</key>
+			<true/>
+			<key>ASCII Ligatures</key>
+			<false/>
+			<key>Allow Title Setting</key>
+			<true/>
+			<key>Ambiguous Double Width</key>
+			<false/>
+			<key>Ansi 0 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0</string>
+				<key>Green Component</key>
+				<string>0</string>
+				<key>Red Component</key>
+				<string>0</string>
+			</dict>
+			<key>Ansi 1 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0</string>
+				<key>Green Component</key>
+				<string>0</string>
+				<key>Red Component</key>
+				<string>0.8</string>
+			</dict>
+			<key>Ansi 10 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.2039216</string>
+				<key>Green Component</key>
+				<string>0.8862745</string>
+				<key>Red Component</key>
+				<string>0.5411764999999999</string>
+			</dict>
+			<key>Ansi 11 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.3098039</string>
+				<key>Green Component</key>
+				<string>0.9137255</string>
+				<key>Red Component</key>
+				<string>0.9882353</string>
+			</dict>
+			<key>Ansi 12 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.8117647</string>
+				<key>Green Component</key>
+				<string>0.6235294</string>
+				<key>Red Component</key>
+				<string>0.4470588</string>
+			</dict>
+			<key>Ansi 13 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.6588235</string>
+				<key>Green Component</key>
+				<string>0.4980392</string>
+				<key>Red Component</key>
+				<string>0.6784314</string>
+			</dict>
+			<key>Ansi 14 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.8862745</string>
+				<key>Green Component</key>
+				<string>0.8862745</string>
+				<key>Red Component</key>
+				<string>0.2039216</string>
+			</dict>
+			<key>Ansi 15 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.9254902</string>
+				<key>Green Component</key>
+				<string>0.9333333</string>
+				<key>Red Component</key>
+				<string>0.9333333</string>
+			</dict>
+			<key>Ansi 2 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.02352941</string>
+				<key>Green Component</key>
+				<string>0.6039215999999999</string>
+				<key>Red Component</key>
+				<string>0.3058824</string>
+			</dict>
+			<key>Ansi 3 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0</string>
+				<key>Green Component</key>
+				<string>0.627451</string>
+				<key>Red Component</key>
+				<string>0.7686275</string>
+			</dict>
+			<key>Ansi 4 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.6431373</string>
+				<key>Green Component</key>
+				<string>0.3960784</string>
+				<key>Red Component</key>
+				<string>0.2039216</string>
+			</dict>
+			<key>Ansi 5 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.4823529</string>
+				<key>Green Component</key>
+				<string>0.3137255</string>
+				<key>Red Component</key>
+				<string>0.4588235</string>
+			</dict>
+			<key>Ansi 6 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.6039215999999999</string>
+				<key>Green Component</key>
+				<string>0.5960785</string>
+				<key>Red Component</key>
+				<string>0.02352941</string>
+			</dict>
+			<key>Ansi 7 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.8117647</string>
+				<key>Green Component</key>
+				<string>0.8431373</string>
+				<key>Red Component</key>
+				<string>0.827451</string>
+			</dict>
+			<key>Ansi 8 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.3254902</string>
+				<key>Green Component</key>
+				<string>0.3411765</string>
+				<key>Red Component</key>
+				<string>0.3333333</string>
+			</dict>
+			<key>Ansi 9 Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0.1607843</string>
+				<key>Green Component</key>
+				<string>0.1607843</string>
+				<key>Red Component</key>
+				<string>0.9372549</string>
+			</dict>
+			<key>BM Growl</key>
+			<true/>
+			<key>Background Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0</string>
+				<key>Green Component</key>
+				<string>0</string>
+				<key>Red Component</key>
+				<string>0</string>
+			</dict>
+			<key>Badge Color</key>
+			<dict>
+				<key>Alpha Component</key>
+				<real>0.5</real>
+				<key>Blue Component</key>
+				<real>0.0</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
+				<key>Green Component</key>
+				<real>0.1491314172744751</real>
+				<key>Red Component</key>
+				<real>1</real>
+			</dict>
+			<key>Badge Text</key>
+			<string></string>
+			<key>Blink Allowed</key>
+			<false/>
+			<key>Blinking Cursor</key>
+			<true/>
+			<key>Blur</key>
+			<false/>
+			<key>Bold Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>1</string>
+				<key>Green Component</key>
+				<string>1</string>
+				<key>Red Component</key>
+				<string>1</string>
+			</dict>
+			<key>Character Encoding</key>
+			<integer>4</integer>
+			<key>Close Sessions On End</key>
+			<true/>
+			<key>Columns</key>
+			<integer>80</integer>
+			<key>Command</key>
+			<string></string>
+			<key>Cursor Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>1</string>
+				<key>Green Component</key>
+				<string>1</string>
+				<key>Red Component</key>
+				<string>1</string>
+			</dict>
+			<key>Cursor Guide Color</key>
+			<dict>
+				<key>Alpha Component</key>
+				<real>0.25</real>
+				<key>Blue Component</key>
+				<real>1</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
+				<key>Green Component</key>
+				<real>0.9268307089805603</real>
+				<key>Red Component</key>
+				<real>0.70213186740875244</real>
+			</dict>
+			<key>Cursor Text Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0</string>
+				<key>Green Component</key>
+				<string>0</string>
+				<key>Red Component</key>
+				<string>0</string>
+			</dict>
+			<key>Custom Command</key>
+			<string>No</string>
+			<key>Custom Directory</key>
+			<string>No</string>
+			<key>Default Bookmark</key>
+			<string>No</string>
+			<key>Description</key>
+			<string>Default</string>
+			<key>Disable Window Resizing</key>
+			<false/>
+			<key>Draw Powerline Glyphs</key>
+			<true/>
+			<key>Flashing Bell</key>
+			<false/>
+			<key>Foreground Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>1</string>
+				<key>Green Component</key>
+				<string>1</string>
+				<key>Red Component</key>
+				<string>1</string>
+			</dict>
+			<key>Guid</key>
+			<string>F6935F99-9140-444A-A81F-1B7C0F873388</string>
+			<key>Horizontal Spacing</key>
+			<real>1</real>
+			<key>Icon</key>
+			<integer>1</integer>
+			<key>Idle Code</key>
+			<integer>0</integer>
+			<key>Jobs to Ignore</key>
+			<array>
+				<string>rlogin</string>
+				<string>ssh</string>
+				<string>slogin</string>
+				<string>telnet</string>
+			</array>
+			<key>Keyboard Map</key>
+			<dict/>
+			<key>Link Color</key>
+			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
+				<key>Blue Component</key>
+				<real>0.73423302173614502</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
+				<key>Green Component</key>
+				<real>0.35916060209274292</real>
+				<key>Red Component</key>
+				<real>0.0</real>
+			</dict>
+			<key>Mouse Reporting</key>
+			<false/>
+			<key>Name</key>
+			<string>Default</string>
+			<key>Non Ascii Font</key>
+			<string>Menlo-Regular 11</string>
+			<key>Non-ASCII Anti Aliased</key>
+			<true/>
+			<key>Normal Font</key>
+			<string>RobotoMonoNFM-Rg 12</string>
+			<key>Option Key Sends</key>
+			<integer>0</integer>
+			<key>Prompt Before Closing 2</key>
+			<false/>
+			<key>Right Option Key Sends</key>
+			<integer>0</integer>
+			<key>Rows</key>
+			<integer>25</integer>
+			<key>Screen</key>
+			<integer>-1</integer>
+			<key>Scrollback Lines</key>
+			<integer>0</integer>
+			<key>Selected Text Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>0</string>
+				<key>Green Component</key>
+				<string>0</string>
+				<key>Red Component</key>
+				<string>0</string>
+			</dict>
+			<key>Selection Color</key>
+			<dict>
+				<key>Blue Component</key>
+				<string>1</string>
+				<key>Green Component</key>
+				<string>0.8353</string>
+				<key>Red Component</key>
+				<string>0.7098</string>
+			</dict>
+			<key>Send Code When Idle</key>
+			<false/>
+			<key>Shortcut</key>
+			<string></string>
+			<key>Silence Bell</key>
+			<false/>
+			<key>Subtitle</key>
+			<string></string>
+			<key>Sync Title</key>
+			<false/>
+			<key>Tags</key>
+			<array/>
+			<key>Terminal Type</key>
+			<string>xterm-256color</string>
+			<key>Title Components</key>
+			<integer>1</integer>
+			<key>Tmux Newline</key>
+			<true/>
+			<key>Transparency</key>
+			<real>0.0</real>
+			<key>Unlimited Scrollback</key>
+			<true/>
+			<key>Use Bold Font</key>
+			<true/>
+			<key>Use Bright Bold</key>
+			<true/>
+			<key>Use Italic Font</key>
+			<true/>
+			<key>Use Non-ASCII Font</key>
+			<false/>
+			<key>Vertical Spacing</key>
+			<real>1</real>
+			<key>Visual Bell</key>
+			<true/>
+			<key>Window Type</key>
+			<integer>0</integer>
+			<key>Working Directory</key>
+			<string>/Users/quantum</string>
+		</dict>
+	</array>
+	<key>OpenTmuxWindowsIn</key>
+	<integer>1</integer>
+	<key>OptionClickMovesCursor</key>
+	<true/>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
+	<key>PerPaneBackgroundImage</key>
+	<false/>
+	<key>PointerActions</key>
+	<dict>
+		<key>Button,1,1,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kContextMenuPointerAction</string>
+		</dict>
+		<key>Button,2,1,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kPasteFromClipboardPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeDown,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kPrevWindowPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeLeft,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kPrevTabPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeRight,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kNextTabPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeUp,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kNextWindowPointerAction</string>
+		</dict>
+	</dict>
+	<key>SeparateStatusBarsPerPane</key>
+	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<false/>
+	<key>ShowMetalFPSmeter</key>
+	<false/>
+	<key>ShowPaneTitles</key>
+	<false/>
+	<key>SoundForEsc</key>
+	<false/>
+	<key>SplitPaneDimmingAmount</key>
+	<real>0.14515900366318016</real>
+	<key>StretchTabsToFillBar</key>
+	<true/>
+	<key>SwitchPaneModifier</key>
+	<integer>9</integer>
+	<key>SwitchTabModifier</key>
+	<integer>4</integer>
+	<key>SwitchWindowModifier</key>
+	<integer>5</integer>
+	<key>TabsHaveCloseButton</key>
+	<false/>
+	<key>TerminalMargin</key>
+	<integer>0</integer>
+	<key>TerminalVMargin</key>
+	<integer>0</integer>
+	<key>TmuxUsesDedicatedProfile</key>
+	<false/>
+	<key>UseBorder</key>
+	<false/>
+	<key>VisualIndicatorForEsc</key>
+	<false/>
+	<key>Window Arrangements</key>
+	<dict/>
+	<key>WindowNumber</key>
+	<true/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
+</dict>
+</plist>
