@@ -42,9 +42,9 @@
 	<key>AiMaxTokens</key>
 	<integer>200000</integer>
 	<key>AiModel</key>
-	<string>claude-sonnet-4-5</string>
+	<string>claude-opus-4-6</string>
 	<key>AiResponseMaxTokens</key>
-	<integer>64000</integer>
+	<integer>128000</integer>
 	<key>AitermURL</key>
 	<string>https://api.anthropic.com/v1/messages</string>
 	<key>AlternateMouseScroll</key>
@@ -613,6 +613,8 @@
 			<string>xterm-256color</string>
 			<key>Title Components</key>
 			<integer>1</integer>
+			<key>Tmux Newline</key>
+			<true/>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
@@ -679,7 +681,7 @@
 	<key>SeparateStatusBarsPerPane</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>ShowMetalFPSmeter</key>
 	<false/>
 	<key>ShowPaneTitles</key>
