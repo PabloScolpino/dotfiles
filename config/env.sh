@@ -1,5 +1,5 @@
 set -o vi
-set editing-mode vi
+# set editing-mode vi
 
 if [ -n "$(command -v bindkey)" ]; then
   bindkey -M vicmd v edit-command-line
