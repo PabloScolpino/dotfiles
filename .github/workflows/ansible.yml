@@ -65,6 +65,7 @@ jobs:
         run: make install
         env:
           ANSIBLE_FORCE_COLOR: '1'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         working-directory: setup
 
       - name: Check home
