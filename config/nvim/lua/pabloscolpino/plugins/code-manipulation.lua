@@ -15,10 +15,13 @@ return {
     }
   },
   {
-    'echasnovski/mini.comment'
+    'echasnovski/mini.comment',
+    event = 'VeryLazy',
+    opts = {},
   },
   {
-    'godlygeek/tabular'
+    'godlygeek/tabular',
+    cmd = 'Tabularize',
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -56,5 +59,7 @@ return {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    event = "VeryLazy",
+    opts = {},
   }
 }
