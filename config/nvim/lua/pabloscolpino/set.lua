@@ -1,5 +1,5 @@
 ----[ make vim yank put data into clipboard ]---------------------------------
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = "unnamedplus"
 
 -----[ Set up smarter search behaviour ]--------------------------------------
 vim.opt.incsearch = true  -- Lookahead as search pattern is specified
