@@ -31,6 +31,7 @@
     - prettier
     - rg
     - the_silver_searcher
+    - tree-sitter-cli
     - watch
     - yamllint
     - yazi

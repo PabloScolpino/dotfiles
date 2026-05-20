@@ -30,3 +30,6 @@ vim.opt.number = true
 -----[ Additional files]------------------------------------------------------
 vim.opt.swapfile = false
 vim.opt.backup = false
+
+-----[ Folds ]----------------------------------------------------------------
+vim.opt.foldlevelstart = 99 -- open all folds by default; treesitter foldexpr otherwise hides everything
