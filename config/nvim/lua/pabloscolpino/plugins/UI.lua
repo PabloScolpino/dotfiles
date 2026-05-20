@@ -10,6 +10,7 @@ return {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
+    lazy = false,
     opts = {
       options = {
         mode = "buffers",
@@ -21,7 +22,14 @@ return {
         always_show_bufferline = true,
         position = "top",
       }
-    }
+    },
+    keys = {
+      { '<C-j>', '<Cmd>BufferLineGoToBuffer 1<CR>', desc = 'Go to buffer 1' },
+      { '<C-k>', '<Cmd>BufferLineGoToBuffer 2<CR>', desc = 'Go to buffer 2' },
+      { '<C-l>', '<Cmd>BufferLineGoToBuffer 3<CR>', desc = 'Go to buffer 3' },
+      { '<C-;>', '<Cmd>BufferLineGoToBuffer 4<CR>', desc = 'Go to buffer 4' },
+      { '<C-h>', '<Cmd>BufferLineCyclePrev<CR>',   desc = 'Previous buffer' },
+    },
   },
   {
     'Mofiqul/vscode.nvim',
@@ -50,25 +58,6 @@ return {
     },
   },
   { "rebelot/kanagawa.nvim" },
-  {
-    'toppair/reach.nvim',
-    lazy = false,
-    opts = {
-      actions = {
-        split = '-',
-        vertsplit = '|',
-        tabsplit = ']',
-        delete = '<Space>',
-      },
-    },
-    keys = {
-      { '<C-j>', function() require("reach").switch_to_buffer(1) end },
-      { '<C-k>', function() require("reach").switch_to_buffer(2) end },
-      { '<C-l>', function() require("reach").switch_to_buffer(3) end },
-      { '<C-;>', function() require("reach").switch_to_buffer(4) end },
-      { '<C-h>', function() require("reach").switch_to_buffer(0) end },
-    }
-  },
   -- Search UI
   -- {
   --   "folke/flash.nvim",
