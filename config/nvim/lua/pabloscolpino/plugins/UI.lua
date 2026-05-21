@@ -32,29 +32,29 @@ return {
     },
   },
   {
-    'Mofiqul/vscode.nvim',
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000, -- Ensure it loads first
     opts = {
+      style = "night",
       transparent = true,
     },
     config = function(_, opts)
-      local theme = require('vscode')
-      theme.setup(opts)
-      theme.load()
+      require("tokyonight").setup(opts)
+      vim.cmd.colorscheme("tokyonight-night")
     end,
+  },
+  {
+    'Mofiqul/vscode.nvim',
+    opts = {
+      transparent = true,
+    },
   },
   {
     'navarasu/onedark.nvim',
     opts = {
       style = 'deep',
-      transparent = true
-    },
-  },
-  {
-    "folke/tokyonight.nvim",
-    opts = {
-      transparent = true
+      transparent = true,
     },
   },
   { "rebelot/kanagawa.nvim" },
