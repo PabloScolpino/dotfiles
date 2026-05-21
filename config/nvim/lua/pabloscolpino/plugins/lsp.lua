@@ -61,6 +61,23 @@ return {
         },
       })
 
+      -- Teach lua_ls about the nvim runtime so editing this config doesn't
+      -- raise 'Undefined global vim' diagnostics regardless of which
+      -- root_dir lua_ls resolves for the buffer.
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            runtime = { version = 'LuaJIT' },
+            diagnostics = { globals = { 'vim' } },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
+            telemetry = { enable = false },
+          },
+        },
+      })
+
       -- Detect Ruby version via mise, cached per project root so we only
       -- fork `mise` once per project per session.
       local ruby_version_cache = {}
