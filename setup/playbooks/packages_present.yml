@@ -1,4 +1,13 @@
 ---
+# TODO: Linux tree-sitter-cli install
+# apt does not ship tree-sitter-cli (required by nvim-treesitter main branch
+# for parser compilation on nvim 0.12+). Options to add it on Linux without a
+# release-binary download:
+#   1. Reorder main.yml so mise_present runs before packages/nvim, then install
+#      via `mise use -g npm:tree-sitter-cli` (needs node already provisioned).
+#   2. Add an explicit task here that downloads the GitHub release binary,
+#      mirroring nvim_present.yml.
+# macOS gets it via brew in packages_present_macos.yml for now.
 - name: Packages are present [Linux]
   import_tasks: packages_present_linux.yml
   when: ansible_os_family == 'Debian'

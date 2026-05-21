@@ -2,7 +2,6 @@ return {
   {
     'tpope/vim-fugitive',
     cmd = { "Git", "Gdiff", "Gvdiff", "Gstatus", "Gcommit" },
-    lazy = false,
     keys = {
       { "<leader>s",  "<Cmd>Git<CR>",        desc = 'Show git status' },
       { "<leader>gd", "<Cmd>Gdiff<CR>",      desc = 'Show git diff of current buffer' },
@@ -11,7 +10,7 @@ return {
   },
   {
     'airblade/vim-gitgutter',
-    lazy = false,
+    event = { 'BufReadPost', 'BufNewFile' },
     keys = {
       { "<Leader>gh", "<Cmd>GitGutterLineHighlightsToggle<CR>", desc = "Toggle git diff line highlight" },
       { "<Leader>gj", "<Cmd>GitGutterFold<CR>",                 desc = "Fold git diff block" },

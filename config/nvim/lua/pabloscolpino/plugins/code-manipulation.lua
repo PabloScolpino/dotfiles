@@ -15,10 +15,13 @@ return {
     }
   },
   {
-    'echasnovski/mini.comment'
+    'echasnovski/mini.comment',
+    event = 'VeryLazy',
+    opts = {},
   },
   {
-    'godlygeek/tabular'
+    'godlygeek/tabular',
+    cmd = 'Tabularize',
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -44,17 +47,19 @@ return {
     },
     lazy = false,
     keys = {
-      { "<leader>re",  "<Cmd>Refactor extract<CR>",               desc = "Extract",               mode = { "n", "v" } },
-      { "<leader>rf",  "<Cmd>Refactor extract_to_file<CR>",       desc = "Extract to file",       mode = "x" },
-      { "<leader>rv",  "<Cmd>Refactor extract_var<CR>",           desc = "Extract variable",      mode = "x" },
-      { "<leader>ri",  "<Cmd>Refactor inline_var<CR>",            desc = "Inline variable",       mode = { "n", "x" } },
-      { "<leader>rI",  "<Cmd>Refactor inline_func<CR>",           desc = "Inline function",       mode = "n" },
-      { "<leader>rb",  "<Cmd>Refactor extract_block<CR>",         desc = "Extract block",         mode = "n" },
-      { "<leader>rbf", "<Cmd>Refactor extract_block_to_file<CR>", desc = "Extract block to file", mode = "n" }
+      { "<leader>Re",  "<Cmd>Refactor extract<CR>",               desc = "Extract",               mode = { "n", "v" } },
+      { "<leader>Rf",  "<Cmd>Refactor extract_to_file<CR>",       desc = "Extract to file",       mode = "x" },
+      { "<leader>Rv",  "<Cmd>Refactor extract_var<CR>",           desc = "Extract variable",      mode = "x" },
+      { "<leader>Ri",  "<Cmd>Refactor inline_var<CR>",            desc = "Inline variable",       mode = { "n", "x" } },
+      { "<leader>RI",  "<Cmd>Refactor inline_func<CR>",           desc = "Inline function",       mode = "n" },
+      { "<leader>Rb",  "<Cmd>Refactor extract_block<CR>",         desc = "Extract block",         mode = "n" },
+      { "<leader>Rbf", "<Cmd>Refactor extract_block_to_file<CR>", desc = "Extract block to file", mode = "n" }
     },
   },
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    event = "VeryLazy",
+    opts = {},
   }
 }

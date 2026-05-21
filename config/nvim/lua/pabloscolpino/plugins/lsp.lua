@@ -1,7 +1,7 @@
 return {
   {
     'williamboman/mason.nvim',
-    lazy = false,
+    cmd = { 'Mason', 'MasonInstall', 'MasonUninstall', 'MasonUpdate', 'MasonLog' },
     opts = {},
   },
   {
@@ -30,16 +30,16 @@ return {
         callback = function(event)
           local opts = { buffer = event.buf }
 
-          vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-          vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-          vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-          vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-          vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-          vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-          vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-          vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-          vim.keymap.set({ 'n', 'x' }, '<C-f>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-          vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+          vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+          vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
+          vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+          vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, opts)
+          vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, opts)
+          vim.keymap.set({ 'n', 'x' }, '<C-f>', function() vim.lsp.buf.format({ async = true }) end, opts)
+          vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
         end,
       })
 
@@ -56,16 +56,42 @@ return {
           'yamlls',
           'herb_ls',
         },
-        automatic_enable = {
-          exclude = { 'ruby_lsp', 'solargraph' }
+      })
+
+      -- Teach lua_ls about the nvim runtime so editing this config doesn't
+      -- raise 'Undefined global vim' diagnostics regardless of which
+      -- root_dir lua_ls resolves for the buffer.
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            runtime = { version = 'LuaJIT' },
+            diagnostics = { globals = { 'vim' } },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
+            telemetry = { enable = false },
+          },
         },
       })
 
-      -- Helper function to detect Ruby version from mise
-      local function get_ruby_version()
-        local result = vim.fn.system('mise current ruby 2>/dev/null')
+      -- Detect Ruby version via mise, cached per project root so we only
+      -- fork `mise` once per project per session.
+      local ruby_version_cache = {}
+      local ruby_root_markers = { 'Gemfile', '.tool-versions', '.mise.toml', '.git' }
+
+      local function ruby_version_for(buf)
+        local root = vim.fs.root(buf or 0, ruby_root_markers)
+        if not root then return nil end
+        local cached = ruby_version_cache[root]
+        if cached ~= nil then
+          return cached or nil
+        end
+        local result = vim.fn.system({ 'mise', '--cd', root, 'current', 'ruby' })
         local version = result:match('(%d+%.%d+)')
-        return version and tonumber(version) or nil
+        local value = version and tonumber(version) or false
+        ruby_version_cache[root] = value
+        return value or nil
       end
 
       -- Configure Ruby LSPs with bundle exec (uses project's gems)
@@ -84,8 +110,8 @@ return {
       -- Autocmd to enable correct Ruby LSP based on version
       vim.api.nvim_create_autocmd('FileType', {
         pattern = { 'ruby', 'eruby' },
-        callback = function()
-          local version = get_ruby_version()
+        callback = function(args)
+          local version = ruby_version_for(args.buf)
           if version == nil then
             return -- No Ruby version detected, no LSP
           end

@@ -3,14 +3,16 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
-      theme = 'powerline_dark',
-    }
+      options = {
+        theme = 'auto',
+      },
+    },
   },
   {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
-    lazy = false,
+    event = 'VimEnter',
     opts = {
       options = {
         mode = "buffers",
@@ -28,33 +30,33 @@ return {
       { '<C-k>', '<Cmd>BufferLineGoToBuffer 2<CR>', desc = 'Go to buffer 2' },
       { '<C-l>', '<Cmd>BufferLineGoToBuffer 3<CR>', desc = 'Go to buffer 3' },
       { '<C-;>', '<Cmd>BufferLineGoToBuffer 4<CR>', desc = 'Go to buffer 4' },
-      { '<C-h>', '<Cmd>BufferLineCyclePrev<CR>',   desc = 'Previous buffer' },
+      { '<C-h>', '<Cmd>BufferLineCyclePrev<CR>',    desc = 'Previous buffer' },
     },
   },
   {
-    'Mofiqul/vscode.nvim',
+    "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000, -- Ensure it loads first
     opts = {
+      style = "night",
       transparent = true,
     },
     config = function(_, opts)
-      local theme = require('vscode')
-      theme.setup(opts)
-      theme.load()
+      require("tokyonight").setup(opts)
+      vim.cmd.colorscheme("tokyonight-night")
     end,
+  },
+  {
+    'Mofiqul/vscode.nvim',
+    opts = {
+      transparent = true,
+    },
   },
   {
     'navarasu/onedark.nvim',
     opts = {
       style = 'deep',
-      transparent = true
-    },
-  },
-  {
-    "folke/tokyonight.nvim",
-    opts = {
-      transparent = true
+      transparent = true,
     },
   },
   { "rebelot/kanagawa.nvim" },

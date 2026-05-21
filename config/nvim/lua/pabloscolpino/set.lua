@@ -1,5 +1,5 @@
 ----[ make vim yank put data into clipboard ]---------------------------------
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = "unnamedplus"
 
 -----[ Set up smarter search behaviour ]--------------------------------------
 vim.opt.incsearch = true  -- Lookahead as search pattern is specified
@@ -9,6 +9,7 @@ vim.opt.hlsearch = true   -- Highlight all matches
 
 -----[ Make tabs, trailing whitespace, and non-breaking spaces visible ]------
 vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -----[ Basic coding style ]---------------------------------------------------
 vim.opt.tabstop = 2
@@ -30,3 +31,6 @@ vim.opt.number = true
 -----[ Additional files]------------------------------------------------------
 vim.opt.swapfile = false
 vim.opt.backup = false
+
+-----[ Folds ]----------------------------------------------------------------
+vim.opt.foldlevelstart = 99 -- open all folds by default; treesitter foldexpr otherwise hides everything
