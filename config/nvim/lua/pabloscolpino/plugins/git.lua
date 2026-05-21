@@ -10,7 +10,7 @@ return {
   },
   {
     'airblade/vim-gitgutter',
-    lazy = false,
+    event = { 'BufReadPost', 'BufNewFile' },
     keys = {
       { "<Leader>gh", "<Cmd>GitGutterLineHighlightsToggle<CR>", desc = "Toggle git diff line highlight" },
       { "<Leader>gj", "<Cmd>GitGutterFold<CR>",                 desc = "Fold git diff block" },

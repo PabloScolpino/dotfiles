@@ -35,7 +35,9 @@ end, { desc = "Disable GitGutter and line numbers" })
 vim.keymap.set("n", "<Leader>p", vim.cmd.bprevious, { desc = "jump to previous buffer" })
 vim.keymap.set("n", "<Leader>n", vim.cmd.bnext, { desc = "jump to next buffer" })
 
-vim.keymap.set("n", "<F9>", ":!%:p<Enter>", { desc = "Execute current file" })
+vim.keymap.set("n", "<F9>", function()
+  vim.cmd("!" .. vim.fn.shellescape(vim.fn.expand("%:p")))
+end, { desc = "Execute current file" })
 
 vim.keymap.set("n", "<BS><BS>", vim.cmd.FixWhitespace)
 
