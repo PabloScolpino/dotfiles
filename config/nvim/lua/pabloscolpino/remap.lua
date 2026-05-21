@@ -19,6 +19,7 @@ vim.keymap.set("v", "<C-V>", "v")
 --   { desc = "Prepare buffer for mouose copy" })
 vim.keymap.set("n", "<Leader>c", function()
   vim.wo.number = true
+  vim.wo.signcolumn = "yes"
   vim.cmd("GitGutterEnable")
 end, { desc = "Enable line numbers and GitGutter signs" })
 
