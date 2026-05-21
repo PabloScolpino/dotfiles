@@ -10,7 +10,7 @@ return {
     'akinsho/bufferline.nvim',
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
-    lazy = false,
+    event = 'VimEnter',
     opts = {
       options = {
         mode = "buffers",
@@ -28,7 +28,7 @@ return {
       { '<C-k>', '<Cmd>BufferLineGoToBuffer 2<CR>', desc = 'Go to buffer 2' },
       { '<C-l>', '<Cmd>BufferLineGoToBuffer 3<CR>', desc = 'Go to buffer 3' },
       { '<C-;>', '<Cmd>BufferLineGoToBuffer 4<CR>', desc = 'Go to buffer 4' },
-      { '<C-h>', '<Cmd>BufferLineCyclePrev<CR>',   desc = 'Previous buffer' },
+      { '<C-h>', '<Cmd>BufferLineCyclePrev<CR>',    desc = 'Previous buffer' },
     },
   },
   {
