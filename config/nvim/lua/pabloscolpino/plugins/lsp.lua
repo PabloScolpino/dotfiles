@@ -1,7 +1,7 @@
 return {
   {
     'williamboman/mason.nvim',
-    lazy = false,
+    cmd = { 'Mason', 'MasonInstall', 'MasonUninstall', 'MasonUpdate', 'MasonLog' },
     opts = {},
   },
   {
