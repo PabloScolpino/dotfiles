@@ -61,11 +61,23 @@ return {
         },
       })
 
-      -- Helper function to detect Ruby version from mise
-      local function get_ruby_version()
-        local result = vim.fn.system('mise current ruby 2>/dev/null')
+      -- Detect Ruby version via mise, cached per project root so we only
+      -- fork `mise` once per project per session.
+      local ruby_version_cache = {}
+      local ruby_root_markers = { 'Gemfile', '.tool-versions', '.mise.toml', '.git' }
+
+      local function ruby_version_for(buf)
+        local root = vim.fs.root(buf or 0, ruby_root_markers)
+        if not root then return nil end
+        local cached = ruby_version_cache[root]
+        if cached ~= nil then
+          return cached or nil
+        end
+        local result = vim.fn.system({ 'mise', '--cd', root, 'current', 'ruby' })
         local version = result:match('(%d+%.%d+)')
-        return version and tonumber(version) or nil
+        local value = version and tonumber(version) or false
+        ruby_version_cache[root] = value
+        return value or nil
       end
 
       -- Configure Ruby LSPs with bundle exec (uses project's gems)
@@ -84,8 +96,8 @@ return {
       -- Autocmd to enable correct Ruby LSP based on version
       vim.api.nvim_create_autocmd('FileType', {
         pattern = { 'ruby', 'eruby' },
-        callback = function()
-          local version = get_ruby_version()
+        callback = function(args)
+          local version = ruby_version_for(args.buf)
           if version == nil then
             return -- No Ruby version detected, no LSP
           end
