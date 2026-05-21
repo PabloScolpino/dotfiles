@@ -60,7 +60,7 @@ return {
         },
         ghost_text = { enabled = false },
       },
-      fuzzy = { implementation = 'prefer_rust_with_warning' },
+      fuzzy = { implementation = 'prefer_rust' },
     },
   },
 }

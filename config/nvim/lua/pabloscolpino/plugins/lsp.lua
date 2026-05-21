@@ -56,9 +56,6 @@ return {
           'yamlls',
           'herb_ls',
         },
-        automatic_enable = {
-          exclude = { 'ruby_lsp', 'solargraph' }
-        },
       })
 
       -- Teach lua_ls about the nvim runtime so editing this config doesn't

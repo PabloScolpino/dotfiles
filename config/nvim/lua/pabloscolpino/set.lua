@@ -9,6 +9,7 @@ vim.opt.hlsearch = true   -- Highlight all matches
 
 -----[ Make tabs, trailing whitespace, and non-breaking spaces visible ]------
 vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -----[ Basic coding style ]---------------------------------------------------
 vim.opt.tabstop = 2
