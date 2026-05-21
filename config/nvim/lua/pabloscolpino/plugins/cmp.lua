@@ -19,8 +19,6 @@ return {
     event = 'InsertEnter',
     dependencies = {
       'rafamadriz/friendly-snippets',
-      'zbirenbaum/copilot.lua',
-      'fang2hou/blink-copilot',
     },
 
     ---@module 'blink.cmp'
