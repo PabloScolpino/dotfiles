@@ -3,8 +3,10 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
-      theme = 'powerline_dark',
-    }
+      options = {
+        theme = 'auto',
+      },
+    },
   },
   {
     'akinsho/bufferline.nvim',
