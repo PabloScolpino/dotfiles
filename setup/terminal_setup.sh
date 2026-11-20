@@ -37,3 +37,4 @@ ln -s ${dotfiles}/.inputrc          $HOME/.inputrc
 ln -s ${dotfiles}/.vimrc            $HOME/.vimrc
 ln -s ${dotfiles}/config/alacritty  $HOME/.config/alacritty
 ln -s ${dotfiles}/config/i3         $HOME/.config/i3
+ln -s ${dotfiles}/config/tmux       $HOME/.config/tmux
