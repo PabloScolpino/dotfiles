@@ -16,3 +16,4 @@
     - nvim
     - yamllint
     - iterm2_config
+    - tmux

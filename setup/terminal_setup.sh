@@ -37,3 +37,10 @@ ln -s ${dotfiles}/.inputrc          $HOME/.inputrc
 ln -s ${dotfiles}/.vimrc            $HOME/.vimrc
 ln -s ${dotfiles}/config/alacritty  $HOME/.config/alacritty
 ln -s ${dotfiles}/config/i3         $HOME/.config/i3
+ln -s ${dotfiles}/config/nvim       $HOME/.config/nvim
+ln -s ${dotfiles}/config/tmux       $HOME/.config/tmux
+ln -s ${dotfiles}/config/yamllint   $HOME/.config/yamllint
+
+if [ "$platform" == 'Darwin' ]; then
+  ln -s ${dotfiles}/config/iterm2_config $HOME/.config/iterm2_config
+fi
